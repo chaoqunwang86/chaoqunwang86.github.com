@@ -1,0 +1,1215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[文章分类：java | 超群的博客]]></title>
+  <link href="http://wangchaoqun.com/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://wangchaoqun.com/"/>
+  <updated>2014-01-29T10:21:58+08:00</updated>
+  <id>http://wangchaoqun.com/</id>
+  <author>
+    <name><![CDATA[wang chaoqun]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Excel导出工具类]]></title>
+    <link href="http://wangchaoqun.com/blog/2013/01/excel-dao-chu-gong-ju-lei.html/"/>
+    <updated>2013-01-01T16:32:42+08:00</updated>
+    <id>http://wangchaoqun.com/blog/2013/01/excel-dao-chu-gong-ju-lei</id>
+    <content type="html"><![CDATA[<p>前端使用jquery easyui，datagrid添加导出按钮（另外的js逻辑）即可将当前页或所有页数据(支持查询条件的导出)导出到excel，支持office excel 2003和2007+;<br/>
+使用apache poi（+ooxml）实现，主要代码片段如下：</p>
+
+<!--more-->
+
+
+<p>```java
+package com.colalife.core.util.excel;</p>
+
+<p>public class ExcelExportUtil {</p>
+
+<pre><code>private static Logger logger = LoggerFactory.getLogger(ExcelExportUtil.class);
+private static Map&lt;String, CellStyle&gt; styles;
+/**
+ * sheetName Excel导出文档里的标签页名，默认为Sheet1
+ */
+public static final String DEFAULT_SHEET_NAME = "Sheet1";
+/**
+ * excel导出时文件名，默认为"导出excel.xls"
+ */
+public static final String DEFAULT_EXCEL_FILE_NAME = "导出excel.xls";
+
+/**
+ * Excel导出,sheetName默认为Sheet1
+ * @param dataList 数据，可用bean list
+ * @param columns 字段和字段显示名的键值对
+ */
+public static void export(List&lt;?&gt; dataList, Map&lt;String, String&gt; columns, HttpServletResponse response)
+        throws IOException {
+    String[] fields = columns.keySet().toArray(new String[0]);
+    String[] titles = columns.values().toArray(new String[0]);
+    export(dataList, fields, titles, response);
+}
+
+/**
+ * Excel导出,sheetName默认为Sheet1
+ * @param dataList 数据，可用bean list
+ * @param EasyuiDataGrid 用来获取fields titles 字段和字段显示名的数组
+ */
+public static void export(List&lt;?&gt; dataList, EasyuiDataGrid dg, HttpServletResponse response)
+        throws IOException {
+    String[] fields = dg.getFields().split(",");
+    String[] titles = dg.getTitles().split(",");
+    Workbook excel = ExcelExportUtil.getExcel(dataList, fields, titles);
+    ExcelExportUtil.setResponseForExcel(response);
+    excel.write(response.getOutputStream());
+    response.getOutputStream().flush();
+    response.getOutputStream().close();
+}
+
+/**
+ * Excel导出,sheetName默认为Sheet1
+ * @param dataList 数据，可用bean list
+ * @param fields titles 字段和字段显示名的数组
+ */
+public static void export(List&lt;?&gt; dataList, String[] fields, String[] titles, HttpServletResponse response)
+        throws IOException {
+    Workbook excel = ExcelExportUtil.getExcel(dataList, fields, titles);
+    ExcelExportUtil.setResponseForExcel(response);
+    excel.write(response.getOutputStream());
+    response.getOutputStream().flush();
+    response.getOutputStream().close();
+}
+
+/**
+ * Excel导出的实现,sheetName默认为Sheet1
+ * @param data 数据，可用bean list
+ * @param columns 字段和字段显示名的键值对
+ */
+public static Workbook getExcel(List&lt;?&gt; data, Map&lt;String, String&gt; columns) {
+    return getExcel(data, DEFAULT_SHEET_NAME, columns);
+}
+
+/**
+ * Excel导出的实现,sheetName默认为Sheet1
+ * @param data 数据，可用bean list
+ * @param columns 字段和字段显示名的键值对
+ */
+public static Workbook getExcel(List&lt;?&gt; data, String[] fields, String[] titles) {
+    return getExcel(data, DEFAULT_SHEET_NAME, fields, titles);
+}
+
+/**
+ * Excel导出的实现
+ * @param data 数据，可用bean list
+ * @param sheetName 导出文档里的标签页名
+ * @param columns 字段和字段显示名的键值对
+ */
+public static Workbook getExcel(List&lt;?&gt; data, String sheetName, Map&lt;String, String&gt; columns) {
+    String[] fields = columns.keySet().toArray(new String[0]);
+    String[] titles = columns.values().toArray(new String[0]);
+    return getExcel(data, sheetName, fields, titles);
+}
+
+/**
+ * Excel导出的实现
+ * @param data 数据，可用bean list
+ * @param sheetName 导出文档里的标签页名
+ * @param fields titles 字段和字段显示名的数组
+ */
+public static Workbook getExcel(List&lt;?&gt; data, String sheetName, String[] fields, String[] titles) {
+    Workbook workbook = new HSSFWorkbook();
+    //创建所有Cell Style
+    createStyles(workbook);
+    Sheet sheet = workbook.createSheet(sheetName);
+    // 创建第一行,为excel表头
+    Row row = sheet.createRow(0);
+    // 序号列
+    Cell numHeader = row.createCell(0);
+    numHeader.setCellValue(new HSSFRichTextString("序号"));
+    numHeader.setCellStyle(styles.get("header"));
+    for (int i = 1; i &lt;= titles.length; i++) {
+        Cell header = row.createCell(i);
+        header.setCellValue(new HSSFRichTextString(titles[i - 1]));
+        header.setCellStyle(styles.get("header"));
+    }
+    // 创建其他各数据行
+    if (!data.isEmpty()) {
+        for (int j = 0; j &lt; data.size(); j++) {
+            Object bean = data.get(j);
+            Row dataRow = sheet.createRow(j + 1);
+            // 序号列
+            Cell num = dataRow.createCell(0);
+            num.setCellValue(new HSSFRichTextString(String.valueOf(j + 1)));
+            num.setCellStyle(styles.get("normal"));
+            for (int k = 1; k &lt;= fields.length; k++) {
+                Cell cell = dataRow.createCell(k);
+                Object value = null;
+                boolean isDate = false;
+                try {
+                    value = PropertyUtils.getSimpleProperty(bean, fields[k - 1]);
+                    if (value instanceof Date) {
+                        value = DateUtil.formatDate((Date) value);
+                        isDate = true;
+                    }
+                } catch (Exception e) {
+                    logger.error("Excel导出，获取属性值异常：" + e.getMessage());
+                }
+                HSSFRichTextString cellValue = new HSSFRichTextString(ObjectUtils.toString(value));
+                cell.setCellValue(cellValue);
+                cell.setCellStyle(isDate ? styles.get("dateCell") : styles.get("normal"));
+            }
+        }
+    }
+    for (int i = 0; i &lt; titles.length; i++) {
+        // 自适应宽度
+        sheet.autoSizeColumn(i);
+    }
+    return workbook;
+}
+
+/**
+ * excel导出时用到的方法，直接调用
+ */
+public static void setResponseForExcel(HttpServletResponse response) {
+    setResponseForExcel(response, DEFAULT_EXCEL_FILE_NAME);
+}
+
+/**
+ * excel导出时用到的方法，直接调用
+ * @throws UnsupportedEncodingException
+ */
+public static void setResponseForExcel(HttpServletResponse response, String fileName) {
+    response.setContentType("application/vnd.ms-excel;charset=UTF-8");
+    try {
+        // 解决excel文件乱码问题
+        response.setHeader("Content-Disposition", "attachment;filename="
+                + new String(fileName.getBytes("GB2312"), "ISO8859-1"));
+    } catch (UnsupportedEncodingException e) {
+        logger.error("Excel导出，转码异常：" + e.getMessage());
+    }
+    response.setHeader("Cache-Control", "must-revalidate, post-check=0, pre-check=0");
+    response.setHeader("Pragma", "public");
+    response.setDateHeader("Expires", 0);
+}
+
+private static Map&lt;String, CellStyle&gt; createStyles(Workbook wb) {
+    styles = Maps.newHashMap();
+    DataFormat df = wb.createDataFormat();
+
+    // --字体设定 --//
+
+    //普通字体
+    Font normalFont = wb.createFont();
+    normalFont.setFontName("宋体");
+    normalFont.setFontHeightInPoints((short) 12);
+
+    //加粗字体
+    Font boldFont = wb.createFont();
+    boldFont.setFontHeightInPoints((short) 12);
+    boldFont.setBoldweight(Font.BOLDWEIGHT_BOLD);
+
+    //蓝色加粗字体
+    Font blueBoldFont = wb.createFont();
+    blueBoldFont.setFontHeightInPoints((short) 12);
+    blueBoldFont.setBoldweight(Font.BOLDWEIGHT_BOLD);
+    blueBoldFont.setColor(IndexedColors.BLUE.getIndex());
+
+    // --Cell Style设定-- //
+    //普通格式
+    CellStyle normalStyle = wb.createCellStyle();
+    normalStyle.setFont(normalFont);
+    styles.put("normal", normalStyle);
+
+    //标题格式
+    CellStyle headerStyle = wb.createCellStyle();
+    headerStyle.setFont(boldFont);
+    // 指定单元格居中对齐
+    headerStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+    // 指定单元格垂直居中对齐
+    headerStyle.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+    styles.put("header", headerStyle);
+
+    //日期格式
+    CellStyle dateCellStyle = wb.createCellStyle();
+    dateCellStyle.setFont(normalFont);
+    dateCellStyle.setDataFormat(df.getFormat("yyyy-MM-dd HH:mm:ss"));
+</code></pre>
+
+<p>//      setBorder(dateCellStyle);</p>
+
+<pre><code>    styles.put("dateCell", dateCellStyle);
+
+    //数字格式
+    CellStyle numberCellStyle = wb.createCellStyle();
+    numberCellStyle.setFont(normalFont);
+    numberCellStyle.setDataFormat(df.getFormat("#,##0.00"));
+    setBorder(numberCellStyle);
+    styles.put("numberCell", numberCellStyle);
+
+    //合计列格式
+    CellStyle totalStyle = wb.createCellStyle();
+    totalStyle.setFont(blueBoldFont);
+    totalStyle.setWrapText(true);
+    totalStyle.setAlignment(CellStyle.ALIGN_RIGHT);
+    setBorder(totalStyle);
+    styles.put("total", totalStyle);
+
+    return styles;
+}
+
+private static void setBorder(CellStyle style) {
+    //设置边框
+    style.setBorderRight(CellStyle.BORDER_THIN);
+    style.setRightBorderColor(IndexedColors.BLACK.getIndex());
+
+    style.setBorderLeft(CellStyle.BORDER_THIN);
+    style.setLeftBorderColor(IndexedColors.BLACK.getIndex());
+
+    style.setBorderTop(CellStyle.BORDER_THIN);
+    style.setTopBorderColor(IndexedColors.BLACK.getIndex());
+
+    style.setBorderBottom(CellStyle.BORDER_THIN);
+    style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+}
+</code></pre>
+
+<p>}</p>
+
+<p>```</p>
+
+<h2>页面调用  </h2>
+
+<p>在相应页面的toolbar里添加导出按钮，调用js function，例如：<br/>
+```javascript</p>
+
+<pre><code>function exportData() {
+</code></pre>
+
+<p>//      默认导出
+//      jsUtil.doDefaultExport(&lsquo;&lt;%=request.getContextPath()%>/core/operlog/export&rsquo;, datagrid);</p>
+
+<p>//      支持查询条件的导出</p>
+
+<pre><code>    var inputs = $("#searchForm input").clone();
+    jsUtil.doExport('&lt;%=request.getContextPath()%&gt;/core/operlog/export', datagrid, inputs);
+}
+</code></pre>
+
+<p><code>
+jsUtil里的js逻辑：  
+</code>javascript
+/<em>*
+ * 提交导出form
+ </em>/
+jsUtil.submitExportForm = function(form) {</p>
+
+<pre><code>form.submit();
+form.remove();
+</code></pre>
+
+<p>}
+/<em>*
+ * 导出方法，input为其他查询条件
+ </em>/
+jsUtil.doExport = function(url, dg, inputs) {</p>
+
+<pre><code>$.messager.defaults = { ok:"当前页数据", cancel:"所有页数据" };
+//导出当前页的数据?导出符合条件的所有数据?
+$.messager.confirm('导出', '选择导出查询结果里的：', function(isCurrent){
+    var form = jsUtil.getDefaultExportForm(url, dg, isCurrent);
+    if (inputs != null) {
+        // 其他查询条件
+        for (var i = 0; i &lt; inputs.length; i++) {
+            form.append(inputs[i]);
+        }
+    }
+    jsUtil.submitExportForm(form);
+});
+$.messager.defaults = { ok:"确定", cancel:"取消" };
+</code></pre>
+
+<p>}
+/<em>*
+ * 导出方法，无其他附加条件，按后台逻辑导出数据
+ </em>/
+jsUtil.doDefaultExport = function(url, dg) {</p>
+
+<pre><code> var form = jsUtil.getDefaultExportForm(url, dg);
+ jsUtil.submitExportForm(form);
+</code></pre>
+
+<p>}
+/<em>*
+ * 构造导出form，默认提交分页信息，列表字段和字段显示名信息
+ </em>/
+jsUtil.getDefaultExportForm = function(url, dg, isCurrent) {</p>
+
+<pre><code>var form = $("&lt;form&gt;");
+form.attr('style', 'display:none');
+form.attr('target', '');
+form.attr('method', 'post');
+form.attr('action', url);
+$('body').append(form);
+var defaultInputs = jsUtil.getDefaultInputs(url, dg, isCurrent);
+for (var i = 0; i &lt; defaultInputs.length; i++) {
+    form.append(defaultInputs[i]);
+}
+return form;
+</code></pre>
+
+<p>}
+/<em>*
+ * 导出form的默认提交参数，包括分页信息，列表字段和字段显示名信息
+ </em>/
+jsUtil.getDefaultInputs = function(url, dg, isCurrent) {</p>
+
+<pre><code>var inputs = [];
+var page = $('&lt;input&gt;');
+page.attr('type', 'hidden');
+page.attr('name', 'page');
+var rows = $('&lt;input&gt;');
+rows.attr('type', 'hidden');
+rows.attr('name', 'rows');
+//导出当前页的数据?导出符合条件的所有数据?
+if (isCurrent) {
+    page.attr('value', dg.datagrid('options').pageNumber);
+    rows.attr('value', dg.datagrid("options").pageSize);
+} else {
+    page.attr('value', 1);
+    rows.attr('value', 2147483647);
+}
+
+var sort = $('&lt;input&gt;');
+sort.attr('type', 'hidden');
+sort.attr('name', 'sort');
+sort.attr('value', dg.datagrid('options').sortName);
+
+var order = $('&lt;input&gt;');
+order.attr('type', 'hidden');
+order.attr('name', 'order');
+order.attr('value', dg.datagrid('options').sortOrder);
+
+var fields = $('&lt;input&gt;');
+fields.attr('type', 'hidden');
+fields.attr('name', 'fields');
+fields.attr('value', jsUtil.getFields(dg));
+
+var titles = $('&lt;input&gt;');
+titles.attr('type', 'hidden');
+titles.attr('name', 'titles');
+titles.attr('value', jsUtil.getTitles(dg));
+
+inputs.push(page);
+inputs.push(rows);
+inputs.push(sort);
+inputs.push(order);
+inputs.push(fields);
+inputs.push(titles);
+return inputs;
+</code></pre>
+
+<p>};
+/<em>*
+ * 导出form的列表字段
+ </em>/
+jsUtil.getFields = function(dg) {</p>
+
+<pre><code>var columns = dg.datagrid("options").columns[0];
+var json = '';
+if (columns) {
+    for (var i = 0; i &lt; columns.length; i++) {
+        var field = columns[i].field;
+        var title = columns[i].title;
+        var hidden = columns[i].hidden;
+        if (!hidden) {
+            json += field + ','
+        }
+    }
+    if (json != '') {
+        json = json.substring(0, json.length - 1);
+    }
+}
+return json;
+</code></pre>
+
+<p>};
+/<em>*
+ * 导出form的列表字段显示名称
+ </em>/
+jsUtil.getTitles = function(dg) {</p>
+
+<pre><code>var columns = dg.datagrid("options").columns[0];
+var json = '';
+if (columns) {
+    for (var i = 0; i &lt; columns.length; i++) {
+        var field = columns[i].field;
+        var title = columns[i].title;
+        var hidden = columns[i].hidden;
+        if (!hidden) {
+            json += title + ','
+        }
+    }
+    if (json != '') {
+        json = json.substring(0, json.length - 1);
+    }
+}
+return json;
+</code></pre>
+
+<p>};</p>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Htmlparser和httpclient解析页面并下载]]></title>
+    <link href="http://wangchaoqun.com/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai.html/"/>
+    <updated>2012-12-18T03:05:41+08:00</updated>
+    <id>http://wangchaoqun.com/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai</id>
+    <content type="html"><![CDATA[<p>如果你想抓取某个网页（如新浪、csdn之类）获取最新资讯列表，或者到某个站点下载文件、图片之类，就需要html解析例如htmlparser,jsoup之类的jar包，下载可用httpclient。如果想更高效率可以搞线程池，抓取解析线程和下载线程，类似消费者和生产者模型（此处不涉及，仅演示使用），代码如下：</p>
+
+<!--more-->
+
+
+<p>```java</p>
+
+<pre><code>public static Set&lt;String&gt; digLinks(String address) throws Exception {
+    Set&lt;String&gt; result = new HashSet&lt;String&gt;();
+    URL url = new URL(address);
+    Parser parser = new Parser((HttpURLConnection) url.openConnection());
+    NodeFilter filter = new HasAttributeFilter("id", "someid");
+    NodeList nodes = parser.extractAllNodesThatMatch(filter);
+    Node root = nodes.elementAt(0);
+    String html = root.getChildren().toHtml();
+    parser = Parser.createParser(html, "utf-8");
+    nodes = parser.extractAllNodesThatMatch(new TagNameFilter("li"));
+    parser = Parser.createParser(html, "utf-8");
+    nodes = parser.extractAllNodesThatMatch(new TagNameFilter("a"));
+    add(result, nodes);
+    return result;
+}
+
+private static void add(Set&lt;String&gt; result, NodeList nodes) {
+    for (int i = 0; i &lt; nodes.size(); i++) {
+        Node child = nodes.elementAt(i);
+        if (child instanceof LinkTag) {
+            LinkTag linknode = (LinkTag) child;
+            String href = linknode.getLink();
+            result.add(href);
+        }
+    }
+}
+</code></pre>
+
+<p>```</p>
+
+<h2>httpclient 下载  </h2>
+
+<p>```java</p>
+
+<pre><code>/**
+ * 读出文件中的url，连接下载保存
+ * @param file
+ */
+public static void doSave(String file) {
+    List&lt;String&gt; files = FileUtil.readLines(file);
+    for (String url : files) {
+        String fileName = StringUtils.substringAfterLast(url, "/");
+        download(url, fileName);
+    }
+}
+
+private static void download(String url, String fileName) {
+    OutputStream out = null;
+    InputStream in = null;
+    HttpURLConnection connection = null;
+    URL server = null;
+    try {
+        server = new URL(url);
+        connection = (HttpURLConnection) server.openConnection();
+        connection.connect();
+        in = connection.getInputStream();
+
+        File file = new File(dir + fileName);
+        if (file.exists()) {
+            return;
+        }
+        out = new FileOutputStream(file);
+        int b = in.read();
+        while (b != -1) {
+            out.write(b);
+            b = in.read();
+        }
+        in.close();
+        out.close();
+    } catch (Exception e) {
+    }
+}
+</code></pre>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[测试Hibernate动态添加实体类]]></title>
+    <link href="http://wangchaoqun.com/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei.html/"/>
+    <updated>2012-09-28T07:54:33+08:00</updated>
+    <id>http://wangchaoqun.com/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei</id>
+    <content type="html"><![CDATA[<p>大家知道通过hibernate cfg或和spring集成的配置里，可用packagesToScan或mapping*之类声明实体类；但有需求可能要在某个项目中编码式加载实体类（例如某个不常用的或特定用户的实体类，并未事先配置），然后进行增删改查操作。下面代码配合spring test framework做了测试（注：hibernate升级到了4.3.final，与4.2有不同，spring3或4测试通过）：<!--more-->
+```java
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { &ldquo;/spring-hibernate.xml&rdquo; })
+public class ConfigurationTest extends AbstractJUnit4SpringContextTests {</p>
+
+<pre><code>public static final String session_factory = "sessionFactory";
+// 值得注意: org.springframework.beans.factory.FactoryBean that creates a Hibernate org.hibernate.SessionFactory
+public static final String local_session_factory = "&amp;sessionFactory";
+
+@Test
+public void sessionFactoryAndFactoryBean() throws ClassNotFoundException {
+    SessionFactory sessionFactory = (SessionFactory) applicationContext.getBean(session_factory);
+    Map&lt;String, ClassMetadata&gt; meta = sessionFactory.getAllClassMetadata();
+    for (Entry&lt;String, ClassMetadata&gt; each : meta.entrySet()) {
+        ClassMetadata value = each.getValue();
+        System.out.println("entity name:" + value.getEntityName());
+    }
+
+    LocalSessionFactoryBean sessionFactoryBean = (LocalSessionFactoryBean) applicationContext.getBean(local_session_factory);
+
+    Configuration config = sessionFactoryBean.getConfiguration();
+    config.addAnnotatedClass(User.class);
+    ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
+    SessionFactory newSessionFactory = config.buildSessionFactory(serviceRegistry);
+    Session session = newSessionFactory.openSession();
+
+    User user = new User();
+    user.setName("username");
+    session.save(user);
+    session.flush();
+
+    user = (User) session.get(User.class, user.getId());
+    session.close();
+    System.out.println("------" + user.getId());
+    System.out.println("------" + user.getName());
+
+    Iterator&lt;Table&gt; mappings = config.getTableMappings();
+    while (mappings.hasNext()) {
+        Table each = mappings.next();
+        System.out.println("table name:" + each.getName());
+    }
+
+}
+</code></pre>
+
+<p>}
+```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[9种排序算法的java实现]]></title>
+    <link href="http://wangchaoqun.com/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian.html/"/>
+    <updated>2010-08-09T13:09:09+08:00</updated>
+    <id>http://wangchaoqun.com/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian</id>
+    <content type="html"><![CDATA[<p>使用枚举类型存入各算法和接口实现，main方法打印排序后的数组，也可以加入nanotime、currentTimeMillis测试效率，但可能数组太小不明显</p>
+
+<p><code>java
+package comcolalife.demo.sort;
+import java.util.Arrays;
+/**
+ * 冒择入希快(快改进)归(归改进)堆：9种排序算法的java实现
+ * @author wangchaoqun
+ */
+public class SortTest {
+</code></p>
+
+<!--more-->
+
+
+<p>```java</p>
+
+<pre><code>public static void main(String[] args) {
+    int[] original = { 1, 3, 1, 10, 4, 8, 5, 21, 43, 29, 53 };
+    // 执行排序算法
+    for (Sorts each : Sorts.values()) {
+        System.out.print(each.name() + "    ");
+        int[] data = Arrays.copyOf(original, original.length);
+        each.impl().sort(data);
+        print(data);
+    }
+    // java.util.Arrays类使用调优的快速排序法
+    Arrays.sort(original);
+    print(original);
+}
+
+public static void print(int[] data) {
+    for (int each : data) {
+        System.out.print(each + " ");
+    }
+    System.out.println();
+}
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * 插入排序算法
+ </em>/
+class InsertSort implements Sort {</p>
+
+<pre><code>public void sort(int[] data) {
+    for (int i = 1; i &lt; data.length; i++) {
+        for (int j = i; (j &gt; 0) &amp;&amp; (data[j] &lt; data[j - 1]); j--) {
+            SortUtil.swap(data, j, j - 1);
+        }
+    }
+}
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * 冒泡排序算法
+ </em>/
+class BubbleSort implements Sort {</p>
+
+<pre><code>public void sort(int[] data) {
+    for (int i = 0; i &lt; data.length; i++) {
+        for (int j = data.length - 1; j &gt; i; j--) {
+            if (data[j] &lt; data[j - 1]) {
+                SortUtil.swap(data, j, j - 1);
+            }
+        }
+    }
+}
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * 选择排序算法
+ </em>/
+class SelectionSort implements Sort {</p>
+
+<pre><code>public void sort(int[] data) {
+    for (int i = 0; i &lt; data.length; i++) {
+        int lowIndex = i;
+        for (int j = data.length - 1; j &gt; i; j--) {
+            if (data[j] &lt; data[lowIndex]) {
+                lowIndex = j;
+            }
+        }
+        SortUtil.swap(data, i, lowIndex);
+    }
+}
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * 希尔排序算法
+ </em>/
+class ShellSort implements Sort {</p>
+
+<pre><code>public void sort(int[] data) {
+    for (int i = data.length / 2; i &gt; 2; i /= 2) {
+        for (int j = 0; j &lt; i; j++) {
+            insertSort(data, j, i);
+        }
+    }
+    insertSort(data, 0, 1);
+}
+
+private void insertSort(int[] data, int start, int inc) {
+    for (int i = start + inc; i &lt; data.length; i += inc) {
+        for (int j = i; (j &gt;= inc) &amp;&amp; (data[j] &lt; data[j - inc]); j -= inc) {
+            SortUtil.swap(data, j, j - inc);
+        }
+    }
+}
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * 快速排序算法
+ </em>/
+class QuickSort implements Sort {</p>
+
+<pre><code>public void sort(int[] data) {
+    quickSort(data, 0, data.length - 1);
+}
+
+private void quickSort(int[] data, int first, int last) {
+    if (first &gt;= last) {
+        return;
+    }
+
+    int pivot = partition(data, first, last, first);
+    quickSort(data, first, pivot - 1);// 对左半段排序
+    quickSort(data, pivot + 1, last);// 对右半段排序
+
+}
+
+private int partition(int[] data, int first, int last, int pivot) {
+    while (true) {
+        while (data[++first] &lt; data[pivot])
+            ;
+        while (data[--last] &gt; data[pivot])
+            ;
+        if (first &gt;= last) {
+            break;
+        }
+        SortUtil.swap(data, first, last);
+    }
+    SortUtil.swap(data, last, pivot);
+    return last;
+}
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * 改进的快速排序算法
+ </em>/
+class ImprovedQuickSort implements Sort {</p>
+
+<pre><code>private static int MAX_STACK_SIZE = 4096;
+private static int THRESHOLD = 10;
+
+public void sort(int[] data) {
+    int[] stack = new int[MAX_STACK_SIZE];
+
+    int top = -1;
+    int pivot;
+    int pivotIndex, l, r;
+
+    stack[++top] = 0;
+    stack[++top] = data.length - 1;
+
+    while (top &gt; 0) {
+        int j = stack[top--];
+        int i = stack[top--];
+
+        pivotIndex = (i + j) / 2;
+        pivot = data[pivotIndex];
+
+        SortUtil.swap(data, pivotIndex, j);
+
+        // partition
+        l = i - 1;
+        r = j;
+        do {
+            while (data[++l] &lt; pivot)
+                ;
+            while ((r != 0) &amp;&amp; (data[--r] &gt; pivot))
+                ;
+            SortUtil.swap(data, l, r);
+        } while (l &lt; r);
+        SortUtil.swap(data, l, r);
+        SortUtil.swap(data, l, j);
+
+        if ((l - i) &gt; THRESHOLD) {
+            stack[++top] = i;
+            stack[++top] = l - 1;
+        }
+        if ((j - l) &gt; THRESHOLD) {
+            stack[++top] = l + 1;
+            stack[++top] = j;
+        }
+    }
+    insertSort(data);
+}
+
+private void insertSort(int[] data) {
+    for (int i = 1; i &lt; data.length; i++) {
+        for (int j = i; (j &gt; 0) &amp;&amp; (data[j] &lt; data[j - 1]); j--) {
+            SortUtil.swap(data, j, j - 1);
+        }
+    }
+}
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * 归并排序算法
+ </em>/
+class MergeSort implements Sort {</p>
+
+<pre><code>public void sort(int[] data) {
+    int[] temp = new int[data.length];
+    mergeSort(data, temp, 0, data.length - 1);
+}
+
+private void mergeSort(int[] data, int[] temp, int left, int right) {
+    if (left == right) {
+        return;
+    }
+    int mid = (left + right) / 2;
+    mergeSort(data, temp, left, mid);
+    mergeSort(data, temp, mid + 1, right);
+    for (int i = left; i &lt;= right; i++) {
+        temp = Arrays.copyOf(data, data.length);
+    }
+    int i1 = left;
+    int i2 = mid + 1;
+    for (int cur = left; cur &lt;= right; cur++) {
+        if (i1 == mid + 1) {
+            data[cur] = temp[i2++];
+        } else if (i2 &gt; right) {
+            data[cur] = temp[i1++];
+        } else if (temp[i1] &lt; temp[i2]) {
+            data[cur] = temp[i1++];
+        } else {
+            data[cur] = temp[i2++];
+        }
+    }
+}
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * 改进的归并排序算法
+ </em>/
+class ImprovedMergeSort implements Sort {</p>
+
+<pre><code>private static final int THRESHOLD = 10;
+
+public void sort(int[] data) {
+    int[] temp = new int[data.length];
+    mergeSort(data, temp, 0, data.length - 1);
+}
+
+private void mergeSort(int[] data, int[] temp, int left, int right) {
+    int i, j, k;
+    int mid = (left + right) / 2;
+    if (left == right) {
+        return;
+    }
+    if ((mid - left) &gt;= THRESHOLD) {
+        mergeSort(data, temp, left, mid);
+    } else {
+        insertSort(data, left, mid - left + 1);
+    }
+    if ((right - mid) &gt; THRESHOLD) {
+        mergeSort(data, temp, mid + 1, right);
+    } else {
+        insertSort(data, mid + 1, right - mid);
+    }
+    for (i = left; i &lt;= mid; i++) {
+        temp = Arrays.copyOf(data, data.length);
+    }
+    for (j = 1; j &lt;= right - mid; j++) {
+        temp[right - j + 1] = data[j + mid];
+    }
+    int a = temp[left];
+    int b = temp[right];
+    for (i = left, j = right, k = left; k &lt;= right; k++) {
+        if (a &lt; b) {
+            data[k] = temp[i++];
+            a = temp[i];
+        } else {
+            data[k] = temp[j--];
+            b = temp[j];
+        }
+    }
+}
+
+private void insertSort(int[] data, int start, int len) {
+    for (int i = start + 1; i &lt; start + len; i++) {
+        for (int j = i; (j &gt; start) &amp;&amp; data[j] &lt; data[j - 1]; j--) {
+            SortUtil.swap(data, j, j - 1);
+        }
+    }
+}
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * 堆排序算法
+ </em>/
+class HeapSort implements Sort {</p>
+
+<pre><code>public void sort(int[] data) {
+    MaxHeap h = new MaxHeap();
+    h.init(data);
+    for (int i = 0; i &lt; data.length; i++) {
+        h.remove();
+    }
+    System.arraycopy(h.queue, 1, data, 0, data.length);
+}
+
+private static class MaxHeap {
+    void init(int[] data) {
+        this.queue = new int[data.length + 1];
+        for (int i = 0; i &lt; data.length; i++) {
+            queue[++size] = data[i];
+            fixUp(size);
+        }
+    }
+
+    private int size = 0;
+    private int[] queue;
+
+    public void remove() {
+        SortUtil.swap(queue, 1, size--);
+        fixDown(1);
+    }
+
+    // fixdown
+    private void fixDown(int k) {
+        int j;
+        while ((j = k &lt;&lt; 1) &lt;= size) {
+            if (j &lt; size &amp;&amp; queue[j] &lt; queue[j + 1]) {
+                j++;
+            }
+            if (queue[k] &gt; queue[j]) { // 不用交换
+                break;
+            }
+            SortUtil.swap(queue, j, k);
+            k = j;
+        }
+    }
+
+    private void fixUp(int k) {
+        while (k &gt; 1) {
+            int j = k &gt;&gt; 1;
+            if (queue[j] &gt; queue[k]) {
+                break;
+            }
+            SortUtil.swap(queue, j, k);
+            k = j;
+        }
+    }
+
+}
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * 排序算法接口
+ </em>/
+interface Sort {</p>
+
+<pre><code>public void sort(int[] data);
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * 排序算法枚举
+ </em>/
+enum Sorts {</p>
+
+<pre><code>INSERT() {
+    public Sort impl() {
+        return new InsertSort();
+    }
+},
+BUBBLE() {
+    public Sort impl() {
+        return new BubbleSort();
+    }
+},
+SELECTION() {
+    public Sort impl() {
+        return new SelectionSort();
+    }
+},
+SHELL() {
+    public Sort impl() {
+        return new ShellSort();
+    }
+},
+QUICK() {
+    public Sort impl() {
+        return new QuickSort();
+    }
+},
+IMPROVED_QUICK() {
+    public Sort impl() {
+        return new ImprovedQuickSort();
+    }
+},
+MERGE() {
+    public Sort impl() {
+        return new MergeSort();
+    }
+},
+IMPROVED_MERGE() {
+    public Sort impl() {
+        return new ImprovedMergeSort();
+    }
+},
+HEAP() {
+    public Sort impl() {
+        return new HeapSort();
+    }
+};
+
+public abstract Sort impl();
+</code></pre>
+
+<p>}</p>
+
+<p>/<em>*
+ * 排序算法工具类
+ </em>/
+class SortUtil {</p>
+
+<pre><code>public static void swap(int[] data, int i, int j) {
+    int temp = data[i];
+    data[i] = data[j];
+    data[j] = temp;
+}
+
+public static void print(int[] data) {
+    for (int each : data) {
+        System.out.print(each + " ");
+    }
+    System.out.println();
+}
+</code></pre>
+
+<p>}</p>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SQL Server 2005的安装和JDBC连接方法]]></title>
+    <link href="http://wangchaoqun.com/blog/2008/08/sql-server-2005-de-an-zhuang-he-jdbc-lian-jie-fang-fa.html/"/>
+    <updated>2008-08-11T13:29:34+08:00</updated>
+    <id>http://wangchaoqun.com/blog/2008/08/sql-server-2005-de-an-zhuang-he-jdbc-lian-jie-fang-fa</id>
+    <content type="html"><![CDATA[<p>本文先介绍Windows XP SP2/SP3 下Microsoft SQL Server 2005 的安装及有关问题的解决方法，然后介绍Eclipse3.2 / 3.3 或 MyEclipse6.0 / 6.5 进行JDBC连接SQL Server 2005数据库的方法。</p>
+
+
+<p>一、SQL Server 版本（32位）<br />SQL Server 2005 Enterprise Edition 企业版不能用在Windows XP系统下（当然还是有些特别方法可以安装，不推荐），一般是运行不了。<br />SQL Server 2005 Standard Edition 标准版、SQL Server 2005 Evaluation Edition 评估版和 Workgroup Edition 工作组版、SQL Server 2005 Developer Edition 开发版和 Express Edition 都可以安装在Windows XP下。<br />建议安装SQL Server 2005 Developer Edition 开发版，其安装DVD文件大约1.74G，整合补丁包sp2的大约1.98G.</p>
+
+
+<!--more-->
+
+
+<p>二、SQL Server 2005 安装过程详细图解<br />步骤：<br />1.主菜单&mdash;&mdash;只要你载入DVD驱动器中的光盘，就会出现。<br />要安装SQL Server 2005的实例，在安装标题下选择&ldquo;服务器组件、工具、在线书籍，以及示范&rdquo;选项。<br />2.终端用户许可协议 &ndash; 检查终端用户的许可协议(EULA) ，看完后选择 'I accept the licensing terms and conditions' 框。<br />接受协议后可激活&ldquo;next&rdquo;按钮，按下这个按钮继续。<br />3.安装的先决条件 &ndash; 决定好先决条件后点击 'Next'按钮<span style=""color: #ffffff"">。[http://www.colalife.com]</span><br />4.欢迎&ndash; 点击 'Next' 按钮开始安装过程。<br />5.系统配置检查&mdash;&mdash;安装应用程序需要查看服务器上的15个组件，并且判断成功和失败。<br />6.安装&ndash;一个进度条显示安装过程的状态. 不需要动作.<br />7.注册信息 &ndash; 输入姓名和公司，继续 SQL Server 的安装<br />点击&ldquo;下一步&rdquo;按钮继续<br />8.安装组件 &ndash; 选择'SQL Server 数据库服务' 的检查框<br />点击右边的'高级'按钮，可更改安装目录和所需安装的组件，继续下一步<br />9特性选择 &ndash; 验证所有的数据库服务选项都被选中了<br />如果有选项没有被选中，它显示为一个红色的叉，右击特性然后选择安装选项。<br />点击&ldquo;next&rdquo;按钮继续。<br />10.安装环境&ndash; 如果可用的话，现有的环境将会列出应用程序、译本、版本，以及语言。<br />点击 'OK'按钮继续<br />11.实例名字 &ndash; 默认的实例名称即为服务器的名字，例如MSSQLServer。命名的实例，如MySqlServer2005.<br />*** 注意 *** - 只可以创建一个默认的实例，但是可以创建多个有名字的实例<span style=""color: #ffffff"">。[http://www.colalife.com]</span><br />点击 'Next' 按钮继续</p>
+
+
+<p>指定账号、认证模式和设置<br />12.服务账号&ndash; 为数据库服务 Windows 服务指定账号.可以是一个内建的账号，例如本地系统或者网络服务。第二个选项是使用域的用户名和密码。<br />点击 'Next' 按钮继续<br />13.认证模式 &ndash; 配置单独Windows默认的认证或者混合认证模式的认证，输入系统管理员的密码。<br />点击'Next'按钮继续<br />14.调整设置&ndash; 为实例进行调整设置的配置。<br />点击 'Next'按钮继续（选择排序规则：Chinese_PRC_CS_AI_WS<a target=""_blank"" href=""http://www.colalife.com""><span style=""color: #ffffff"">[http://www.colalife.com]）</span></a></p>
+
+
+<p>点击&ldquo;安装&rdquo;并检查你的总结日志<br />15.准备安装&ndash; 检查安装的项目。点击&ldquo;安装&rdquo;按钮继续<br />16.安装进度 &ndash; 检查过程中每个步骤的状态。安装结束后，点击'Next' 按钮继续<br />17.完成SQL Server 2005 的安装 &ndash; 检查总结日志并点击 'finish' 按钮结束安装过程。&nbsp;</p>
+
+
+<p style=""text-align: left"">三、出现问题</p>
+
+
+<p>问题1. 无法在com+目录中安装和配置程序集<br />这是在安装后期时有可能出现的：<br />&nbsp;无法在com+目录中安装和配置程序集 <br />&nbsp;错误说明: 事务管理器可用。<br />解决方法：<br />这时候不要点击中止、忽略，也不要点击取消</p>
+
+
+<p>按以下步骤<br />&nbsp;&nbsp;&nbsp; 1.删除注册表中的： <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a. HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MSDTC项<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b. HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSDTC项<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c. HKEY_CLASSES_ROOT\CID项<a target=""_blank"" href=""http://www.colalife.com""><span style=""color: #ffffff"">[http://www.colalife.com]</span></a><br />&nbsp;&nbsp;&nbsp; 2.使用cmd执行-停止MSDTC服务：net stop msdtc（在命令行输入，然后回车即可，步骤3.4.同样）<br />&nbsp;&nbsp;&nbsp; 3.使用cmd执行-卸载MSDTC服务：msdtc -uninstall<br />&nbsp;&nbsp;&nbsp; 4.使用cmd执行-重新安装MSDTC服务：msdtc -install</p>
+
+
+<p>最后点击重试，继续安装。</p>
+
+
+<p>（问题2和3基本不会出现，没出错可以略去~~）</p>
+
+
+<p>问题2. 安装成功后没有SQL Server Management Studio选项（版本冲突，基本不会出现）<br />&nbsp;&nbsp;&nbsp; 1.电脑里先前装了sql2000和Visual Studio 2005，解决方法是 &quot;先删除Visual Studio 2005 Bata1版的Framework，运行Visual Studio 2005 Bata1版安装盘上的dotnetfx.exe进行删除，然后再安装SQL Server 2005 Bata2版&quot;。<br />解决方法：<br />&nbsp;&nbsp;&nbsp; 2.先把SQL2005删除，把先前的Native Client删除<br />&nbsp;&nbsp;&nbsp; 3.分步安装Tools包和Servers包，安装路径可以全部改掉<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.1.先安装Tools包，在安装Tools包是遇到了第3个问题：性能监视器计数器要求（错误）（下面有介绍。）<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2.安装Servers包，也是除了文档演示全部安装。</p>
+
+
+<p>问题3. 如何在 SQL Server 2005 中为安装程序增加计数器注册表项值(转载)<br />解决方法：<br />在 SQL Server 安装开始前，Microsoft SQL Server 安装程序中的安装配置检查器 (SCC) 会验证计数器注册表项的值。如果 SCC 无法验证现有的注册表项，或 SCC 无法运行 lodctr.exe 系统程序，则 SCC 检查会失败，致使安装受阻。错误编辑注册表会严重损坏您的系统。更改注册表项之前，建议您备份计算机中的所有重要数据。<br />在 Microsoft Windows 2003 或 Windows XP 桌面上，依次单击&ldquo;开始&rdquo;、&ldquo;运行&rdquo;，然后在&ldquo;打开&rdquo;中键入 regedit.exe，再单击&ldquo;确定&rdquo;。在 Windows 2000 中，使用 regedt32.exe 启动注册表编辑器。定位到以下注册表项：<br />[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Perflib]<br />&quot;Last Counter&quot;=dword:00000ed4 (5276)<br />&quot;LastHelp&quot;=dword:00000ed5 (5277)<br />上一步的&ldquo;Last Counter&rdquo;值 (5276) 必须与以下注册表项中&ldquo;Perflib\009&rdquo;的&ldquo;Counter&rdquo;项的最大值匹配，并且上一步的&ldquo;Last Help&rdquo;值 (5277) 必须与以下注册表项中&ldquo;Perflib\009&rdquo;的&ldquo;Help&rdquo;项的最大值匹配。[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Perflib\009]<br />注意 009 是英文中的一个示例。<br />&ldquo;Last Counter&rdquo;和&ldquo;Last Help&rdquo;值是由 Windows 动态分配的；这两个值会因计算机的不同而不同。<br />如有必要，可修改&ldquo;\Perflib&rdquo;项中的&ldquo;Last Counter&rdquo;和&ldquo;Last Help&rdquo;值的值：在右侧窗格中，右键单击&ldquo;Last Counter&rdquo;或&ldquo;Last Help&rdquo;，单击&ldquo;修改&rdquo;，再单击&ldquo;Base = &quot;Decimal&quot;&rdquo;，在&ldquo;值数据&rdquo;中设置值，再单击&ldquo;确定&rdquo;。如有必要，对另一个项重复以上过程，然后关闭注册表编辑器。再次运行 SQL Server 安装程序。<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 注意:上面所描述的009是存储英文版的mssql2005的计数器,而中文版的则是004!</p>
+
+
+<p>四、SQL Server 2005 插入数据中文乱码<a target=""_blank"" href=""http://www.colalife.com""><span style=""color: #ffffff"">[http://www.colalife.com]</span></a></p>
+
+
+<p>安装完成，打开SQL Server Management Studio，登入系统，新建数据库，新建数据库表，插入数据的时候，出现了中文乱码-全部是问号。</p>
+
+
+<p>原因分析：</p>
+
+
+<p>SQL版的乱码问题还是出现在SQL SERVER的安装设置上，默认安装时系统默认的排序规则是拉丁文的排序规则，没有选择其他项目，安装时只是点取下一步，安装完成后，造成了插入了数据的过程中出现乱码。</p>
+
+
+<p>解决方法：<br />1.最彻底的就是重装SQL，在安装时自定义安装，选好语言版本及排序规则（选择排序规则：Chinese_PRC_CS_AI_WS），这样问题就解决了。</p>
+
+
+<p>2.不重新安装也是可以的，只要在新建数据库时指定排序规则（强烈建议），选择中文简体。<br />步骤：<br />&nbsp;&nbsp;&nbsp; 1、启动Microsft SQL Server Management Studio，登录到一个实例服务器。</p>
+
+
+<p>&nbsp;&nbsp;&nbsp; 2、新建数据库，在左侧打开的窗口中单击&ldquo;选项&rdquo;。</p>
+
+
+<p>&nbsp;&nbsp;&nbsp; 3、把&ldquo;排序规则&rdquo;改为&nbsp; &quot;Chinese_PRC_CI_AI&rdquo; 单击&ldquo;确定&rdquo;就行了，然后再从Visual Studio 2005的数据库管理里，进行相关的建表，插入数据等操作 。</p>
+
+
+<p>&nbsp;&nbsp;&nbsp; 4、也可以在表中修改，Sql语句如同：<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ALTER TABLE tablename <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ALTER COLUMN column1 nvarchar(100) COLLATE CHINESE_PRC_CI_AI</p>
+
+
+<p>五、 JDBC连接SQL Server 2005数据库</p>
+
+
+<p>1. 关闭防火墙。</p>
+
+
+<p>2. 配置TCP端口：<br />&nbsp;&nbsp;&nbsp; a. 开始-&gt;所有程序-&gt;Microsoft SQL Server 2005-&gt;配置工具-&gt;SQL Server配置管理器-&gt;SQL Server 2005 网络配置-&gt;MSSQLSERVER协议<br />&nbsp;&nbsp;&nbsp; b. 启用&ldquo;TCP/IP&rdquo;（右键单击选择&ldquo;启动&rdquo;）<a target=""_blank"" href=""http://www.colalife.com""><span style=""color: #ffffff"">[http://www.colalife.com]</span></a><br />&nbsp;&nbsp;&nbsp; c. 双击&ldquo;TCP/IP&rdquo;-&gt;&ldquo;IP 地址&rdquo;-&gt;&ldquo;IPAll&rdquo;-&gt;&ldquo;TCP 端口&rdquo;项添加默认的&ldquo;1433&rdquo;端口</p>
+
+
+<p>3. 外围应用配置：Microsoft SQL Server 2005-&gt;配置工具-&gt;SQL Server外围应用配置器-&gt;服务和连接的外围应用配置器-&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp; ①选SQLEXPRESS-&gt;Database Engine-&gt;远程连接-&gt;本地连接和远程连接-&gt;同时使用TCP/IP和named pipes<br />&nbsp;&nbsp;&nbsp;&nbsp; ②选SQL Server Browser-&gt;服务-&gt;启动类型改为&ldquo;自动&rdquo;-&gt;应用-&gt;启动-&gt;确定</p>
+
+
+<p>4. 修改默认的登录验证模式（如果在安装过程中是默认按&ldquo;Windows 身份验证模式&rdquo;方式安装，所以sa登录是被禁用的，即使将身份验证模式更改为&ldquo;SQL Server 和 Windows 身份验证模式&rdquo;，sa登录仍处于禁用状态，所以需要启用sa登录帐户）：<br />&nbsp;&nbsp;&nbsp; ①在SQL Server Management Studio 的对象资源管理器中，安全性-&gt;登录名-&gt;右击&ldquo;sa&rdquo;-&gt;属性-&gt;</p>
+
+
+<p>常规-&gt;将登录名sa的密码和确认密码设为强密码-&gt;状态-&gt;登录-&gt;启用-&gt;确定<br />&nbsp;&nbsp;&nbsp; ②在SQL Server Management Studio 的对象资源管理器中，右击服务器-&gt;属性-&gt;安全性-&gt;服务器身份验证-&gt;选择&ldquo;SQL Server和Windows身份验证模式&rdquo;-&gt;确定-&gt;确定</p>
+
+
+<p>5. 在SQL Server Management Studio中新建一个数据库(例如&ldquo;mytest&rdquo;，如果测试程序带有数据库文件也可不用新建而直接附加到当前SQL Server数据库服务器)；在SQL Server Management Studio 的对象资源管理器中右击服务器-&gt;重新启动-&gt;是</p>
+
+
+<p>6. 运行下载的JDBC文件&ldquo;sqljdbc_1.2.2828.100_chs.exe&rdquo;，解压到&ldquo;C:\Program Files&rdquo;文件夹中；<a target=""_blank"" href=""http://www.colalife.com""><span style=""color: #ffffff"">[http://www.colalife.com]</span></a></p>
+
+
+<p>将Classpath设置为包含sqljdbc.jar文件(也可加到系统环境变量中)，建议从解压文件夹下找到sqljdbc.jar，将其复制到自己常用的Jar文件夹里，用的时候方便找到。</p>
+
+
+<p>7. 在Eclipse3.2 / 3.3 或 MyEclipse6.0 / 6.5 进行JDBC连接设置并测试<br />&nbsp;&nbsp;&nbsp; 1、打开Eclipse3.2 / 3.3 或 MyEclipse6.0 / 6.5，新建Java Project&rdquo;，项目名为Test<br />&nbsp;&nbsp;&nbsp; 2、选择&ldquo;Window&rdquo;&rarr;&ldquo;Preferences&rdquo;&rarr;&ldquo;Java&rdquo;&rarr;&ldquo;Installed JREs&rdquo;，选定已安装的 JRE，点击&ldquo;Edit...&rdquo;&rarr;&ldquo;Add External JARs&rdquo;，找到sqljdbc.jar并添加&mdash;&gt;OK<br />&nbsp;&nbsp;&nbsp; 3、&quot;Window&quot;-&gt;&quot;Open Perspective&quot;-&gt;&quot;MyEclipse Database Explorer&quot;-&gt;（左侧）&quot;DB Browser&quot;右键&ldquo;New&rdquo;-&gt;填写链接属性Driver name，URL为：jdbc:sqlserver:// localhost:1433;databaseName=mytest，User name：sa，Password：密码。然后在Driver JARs 点Add JARs 添加sqljdbc.jar，点及Test</p>
+
+
+<p>Driver测试，勾上Save Password保存密码，点击完成结束&mdash;&mdash;即完成了在DB Browser中连接数据库配置。</p>
+
+
+<p>8、编写Java代码测试，如下：</p>
+
+
+<p>package jdbc.test;<br />import java.sql.*;</p>
+
+
+<p>public class Test {<br />&nbsp;public static void main(String[] srg) {<br />&nbsp;&nbsp;String driverName = &quot;com.microsoft.sqlserver.jdbc.SQLServerDriver&quot;;<br />&nbsp;&nbsp;// 加载JDBC驱动<br />&nbsp;&nbsp;String dbURL = &quot;jdbc:sqlserver://localhost:1433; DatabaseName=mytest&quot;;<br />&nbsp;&nbsp;// 连接服务器和数据库mytest<br />&nbsp;&nbsp;String userName = &quot;sa&quot;; // 默认用户名<br />&nbsp;&nbsp;String userPwd = &quot;123456&quot;; // 密码<a target=""_blank"" href=""http://www.colalife.com""><span style=""color: #ffffff"">[http://www.colalife.com]</span></a><br />&nbsp;&nbsp;Connection dbConn = null;<br />&nbsp;&nbsp;Statement stmt = null;</p>
+
+
+<p>&nbsp;&nbsp;try {<br />&nbsp;&nbsp;&nbsp;Class.forName(driverName);<br />&nbsp;&nbsp;&nbsp;dbConn = DriverManager.getConnection(dbURL, userName, userPwd);<br />&nbsp;&nbsp;&nbsp;stmt = dbConn.createStatement();<br />&nbsp;&nbsp;&nbsp;System.out.println(&quot;Connect Succeed!&quot;);<br />&nbsp;&nbsp;&nbsp;// 连接成功控制台输出语句</p>
+
+
+<p>&nbsp;&nbsp;&nbsp;ResultSet rs = stmt.executeQuery(&quot;select * from mytest&quot;);<br />&nbsp;&nbsp;&nbsp;while (rs.next()) {<br />&nbsp;&nbsp;&nbsp;&nbsp;System.out.print(rs.getInt(1) + &quot; &quot; + rs.getString(2) + &quot; &quot;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ rs.getString(3) + &quot;\n&quot;);<br />&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;} catch (Exception e) {<br />&nbsp;&nbsp;&nbsp;e.printStackTrace();<br />&nbsp;&nbsp;}<br />&nbsp;}<br />}</p>
+
+
+<p>9. Sql Server2000和2005的连接代码区别：（注意2000和2005的不同） <br />&nbsp;&nbsp;&nbsp; 1. 连接SqlServer2000 <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class.forName(&quot;com.microsoft.jdbc.sqlserver.SQLServerDriver&quot;); <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL = &quot;jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=tempdb&quot;; <br />&nbsp;&nbsp;&nbsp; 2. 连接SqlServer2005 <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class.forName(&quot;com.microsoft.sqlserver.jdbc.SQLServerDriver&quot;); <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL = &quot;jdbc:sqlserver://localhost:1433;DatabaseName=tempdb&quot;; <br />10、可能出现的exception: com.microsoft.sqlserver.jdbc.AuthenticationJNI &lt;clinit&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp; WARNING: Failed to load the sqljdbc_auth.dll <br />解决办法：在sqljdbc_1.2.2828.100_chs.exe解压后的文件夹中找到Microsoft SQL Server 2005 JDBC Driver\sqljdbc_1.2\chs\auth\x86下的sqljdbc_auth.dll拷贝到：C:WINDOWSsystem32 目录下即可。</p>
+
+
+<p>（全文完&mdash;&mdash;By ColaLife<a target=""_blank"" href=""http://www.colalife.com""><span style=""color: #ffffff"">[http://www.colalife.com]</span></a>）</p>
+
+]]></content>
+  </entry>
+  
+</feed>

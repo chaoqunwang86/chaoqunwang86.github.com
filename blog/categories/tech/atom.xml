@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[文章分类：tech | 超群的博客]]></title>
+  <link href="http://wangchaoqun.com/blog/categories/tech/atom.xml" rel="self"/>
+  <link href="http://wangchaoqun.com/"/>
+  <updated>2014-01-29T10:21:58+08:00</updated>
+  <id>http://wangchaoqun.com/</id>
+  <author>
+    <name><![CDATA[wang chaoqun]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[转]Code Kata：编码套路]]></title>
+    <link href="http://wangchaoqun.com/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu.html/"/>
+    <updated>2013-12-03T10:39:05+08:00</updated>
+    <id>http://wangchaoqun.com/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu</id>
+    <content type="html"><![CDATA[<p><a href="http://blog.csdn.net/happydeer/article/details/17023229" target="_blank">来自happydeer</a><br/>
+[正文]
+最近，我大量阅读了Steve Yegge的文章。其中有一篇叫“Practicing Programming”（练习编程），写成于2005年，读后令我惊讶不已：</p>
+
+<p>与你所相信的恰恰相反，单纯地每天埋头于工作并不能算是真正意义上的锻炼——参加会议并不能锻炼你的人际交往能力；回复邮件并不能提高你的打字水平。你必须定期留出时间，集中锻炼，这样才能把事情做得更好。<!--more--></p>
+
+<p>我认识很多杰出的程序员——这是在亚马逊工作最好的额外“福利”之一。如果仔细观察他们，你会发现他们时时都在锻炼。他们已经很优秀了，但他们仍然不忘锻炼。他们锻炼的方法林林总总，而我在这篇文章中只会介绍其中的几种。</p>
+
+<p>据我了解，这些杰出程序员之所以如此成功，就是因为他们一直在锻炼。完美的身材要靠定期的锻炼才能获得，而且必须坚持锻炼才能保持，否则身材就会走形。对于编程和软件工程来说，道理是一样的。</p>
+
+<p>这是一个重要的区别——我每天都开车去上班，但我的驾驶水平远远不如专业车手；类似的情况，天天编程可能并不足以使你成为一名专业的程序员。那么，什么才能把一个普通人变成一名专业车手或者专业程序员呢？你需要锻炼什么呢？</p>
+
+<p>答案就在《科学美国人》的一篇名为“The Expert Mind”（专家思维）的文章里：</p>
+
+<p>爱立信提出，重要的并不是经验本身，而是“努力的学习”，也就是要不断地挑战自身能力之外的东西。一些狂热的爱好者花费了大量的时间去下棋、打高尔夫球或者玩乐器，但他们可能始终停留在业余水平上，而一个训练有素的学生却可以在相对较短的时间里超越他们，原因就在这里。值得注意的是，在提高水平方面，花费在下棋上的大量时间（即使参加各种比赛）似乎还是比不过专门的训练来得更为有效。训练的主要价值在于发现弱点，并有针对性地进行提高。</p>
+
+<p>“努力的学习”意味着，要常常去处理那些刚好在你能力极限上的问题，也就是那些对你来说有很大可能失败的事情。如果不经历一些失败的话，你可能就不会成长。你必须不断地挑战自我，超越自己的极限。</p>
+
+<p>那样的挑战有时会在工作中碰到，但也未必。将锻炼从职业工作中分离出来，这在编程领域常被人称为“编码套路”（Code Kata）。</p>
+
+<p>Code Kata的概念是由David Thomas提出的，他是《程序员修炼之道：从小工到专家》的作者之一。这个概念主要指的是，针对某一种特定技术或技能进行重复性的练习，从而将其熟练掌握。——译者注</p>
+
+<p>所谓套路，就是一系列的招式。这个概念借鉴于武术。</p>
+
+<p>如果你想要看一些编码套路的例子（也就是努力学习和磨练编程技能的方法），SteveYegge的文章里倒是提出了一些不错的建议。他把它们称作为“实践演练”：
+   1.写一份自己的简历。把自己所有的相关技能都罗列出来，然后把那些在100年后还用得到的标出来。给每个技能打分，满分为10分。</p>
+
+<p>   2.罗列出你所景仰的程序员。尽量包括那些与你一起工作的人，因为你会在工作中从他们身上获取一些技能。记录下他们身上的1 ~ 2个闪光点，也就是你希望自己有所提高的方面。</p>
+
+<p>   3.查看维基百科上的“计算机科学”栏目，找到“计算机领域先驱者”这个分类，从这个列表中挑选一个人，阅读他的事迹，并且在阅读时打开任何你感兴趣的链接。</p>
+
+<p>   4.花20分钟通读别人的代码。读出色的代码和读糟糕的代码都是有益的，两者都要读，轮流切换。如果你无法感觉出它们之间的区别，可以求助于一位你尊敬的程序员，让他给你展示一下什么是出色的代码、什么是糟糕的代码。把你读过的代码给别人也看看，问问他们的看法。</p>
+
+<p>   5.罗列出你最喜欢的10个编程工具——那些你觉得你用得最多、非有不行的工具。随机挑选其中的一个工具，花一个小时去阅读它的文档。在这一个小时里，努力去学习这个工具的某个你不曾意识到的新功能，或者发现某种新的使用方法。</p>
+
+<p>   6.想一想，除了编程之外你最擅长什么事情？再想一想，你是通过怎样的锻炼才变得如此熟练和专业的？这对于你的编程工作又有什么启发呢？（怎么把这些经验应用到编程方面？）</p>
+
+<p>   7.拿出一叠简历，并和一组面试官在同一个房间里待上一个小时。确保每份简历都至少被3个面试官看过，并且要给出1 ~ 3分的评分。针对那些不同面试官评判大相径庭的简历展开讨论。</p>
+
+<p>   8.参与一个电话面试。事后写下你的反馈，抛出你的观点，然后与主持电话面试的人聊一聊，看看你们是否达成了一致的结论。</p>
+
+<p>   9.进行一次技术面试，并且被面试的人应该是某个你不太了解的领域里的专家。让他假定听众在该领域里一无所知，因此请他从最基础的讲起。努力去理解他所说的，必要时问一些问题。</p>
+
+<p>   10.有机会参与别人的技术面试。期间，你只是认真地听、认真地学。在应聘者努力解决技术问题的同时，你也要在自己脑子里尝试解决这些问题。</p>
+
+<p>   11.找到一个能和你交换实际问题的人，每隔一周，相互交流编程问题。花10 ~ 15分钟来尝试解决这些问题，再用10 ~ 15分钟进行讨论（无论能否解决）。</p>
+
+<p>   12.当你听到任何你一时之间也无法解决的面试问题时，赶紧回到你的座位上，把这个问题用电子邮件发给自己，以留作日后的提醒。在那一周里找出点时间，用自己最喜欢的编程语言来解决它。</p>
+
+<p>我之所以喜欢Steve开出的这个清单，是因为它看上去很全面。有些程序员一想到“锻炼”，总认为就是一些编码上的难题。但在我看来，编程更在于人，而不是代码。因此，通过解决世上所有的、并且晦涩的编程面试题目，在提高你的个人能力方面，这种方法是有局限的。</p>
+
+<p>关于“努力的学习”，我也很喜欢Peter Norvig在“Teach Yourself Programming in TenYears”（花10年时间自学编程）一文中提出的诸多建议：</p>
+
+<p>   1.与别的程序员交流。读别人的代码。这比任何书籍或培训课程都更重要。</p>
+
+<p>   2.动手写程序！最好的学习方法就是边做边学。</p>
+
+<p>   3.在本科或研究生的课程中学习编程课程。</p>
+
+<p>   4.找一些项目来做，并且需要与其他程序员形成团队来合作。在项目的进行过程中，学会辨别最出色的程序员以及最糟糕的程序员。</p>
+
+<p>   5.在项目中跟随别的程序员一起工作，了解如何维护那些不是你写的代码，并且学习如何写出利于他人维护的代码。</p>
+
+<p>   6.学习多种不同的编程语言，特别是那些与你现在所熟悉的语言有着不同的世界观和编程模型的。</p>
+
+<p>   7.了解硬件对软件的影响。知道你的电脑执行一条指令需要多少时间，从内存中取出一个字（在有缓存或没缓存的情况下）需要多少时间，在以太网（或者因特网）上传输数据需要多少时间，从磁盘中读取连续的数据或者在磁盘上跳转到另一个位置需要多少时间，等等。</p>
+
+<p>你还可以从Dave Thomas的21种实用的编码套路中获取灵感（CodeKata.com），或者你更愿意加入一个你家当地的“编程武馆”（CodingDojo.org）。</p>
+
+<p>对于“努力的学习”，我无法像Steve，Peter或者Dave那样提供一个长长的建议列表。我远不如他们有耐心。实际上，在我看来，“编程套路”只需两个招式：</p>
+
+<p>   1.写博客。我在2004年初创办了CodingHorror.com博客，作为我自己努力学习的一种形式。它在一开始很不起眼，到后来成为我职业生涯中做过的最重要的一件事。所以，你也应该写博客。最后“闻达于天下”的人，往往就是那些能够有效书写和沟通的人。他们的声音最响亮，是他们在制定游戏规则，并且引领世界的潮流。</p>
+
+<p>   2.积极参与著名的开源项目。所有的高谈阔论听起来都很好，但是，你是一个大话王还是一名实干家呢？别光说不练，这个非常重要，因为人们会用你的行动来衡量你，而不是你的言论。努力在公众面前留下些实实在在有用的东西吧，到时候你就可以说，“我在那个项目中出过力。”</p>
+
+<p>当你能编写精彩的代码、并且能用精彩的言辞向世人解释那些代码时，到那时候，我会觉得你已经掌握了最牛的编码套路！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MongoDB replSet集群和shard分片]]></title>
+    <link href="http://wangchaoqun.com/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/"/>
+    <updated>2013-11-17T16:11:35+08:00</updated>
+    <id>http://wangchaoqun.com/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian</id>
+    <content type="html"><![CDATA[<p>mongodb的集群有两种：1.主从(master, slave)  2.副本集(Replica Set)<br/>
+区别是副本集没有固定的"主节点", 有一个活跃节点(primary)和  一个或多个备份节点(secondary), 而且可以在活跃节点有问题时自动切换（仲裁\选举方式）<br/>
+本文内容的结果是：建立2个分片，每个分片3个备份节点（端口1000x,2000x），2个选举节点（端口10000,20000），1个路由(端口7701，想选7000被占了)，3个config节点(端口660x，想选6000也被占了)，总共12个<!--more--></p>
+
+<h4>1. MongoDB集群</h4>
+
+<p>将mongodb的zip解压到不同的文件夹（本文是windows下，linux类似），建立3个节点（1000X是myshard1分片的），注意端口号，启动：
+<code>
+c:\mongo10001\bin\mongod -f c:\mongo10001\config
+c:\mongo10002\bin\mongod -f c:\mongo10002\config
+c:\mongo10003\bin\mongod -f c:\mongo10003\config
+</code>
+使用config文件配置，mongo10001节点的内容如下，其他相应修改即可：
+<code>
+port=10001
+dbpath=C:\mongo10001\data\
+logpath=C:\mongo10001\log\mongo.log
+replSet=myshard1/127.0.0.1:10002,127.0.0.1:10003
+shardsvr=true
+logappend=true
+rest=true
+</code>
+仲裁节点（可选，要的话后面还有要addArb）<br/>
+<code>
+c:\mongo10000\bin\mongod -f c:\mongo10000\config
+or
+c:\mongo10000\bin\mongod --dbpath=c:\mongo10000\data --port 10000 --replSet myshard1/127.0.0.1:10001  
+</code></p>
+
+<p>将各节点启动后，cmd下连接并执行初始化命令：<br/>
+<code>
+mongo 127.0.0.1:10001/admin
+db.runCommand({"replSetInitiate":{ "_id":"myshard1", "members":[{ "_id":1, "host":"127.0.0.1:10001"}, { "_id":2, "host":"127.0.0.1:10002"}, { "_id":3, "host":"127.0.0.1:10003"}] }})
+</code>
+这个2000X是myshard2分片的3个节点，需要像前面一样配好、启动、执行，不分片可忽略
+<code>
+mongo 127.0.0.1:20001/admin
+db.runCommand({"replSetInitiate":{ "_id":"myshard2", "members":[{ "_id":1, "host":"127.0.0.1:20001"}, { "_id":2, "host":"127.0.0.1:20002"}, { "_id":3, "host":"127.0.0.1:20003"}] }})
+</code>
+查看状态
+<code>
+rs.status()
+</code>
+仲裁节点（可选，前面没配置就不要add了）<br/>
+<code>
+rs.addArb("127.0.0.1:10000")
+</code></p>
+
+<p><strong>测试</strong>在一个节点导入数据后，查看其他节点数据也有了
+<code>
+mongorestore -h 127.0.0.1:10001 --directoryperdb b:\mongo\dump
+</code><br/>
+<strong>注意</strong>：关于节点的读写操作
+在primary节点中添加数据: db.xxxx.insert
+如果在secondary备份节点查询，会出现错误:
+<code>
+error: { "$err" : "not master and slaveok=false", "code" : 13435 }
+</code>
+执行如下语句:
+<code>
+db.getMongo().setSlaveOk();
+</code>
+这是因为对于replica set中的secondary节点默认是不可读的，由Secondary来分担读的压力，Primary只承担写操作，通过在连接时指定或者在主库指定slaveOk即可</p>
+
+<h4>spring data mongodb的集群配置（未分片）</h4>
+
+<p>原来使用单一mongo的，现在要用集群，就把spring xml配置和properties做相应修改：
+```
+&lt;mongo:mongo replica-set=&ldquo;${mongo.replica.set}&rdquo;/></p>
+
+<p>mongo.replica.set=127.0.0.1:10001,127.0.0.1:10002,127.0.0.1:10003
+```</p>
+
+<h4>2. MongoDB分片</h4>
+
+<p>[摘录]基本思想就是将集合切分成小块，这些块分散到若干片里面，每个片只负责总数据的一部分；应用程序不必知道
+哪片对应哪些数据，甚至不需要知道数据已经被拆分了，所以在分片之前要运行一个路由进程，进程名mongos，这个路由器知道
+所有数据的存放位置，所以应用可以连接它来正常发送请求；对应用来说，它仅知道连接了一个普通的mongod；路由器知道和片的
+对应关系，能够转发请求到正确的片上；如果请求有了回应，路由器将其收集起来回送给应用。</p>
+
+<p>所以，<strong>在下面的分片完成后</strong>，上面spring data mongodb的集群配置就要<strong>改回单一mongo的，注意要连接的是mongos，不是原来那个</strong></p>
+
+<p>好了，这里要有路由节点和config节点<br/>
+开启<strong>config服务器</strong>（我配了3个，为了测试有节点挂掉的情况，这只是第1个），使用参数或config文件启动
+<code>
+c:\mongo6001\bin\mongod --dbpath=c:\mongo6001\data --port 6001 --configsvr
+c:\mongo6001\bin\mongod -f c:\mongo6001\config
+</code></p>
+
+<p>config文件：
+<code>
+port=6001
+dbpath=C:\mongo6001\data\
+logpath=C:\mongo6001\log\mongo.log
+configsvr=true
+logappend=true
+rest=true
+</code></p>
+
+<p>开启<strong>mongos服务器</strong>，使用参数或config文件启动
+<code>
+c:\mongo7701\bin\mongos --port 7701 --configdb=127.0.0.1:6001
+c:\mongo7701\bin\mongos -f c:\mongo7701\config  
+</code>
+config文件：
+```
+port=7701
+logpath=C:\mongo7701\log\mongo.log</p>
+
+<h1>configdb说明：一个就写一个，多个就写多个，这里是3个</h1>
+
+<p>configdb=127.0.0.1:6001,127.0.0.1:6002,127.0.0.1:6003
+logappend=true
+```</p>
+
+<p><strong>启动mongod服务器，上面集群配了3个，启动即可（2000X是myshard2分片的，也启动）</strong>
+<code>
+c:\mongo10001\bin\mongod -f c:\mongo10001\config
+c:\mongo10002\bin\mongod -f c:\mongo10002\config
+c:\mongo10003\bin\mongod -f c:\mongo10003\config
+c:\mongo20001\bin\mongod -f c:\mongo20001\config
+c:\mongo20002\bin\mongod -f c:\mongo20002\config
+c:\mongo20003\bin\mongod -f c:\mongo20003\config
+</code>
+<strong>连接mongos服务器</strong>
+<code>
+C:\Users\wangchaoqun&gt;mongo 127.0.0.1:7701/admin
+MongoDB shell version: 2.4.8
+connecting to: 127.0.0.1:7701/admin
+</code>
+然后将10001，10002，10003的mongod交给mongos,添加分片也就是addshard()<br/>
+<strong>两个分片的集群，每个分片3个备份节点</strong>
+<code>
+db.runCommand({addshard:"myshard1/127.0.0.1:10001,127.0.0.1:10002,127.0.0.1:10003",allowlocal:true})
+db.runCommand({addshard:"myshard2/127.0.0.1:20001,127.0.0.1:20002,127.0.0.1:20003",allowlocal:true})
+</code></p>
+
+<p>片已经集群了，但是mongos不知道该如何切分数据，要在mongos设置片键：<br/>
+1. 开启数据库分片功能
+<code>
+mongos&gt; db.runCommand({"enablesharding":"mytestdb"})
+{ "ok" : 1 }
+</code><br/>
+2. 指定集合中分片的片键，这里使用users里的name
+<code>
+mongos&gt; db.runCommand({shardcollection:"mytestdb.users",key:{name:1}})
+{ "collectionsharded" : "mytestdb.users", "ok" : 1 }
+</code></p>
+
+<h4>3. 测试</h4>
+
+<p>通过mongos向mongodb插入10w记录
+```
+use mytestdb
+for(var i=0;i&lt;100000;i++){</p>
+
+<pre><code>var x="poiuytrewqasdfghjklmnbvcxz";
+var c=x.charAt(Math.ceil(Math.random() * 25));
+var t=Math.ceil(Math.random() * 100000);
+var content=c+t;
+var time=new Date().getTime()-Math.ceil(Math.random() * 100)*t;
+db.users.insert({"content":content,"creatorId":""+i%7,"createtime":time});
+</code></pre>
+
+<p>}
+<code>  
+通过printShardingStatus命令查看mongodb的数据分片情况  
+</code>
+db.printShardingStatus();
+```
+每个节点都看看，是不是数据都有了</p>
+
+<h4>4. 参考</h4>
+
+<p><a href="http://blog.sina.com.cn/s/blog_498e79cc0101115v.html">http://blog.sina.com.cn/s/blog_498e79cc0101115v.html</a>
+<a href="http://www.cnblogs.com/huangxincheng/archive/2012/03/04/2379755.html">http://www.cnblogs.com/huangxincheng/archive/2012/03/04/2379755.html</a>
+<a href="http://www.cnblogs.com/refactor/archive/2012/08/13/2600140.html">http://www.cnblogs.com/refactor/archive/2012/08/13/2600140.html</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mongodb, Mysql导出备份至ftp]]></title>
+    <link href="http://wangchaoqun.com/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/"/>
+    <updated>2013-11-03T17:10:32+08:00</updated>
+    <id>http://wangchaoqun.com/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp</id>
+    <content type="html"><![CDATA[<p>前提是mongodb和mysql已经安装使用，先安装vsftp，配置完成后，在编写shell脚本，使用计划任务执行<br/>
+1. 安装vsftp<br/>
+<code>
+rpm -q vsftpd
+yum -y install vsftpd
+</code></p>
+
+<!--more-->
+
+
+<p>设置开机启动<br/>
+<code>
+chkconfig vsftpd on
+</code>
+启动vsftpd服务 <br/>
+<code>
+service vsftpd start
+</code>
+增加新用户ftpuser，设置权限和密码<br/>
+<code>
+useradd -d /home/ftpuser -s /sbin/nologin ftpuser
+chown -R ftpuser /home/ftpuser
+chmod 777 -R /home/ftpuser
+passwd ftpuser
+</code>
+配置vsftp
+<code>
+vi /etc/vsftpd/vsftpd.conf
+</code>
+内容删掉换成以下
+<code>
+anonymous_enable=NO
+local_enable=YES
+write_enable=YES
+local_umask=022
+dirmessage_enable=YES
+xferlog_enable=YES
+connect_from_port_20=YES
+xferlog_std_format=YES
+chroot_list_enable=YES
+chroot_list_file=/etc/vsftpd/chroot_list
+listen=YES
+pam_service_name=vsftpd
+userlist_enable=YES
+tcp_wrappers=YES
+pasv_min_port=10000
+pasv_max_port=10030
+</code>
+添加chroot_list文件
+<code>
+vi /etc/vsftpd/chroot_list
+</code>
+内容<code>ftpuser</code><br/>
+重启服务<code>service vsftpd restart</code><br/>
+防火墙开放21端口
+<code>
+service iptables stop
+vi /etc/sysconfig/iptables
+</code>
+添加
+<code>
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 21 -j ACCEPT
+</code><br/>
+重启防火墙服务
+<code>
+service iptables start
+</code><br/>
+解决用户无法进入目录问题，终端执行：<br/>
+<code>
+setsebool -P ftp_home_dir 1
+</code><br/>
+然后重启FTP服务：
+<code>
+service vsftpd restart
+</code></p>
+
+<h2>2. mongodb导出、压缩、上传脚本，删除过期文件  </h2>
+
+<p>先定义好服务器、数据库、各目录、用户名、密码</p>
+
+<p>```</p>
+
+<h1>!/bin/bash</h1>
+
+<p>MONGO_HOST=&ldquo;127.0.0.1:27017&rdquo;
+MONGO_DB=&ldquo;mydbname&rdquo;
+MONGO_DUMP=&ldquo;/usr/local/mongo/bin/mongodump&rdquo;
+MONGO_BACKUP=&ldquo;/usr/local/mongo/backup&rdquo;
+NEW_TIMESTAMP=$(date +%F-%H%M)
+OLD_TIMESTAMP=$(date -d &lsquo;-5 days&rsquo; &ldquo;+%F-%H%M&rdquo;)
+NEW_BACKUP_FILE=&ldquo;$MONGO_DB.$NEW_TIMESTAMP.tar.gz&rdquo;
+OLD_BACKUP_FILE=&ldquo;$MONGO_DB.$OLD_TIMESTAMP.tar.gz&rdquo;</p>
+
+<h1>0.temp dir</h1>
+
+<p>if [ ! -d $MONGO_BACKUP/$MONGO_DB.$NEW_TIMESTAMP ]
+then
+ mkdir $MONGO_BACKUP/$MONGO_DB.$NEW_TIMESTAMP
+fi</p>
+
+<h1>1.mongodump then delete old dir and file</h1>
+
+<p>$MONGO_DUMP -h $MONGO_HOST -d $MONGO_DB -o $MONGO_BACKUP/$MONGO_DB.$NEW_TIMESTAMP
+cd $MONGO_BACKUP/$MONGO_DB.$NEW_TIMESTAMP &amp;&amp; tar -zcf $MONGO_BACKUP/$NEW_BACKUP_FILE */
+rm -rf $MONGO_BACKUP/$MONGO_DB.$NEW_TIMESTAMP
+rm -rf $MONGO_BACKUP/$OLD_BACKUP_FILE</p>
+
+<h1>2.upload new and delte old files</h1>
+
+<h1>!/bin/sh</h1>
+
+<p>FTP_HOST=&ldquo;192.168.100.119&rdquo;
+FTP_PORT=&ldquo;21&rdquo;
+FTP_USER=&ldquo;ftpuser&rdquo;
+FTP_PSWD=&ldquo;123456&rdquo;
+FTP_DIR=&ldquo;mongo-backup&rdquo;</p>
+
+<p>ftp -nv &lt;&lt;!
+open $FTP_HOST $FTP_PORT
+user $FTP_USER $FTP_PSWD
+binary
+prompt
+cd $FTP_DIR
+mdelete $OLD_BACKUP_FILE
+lcd $MONGO_BACKUP
+mput $NEW_BACKUP_FILE
+close
+bye
+!
+echo &ldquo;============== $MONGO_DB backup ends at $NEW_TIMESTAMP ==============&rdquo;
+```</p>
+
+<h2>3. mysql导出、压缩、上传脚本  </h2>
+
+<p>```</p>
+
+<h1>! /bin/bash</h1>
+
+<p>MYSQL_HOST=&ldquo;192.168.100.119&rdquo;
+MYSQL_PORT=&lsquo;3306&rsquo;
+MYSQL_USER=&lsquo;myuser&rsquo;
+MYSQL_PSWD=&lsquo;mypass&rsquo;
+MYSQL_DB=&lsquo;mydbname&rsquo;
+MYSQL_DUMP=&ldquo;/usr/bin/mysqldump&rdquo;
+MYSQL_BACKUP=&ldquo;/usr/local/mysql/backup&rdquo;
+NEW_TIMESTAMP=$(date +%F-%H%M)
+OLD_TIMESTAMP=$(date -d &lsquo;-5 days&rsquo; &ldquo;+%F-%H%M&rdquo;)
+GZIP=&ldquo;$(which gzip)&rdquo;</p>
+
+<h1>1.mysql dump and delete old files</h1>
+
+<p>$MYSQL_DUMP -h $MYSQL_HOST -P $MYSQL_PORT -u $MYSQL_USER -p$MYSQL_PSWD $MYSQL_DB | $GZIP -9 > $MYSQL_BACKUP/$MYSQL_DB.$NEW_TIMESTAMP.gz
+rm -rf $MYSQL_BACKUP/$MYSQL_DB.$OLD_TIMESTAMP.gz
+echo &ldquo;============== mysqldump ends at $NEW_TIMESTAMP ==============&rdquo;</p>
+
+<h1>2.upload new and delete old files</h1>
+
+<p>FTP_HOST=&ldquo;192.168.100.119&rdquo;
+FTP_PORT=&ldquo;21&rdquo;
+FTP_USER=&ldquo;ftpuser&rdquo;
+FTP_PSWD=&ldquo;123456&rdquo;
+FTP_DIR=&ldquo;mysql-backup&rdquo;</p>
+
+<p>ftp -nv &lt;&lt;!
+open $FTP_HOST $FTP_PORT
+user $FTP_USER $FTP_PSWD
+binary
+prompt
+cd $FTP_DIR
+lcd $MYSQL_BACKUP
+mput $MYSQL_DB.$NEW_TIMESTAMP.gz
+mdelete $MYSQL_DB.$OLD_TIMESTAMP.gz
+close
+bye
+!
+echo &ldquo;============== mysql upload ends at $NEW_TIMESTAMP ==============&rdquo;
+```</p>
+
+<h2>4. 添加计划任务</h2>
+
+<p>```
+crontab -e</p>
+
+<h1>every day at 00m</h1>
+
+<p>00 * * * * /bin/bash /usr/local/mongo/cmd/mongo_backup.sh
+```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[转]Tomcat 生产服务器性能优化]]></title>
+    <link href="http://wangchaoqun.com/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua.html/"/>
+    <updated>2013-07-25T10:08:06+08:00</updated>
+    <id>http://wangchaoqun.com/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua</id>
+    <content type="html"><![CDATA[<p>tomcat优化+eclipse优化之类的文章网上有很多，这个收藏当作就手的工具。<br/>
+<a href="http://www.oschina.net/translate/tomcat-performance-tuning" target="_blank">来自oschina</a>  : 参与翻译(4人)：Garfielt, Lesus, MtrS, 大志darcy<br/>
+[正文]考虑一下这种场景，你开发了一个应用，它有十分优秀的布局设计，最新的特性以及其它的优秀特点。但是在性能这方面欠缺，不管这个应用如何都会遭到客户拒绝。客户总是期望它们的应用应该有更好的性能。如果你在产品中使用了Tomcat服务器，那么这篇文章就会给你几方面来提升Tomcat服务器的性能。<!--more--><br/>
+感谢ITWorld article给本文提供资源。经过沉思我已经知道了和早期版本相比最新的Tomcat提供更好的性能和稳定性。所以一直使用最新的Tomcat版本。现在本文使用下面几步来提高Tomcat服务器的性能。
+1. 增加JVM堆内存大小
+2. 修复JRE内存泄漏
+3. 线程池设置
+4. 压缩
+5. 数据库性能调优
+6. Tomcat本地库
+7. 其它选项</p>
+
+<h4>第一步  – 提高JVM栈内存Increase JVM heap memory</h4>
+
+<p>你使用过tomcat的话，简单的说就是“内存溢出”. 通常情况下，这种问题出现在实际的生产环境中.产生这种问题的原因是tomcat使用较少的内存给进程,通过配置TOmcat的配置文件(Windows 下的catalina.bat或Linux下的catalina.sh)可以解决这种问题.这种解决方法是通过增加JVM的栈内存实现的.也就是说，JVM通常不去调用垃圾回收器，所以服务器可以更多关注处理web请求，并要求尽快完成。要更改文件(catalina.sh) 位于"\tomcat server folder\bin\catalina.sh"，下面，给出这个文件的配置信息，<br/>
+<code>
+JAVA_OPTS="-Djava.awt.headless=true -Dfile.encoding=UTF-8
+-server -Xms1024m -Xmx1024m
+-XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m
+-XX:MaxPermSize=512m -XX:+DisableExplicitGC"
+</code><br/>
+-Xms – 指定初始化时化的栈内存<br/>
+-Xmx – 指定最大栈内存<br/>
+在重启你的Tomcat服务器之后，这些配置的更改才会有效。下面将介绍如何处理JRE内存泄漏.</p>
+
+<h4>第二步 – 解决JRE内存泄露</h4>
+
+<p>性能表现不佳的另一个主要原因是内存泄漏，正如我之前说过：始终使用最新的tomcat服务器以获得更好的性能和可伸缩性。现在，这句话变成真的。如果我们使用最新的tomcat版本6.0.26及以上就可以解决这个错误，因为它包含了一个监听器来处理JRE和PermGen的内存泄漏。使用的监听器是，<br/>
+<code>
+&lt;Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener" /&gt;
+</code></p>
+
+<p>你可以在server.xml文件中找到这个监听器的配置，server.xml位置在“tomcat project folder/conf/server.xml”。接下来，我们将看看如何调整连接属性“maxThreads”。</p>
+
+<h4>第三步 – 线程池设置</h4>
+
+<p>线程池指定Web请求负载的数量，因此，为获得更好的性能这部分应小心处理。可以通过调整连接器属性“maxThreads”完成设置。maxThreads的值应该根据流量的大小，如果值过低，将有没有足够的线程来处理所有的请求，请求将进入等待状态，只有当一个的处理线程释放后才被处理；如果设置的太大，Tomcat的启动将花费更多时间。因此它取决于我们给maxThreads设置一个正确的值。
+<code>
+&lt;Connector port="8080" address="localhost"
+maxThreads="250" maxHttpHeaderSize="8192"
+emptySessionPath="true" protocol="HTTP/1.1"
+enableLookups="false" redirectPort="8181" acceptCount="100"
+connectionTimeout="20000" disableUploadTimeout="true" /&gt;
+</code></p>
+
+<p>在上述配置中，maxThreads值设定为“250”，这指定可以由服务器处理的并发请求的最大数量。如果没有指定，这个属性的默认值为“200”。任何多出的并发请求将收到“拒绝连接”的错误提示，直到另一个处理请求进程被释放。错误看起来如下，
+<code>
+org.apache.tomcat.util.threads.ThreadPool logFull SEVERE: All threads (250) are
+currently busy, waiting. Increase maxThreads (250) or check the servlet status
+</code>
+如果应用提示上述错误，务必检查上述错误是否是由于单个请求花费太长时间造成的，这个问题的原因是这样的，有时候如果数据库连接不释放的话，进程将不会处理其它请求。<br/>
+根据我的经验，准确值的设定可以通过将应用在在各种环境中测试得出。接下来，我们来看看如何压缩的MIME类型。</p>
+
+<h4>第4步- 压缩</h4>
+
+<p>Tomcat有一个通过在server.xml配置文件中设置压缩的选项。压缩可以在connector像如下设置中完成，
+<code>
+&lt;Connector port="8080" protocol="HTTP/1.1"
+connectionTimeout="20000"
+redirectPort="8181" compression="500"
+compressableMimeType="text/html,text/xml,text/plain,application/octet-stream" /&gt;
+</code>
+在前面的配置中，当文件的大小大于等于500bytes时才会压缩。如果当文件达到了大小但是却没有被压缩，那么设置属性compression=&ldquo;on"。否则Tomcat默认设置是“off”。接下来我们将看看如何调优数据库。</p>
+
+<h4>第五步- 数据库性能调优</h4>
+
+<p>Tomcat性能在等待数据库查询被执行期间会降低。如今大多数应用程序都是使用可能包含“命名查询”的关系型数据库。如果是那样的话，Tomcat会在启动时默认加载命名查询，这个可能会提升性能。另一件重要事是确保所有数据库连接正确地关闭。给数据库连接池设置正确值也是十分重要的。我所说的值是指Resource要素的最大空闲数（maxIdle），最大连接数（maxActive）,最大建立连接等待时间（maxWait）属性的值。因为配置依赖与应用要求，我也不能在本文指定正确的值。你可以通过调用数据库性能测试来找到正确的值。</p>
+
+<h4>第6步 – Tomcat原生库</h4>
+
+<p>Tomcat的原生库基于Apache可移植运行时（Apache Portable Runtime简称APR），给程序员提供了超强的扩展性和性能，在产品运作中帮助融合原生的服务器技术以展现最佳的性能。想知道安装说明的朋友请参考Tomcat Native Library – (APR) Installation。</p>
+
+<h4>第7步 – 其他选项</h4>
+
+<p>这些选项是：
+开启浏览器的缓存，这样读取存放在webapps文件夹里的静态内容会更快，大大推动整体性能。
+每当开机时，Tomcat服务器应当自动地重启。
+一般情况下HTTPS请求会比HTTP请求慢。如果你想要更好的安全性，即使慢一点我们还是要选择HTTPS。</p>
+
+<p>就这么多啦。在这篇文章里，我教给了大家一些提高Tomcat服务器性能的方法。如果你觉得这篇文章有用，或者你对提高Tomcat服务器性能有别的看法，请不要忘记留下宝贵的评论。祝你今天编程愉快！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cygwin & Wine & Ruby 记录]]></title>
+    <link href="http://wangchaoqun.com/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu.html/"/>
+    <updated>2013-01-16T16:03:36+08:00</updated>
+    <id>http://wangchaoqun.com/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu</id>
+    <content type="html"><![CDATA[<p>cygwin是一个在windows平台上运行的unix模拟环境, wine则可以安装在Linux，再对应到Windows相应的函数来调用DLL以运行Windows程序。这两个就是利器，windows下不想用虚拟机（占用资源还挺多）或双系统，就可以用用cygwin；服务器上想搞点exe的东西就安装个wine。至于ruby，是因为octopress要用，开个虚拟机写博客很不爽，windows下折腾安装配置，却中文编码没解决，还是cygwin搞定。<!--more--></p>
+
+<h2>cygwin的安装</h2>
+
+<p>官网下载setup-x86_64.exe，运行，下一步，到download site选第一个163的镜像，速度快些；下一步到select packages页面，不选不点，直接下一步，会下载安装默认配置的相关包；安装完默认，重新运行setup，选择要用的包，比如下面这些基本需要：
+<a href="http://blog.developwithpassion.com/2012/03/30/installing-rvm-with-cygwin-on-windows/">摘录自blog.developwithpassion.com</a><br/>
+```
+Archive</p>
+
+<pre><code>unzip – Unzipping zip files  
+</code></pre>
+
+<p>Net</p>
+
+<pre><code>openssl – bin and sources
+openssh – Only if you are not going to compile openssh yourself
+curl – download internet resources
+</code></pre>
+
+<p>Devl</p>
+
+<pre><code>colorgcc
+gcc
+gcc-core – compiler
+git
+git-completion
+git-gui
+git-svn
+gitk
+libtool – Shared library generation tool. You’ll need it when trying to compile rubies
+libncurses-devel – Used when compiling several other tools I use
+make
+mercurial
+openssl-devel – Required for compiling openssh (not necessarily required for rvm, but I always install it to compile openssh myself)
+readline
+Libs
+zlib
+zlib-devel
+</code></pre>
+
+<p>Utils</p>
+
+<pre><code>ncurses – Enabling better handling of terminal
+patch – Apply a diff file to an original.
+</code></pre>
+
+<p>```</p>
+
+<h2>wine的安装，centos6.x</h2>
+
+<p><code>
+wget http://mirrors.sohu.com/fedora-epel/6/i386/epel-release-6-8.noarch.rpm
+rpm -ivh epel-release-6-8.noarch.rpm
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
+yum makecache
+yum install wine
+</code>
+安装完成后，应用程序（application）->wine->wine configure稍作配置，也可能会提示download gecko，install 完成即可
+把windows/system32下的MFC42.dll   msxml.dll    msvcp60.dll   riched20.dll    riched32.dll 这几个文件复制到 ~/.wine/drive_c/windows/system32里，再输入命令：winecfg<br/>
+安装exe，英文系统会有中文乱码情况
+<code>
+wine whatever.exe
+</code></p>
+
+<h2>安装Ruby</h2>
+
+<p>我虚拟了两个centos，一个用make install安装并配置octopress环境，另一个同样方法却不成功，后来用rvm可行，不用yum install ruby 是因为版本过低。</p>
+
+<h4>RVM安装：</h4>
+
+<p><code>
+curl -L https://get.rvm.io | bash -s stable --ruby
+</code>
+<code>
+ruby --version
+</code>显示版本即成功</p>
+
+<h4>make install：</h4>
+
+<p><code>
+wget ftp://ftp.ruby-lang.org//pub/ruby/2.1/ruby-2.1.0.tar.gz
+tar -zxvf ruby-2.1.0.tar.gz
+cd ruby-2.1.0
+./configure --prefix=/usr/local/ruby
+make
+make test
+make install  
+</code></p>
+
+<h4>windows7下简直是个悲剧：</h4>
+
+<p>下载rubyinstaller安装，devkit解压，然后cmd下
+cdd到DevKit path<br/>
+<code>
+ruby dk.rb init
+ruby dk.rb review
+ruby dk.rb install
+</code>
+出现utf-8错误，使用chcp 1252，再进行上三句，done<br/>
+然后配置octopress环境，英文下rake成功，有中文（比如文章分类、标签带中文的）不成;<br/>
+<a href="http://txgcwm.github.io/">摘录自txgcwm.github.io</a></p>
+
+<blockquote><p>在实际使用（rake generate/rake preview）的时候，若blog整体采用了非ascii码的编码格式（比如utf-8）就会出现类似这样的错误：<br/>
+Liquid error: incompatible encoding regexp match (ascii-8bit regexp with utf-8 string)<br/>
+其实是由于插件文件plugins/category_list_tag.rb本身是ascii编码所致:
+<code>
+$ chardet category_list_tag.rb
+category_list_tag.rb: ascii (confidence: 1.00)
+</code>
+category_list_tag.rb中很多地方用到了ruby的正则表达式，而ruby的正则表达式在匹配的时候，默认是按照“代码源文件”的编码格式(在这里是ascii)进行匹配的，而如果blog是utf-8编码的话就会出现上述错误。有两种解决办法：
+1. 将category_list_tag.rb转成utf-8格式。<br/>
+2. 更改category_list_tag.rb中所有的正则表达式声明，加上u选项（u的意思就是以utf-8编码格式来进行匹配）。例如，若原正则表达式是/regexp/, 则改成/regexp/u。</p></blockquote>
+]]></content>
+  </entry>
+  
+</feed>

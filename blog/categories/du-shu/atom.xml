@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[文章分类：读书 | 超群的博客]]></title>
+  <link href="http://wangchaoqun.com/blog/categories/du-shu/atom.xml" rel="self"/>
+  <link href="http://wangchaoqun.com/"/>
+  <updated>2014-01-29T10:21:58+08:00</updated>
+  <id>http://wangchaoqun.com/</id>
+  <author>
+    <name><![CDATA[wang chaoqun]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[《时间管理》读书笔记]]></title>
+    <link href="http://wangchaoqun.com/blog/2008/09/shi-jian-guan-li-zhi-du-shu-bi-ji.html/"/>
+    <updated>2008-09-23T18:44:23+08:00</updated>
+    <id>http://wangchaoqun.com/blog/2008/09/shi-jian-guan-li-zhi-du-shu-bi-ji</id>
+    <content type="html"><![CDATA[<p style=""text-align: center""><table style=""margin-top: 16px; width: 440px; height: 107px"" cellspacing=""0"" cellpadding=""0"" width=""440"" border=""0"">    <tbody>        <tr>            <td style=""text-align: center"">【原 书 名】 <a target=""_blank"" href=""http://www.amazon.com/Management-System-Administrators-Thomas-Limoncelli/dp/0596007833/ref=pd_bbs_sr_1/102-0116773-7214567?ie=UTF8&amp;s=books&amp;qid=1190013340&amp;sr=1-1""><font color=""#012c83"">Time Management for System Administrators </font></a></td>        </tr>        <tr>            <td style=""text-align: center"">【原出版社】 <a target=""_blank"" href=""http://www.china-pub.com/search/power_search/power_search.asp?key1=O'Reilly+Media%2c+Inc.""><font color=""#012c83"">O'Reilly Media, Inc. </font></a></td>        </tr>        <tr>            <td style=""text-align: center"">【作 者】<font color=""#012c83"">Thomas A. Limoncelli <span>[同作者作品]</span></font> <font color=""#012c83"">[作译者介绍]</font></td>        </tr>        <tr>            <td style=""text-align: center"">【译 者】 <font color=""#012c83"">O&rsquo;Reilly[同译者作品]</font> <font color=""#012c83"">Taiwan公司</font></td>        </tr>        <tr>            <td style=""text-align: center"">【出 版 社】&nbsp;东南大学出版社 &nbsp;&nbsp;&nbsp;&nbsp;【书 号】 9787564109059</td>        </tr>    </tbody></table></p>
+
+
+<!--more-->
+
+
+<p><span style=""font-size: small"">第一章 时间管理原则</span></p>
+
+
+<p><span style=""font-size: small"">六项基本原则：</span></p>
+
+
+<p><span style=""font-size: small"">1. 给时间管理的信息一个&ldquo;数据库&rdquo;（使用笔记）<br />2. 将脑力留给最重要的事（节省内存）<br />3. 开发例行公事并持之以恒（程序代码函数库再利用，不要重新发明既有的东西）<br />4. 形成习惯与信念（以预选计算的结果取代运行时的计算）<br />5. 在项目期间保持专心（就像一个核心信号）<br />6. 以工作生活上的工具管理社交生活（社交生活不是一个可选功能）</span></p>
+
+
+<p><span style=""font-size: small"">本章精要：</span></p>
+
+
+<p><span style=""font-size: small"">与同事安排共同干扰防线，以便你必须完成项目时让别人的干扰转向。</span></p>
+
+
+<p><span style=""font-size: small"">时间管理的中心工具就是PDA（个人数字助理）或PAA（个人模拟助理），你会用他们存储你的工作表、日程表以及人生目标列表。</span></p>
+
+
+<p><span style=""font-size: small"">将脑力留给最重要的是：有清晰的头脑很重要，使用外部存储设备来存储你无法专注的部分。把脑力用在手上的工作，用笔记记录待办事项、约会和通知。</span></p>
+
+
+<p><span style=""font-size: small"">开发例行公事并持之以恒：把常规活动转成例行公事，以便消耗较少的时间计划处理总是会发生的突发事件。</span></p>
+
+
+<p><span style=""font-size: small"">形成习惯与信念：习惯是你不用思考而做的例行公事，信念是作为形式法则的心灵启发。</span></p>
+
+
+<p><span style=""font-size: small"">我的箴言：迟早都要做，早比晚好（一针及时省九针）。</span></p>
+
+
+<p><span style=""font-size: small"">信任过程：每天早上花五分钟计划你的一天，对自己说&ldquo;信任过程&rdquo;，然后做计划。</span></p>
+
+
+<p><span style=""font-size: small"">在&ldquo;项目期间&rdquo;保持专心：因为从中断返回很浪费时间。一次只专心做一件事会把事情做得更好。</span></p>
+
+
+<p><span style=""font-size: small"">以工作生活上的工具管理社交生活：工作之外的生活很重要，别忘了玩乐。</span></p>
+
+
+<p><span style=""font-size: small"">所有事情看起来都是讨厌和困难的，只要记住&ldquo;改变&rdquo;是一小步、一小步进行。继续尝试，持之以恒，告诉自己&ldquo;信任过程&rdquo;，从你的大脑榨取那些负面思想，然后再试一次。</span></p>
+
+
+<p><span style=""font-size: small"">你能尝试冒险，但是当你只有一点筹码时，你不愿意尝试，其实你能大赢！</span></p>
+
+
+<p><span style=""font-size: small"">&nbsp;大声呼叫：&ldquo;是的，我可以！&rdquo;</span></p>
+
+
+<p><span style=""font-size: medium""><span style=""font-family: 宋体"">第二章 专心对待干扰</span></span></p>
+
+
+<p><span style=""font-size: medium""><span>本章精要：</span></span></p>
+
+
+<p><span style=""font-size: medium""><span style=""font-family: 宋体"">专注是重要的。通过移开分心的事物获得专注并有效地处理干扰。</span></span></p>
+
+
+<p><span style=""font-size: medium""><span style=""font-family: 宋体"">本质上干扰是让别人控制你的时间。干扰是专注的天敌，因此需要时间管理。</span></span></p>
+
+
+<p><span style=""font-size: medium""><span style=""font-family: 宋体"">干扰是不好的。因为它会延后你当前的工作，而且也会因此在回到之前的工作是导致错误。修复那些错误将比做原来的工作花更多的时间。</span></span></p>
+
+
+<p><span style=""font-size: medium""><span style=""font-family: 宋体"">移开分心的事物有助于保持专注：清理你的桌子和计算机桌面，并从办公室移掉分心的东西。关掉即时通讯软件、新邮件通知器等。<br /></span></span></p>
+
+
+<p><span style=""font-size: medium""><span style=""font-family: 宋体"">每个人都有不同的精神和体能活动上的尖峰时间。发觉你自己的尖峰时间，然后在那些时段安排适当的工作。</span></span></p>
+
+
+<p><span style=""font-size: medium""><span style=""font-family: 宋体"">每天的第一小时可能是工作效率最高的时刻，因为干扰最少。比同事稍微早上班以增加产出。别把这段时间浪费在维护工作上，要用在重要的项目上。</span></span></p>
+
+
+<p><span style=""font-size: medium""><span style=""font-family: 宋体"">委派、记录或执行步骤允许你收回对时间的控制权。当你的项目被干扰时，使用这些步骤。委派工作意味着将它交给其他人处理；记录工作让你确认请求，安排到之后再做；执行工作是最后的选择，但是应该用在紧急事件或运行中断状态中。</span></span></p>
+
+
+<p><span style=""font-size: medium""><span style=""font-family: 宋体"">你记录了它，就有了计划和安排的能力，而不是受干扰驱动。</span></span></p>
+
+
+<p><span style=""font-size: medium""><span style=""font-family: 宋体"">确认请求时，应该从视觉上有意义的方式进行。确认请求者看到了你的记录并让请求者确认。</span></span></p>
+
+
+<p><span style=""font-size: medium""><span style=""font-family: 宋体"">客户宁愿有请求确认，而不愿猜测请求是否被收到，即使这意味着请求已经延后了。</span></span></p>
+
+
+<p><span style=""font-size: medium""><span style=""font-family: 宋体"">类似RT的请求追踪系统让你记录请求到一个中央数据库，好让其他SA可以访问，而且客户可以用来检查请求的状态。</span></span></p>
+
+
+<p><span style=""font-size: medium""><span style=""font-family: 宋体"">前往别信赖大脑会记住请求，将请求记录到纸上或电子设备。你的大脑有更重要的事情要做。</span></span></p>
+
+
+<p><span style=""font-size: medium"">&nbsp;</span></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[《最后期限》读书笔记]]></title>
+    <link href="http://wangchaoqun.com/blog/2008/09/zui-hou-qi-xian-zhi-du-shu-bi-ji.html/"/>
+    <updated>2008-09-16T13:49:44+08:00</updated>
+    <id>http://wangchaoqun.com/blog/2008/09/zui-hou-qi-xian-zhi-du-shu-bi-ji</id>
+    <content type="html"><![CDATA[<p>优质管理的四大要素</p>
+
+
+<p>&nbsp;&nbsp; &nbsp;选择正确的人<br />&nbsp;&nbsp;&nbsp; 为他们分配正确的工作<br />&nbsp;&nbsp;&nbsp; 保持他们的积极性<br />&nbsp;&nbsp;&nbsp; 帮助团队凝聚起来并保持团队的凝聚力<br />&nbsp;&nbsp;&nbsp; (其他一切都只是&ldquo;文案&rdquo;)</p>
+
+
+<!--more-->
+
+
+<p>安全和变化</p>
+
+
+<p>&nbsp;&nbsp;&nbsp; 除非感到安全，否则人们就不能去迎接变化 <br />&nbsp;&nbsp;&nbsp; 在所有成功的工程中(以及在绝大多数其他有价值的工作中)，变化都是基本的要素之一 <br />&nbsp;&nbsp;&nbsp; 安全感的缺乏会让人们反对变化 <br />&nbsp;&nbsp;&nbsp; 逃避风险是致命的，因为这会让你也得不到与风险同在的利益<br />&nbsp;&nbsp;&nbsp; 人们可能会因为来自客观世界的直接的恐吓而觉得没有安全感，但是如果察觉到管理者可能滥用权力来惩罚自己，他们也会觉得没有安全感</p>
+
+
+<p>负面效应</p>
+
+
+<p>　　威胁不是提高业绩最好的方法<br />　　如果分配的时间一开始就不够，不管威胁有多么吓人，工作也无法按时完成<br />　　更糟糕的是，如果目标没有实现，你就必须兑现你的威胁</p>
+
+
+<p>管理者必需的身体部位</p>
+
+
+<p>　　管理涉及到心、肠胃、灵魂和鼻子<br />　　因此&hellip;&hellip;用心来领导，相信你的肠胃(相信你的预感)，构筑团队的灵魂，训练一个能嗅出谎言的鼻子</p>
+
+
+<p>招聘过程</p>
+
+
+<p>　　用指挥战争来作为管理的一个比喻：在战役开始的时候，管理者真正的工作已经完成了</p>
+
+
+<p>　　面试和招聘<br />　　招聘涉及到所有与管理相关的身体部位：心、灵魂、鼻子和肠胃(但是主要是肠胃)<br />　　&nbsp;&nbsp;&nbsp; 不要试图单独去招聘&mdash;&mdash;两副肠胃远比一副肠胃的两倍要好<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对于新的雇员，让他们承担与以前曾经成功过的同样难度的项目，把有挑战性的目标推迟到下一次<br />　　征求提示：你最希望雇的那个人可能还知道其他很好的人选<br />　　多听，少说<br />　　如果先把材料整理好，那么所有的事情都会进行得更好</p>
+
+
+<p>生产力的提高</p>
+
+
+<p>　　没有&ldquo;短期生产力提高&rdquo;这样的东西<br />　　生产力的提高是来自长期投资的<br />　　任何承诺立刻见效的东西都很可能是江湖游医所卖的万灵油</p>
+
+
+<p>风险控制</p>
+
+
+<p>　　通过控制风险来管理项目<br />　　为每个项目创建并维护风险统计表<br />　　跟踪根源性的风险，而不只是最后那讨厌的结果<br />　　评估每种风险具体化的概率和可能造成的开销<br />　　对于每种风险，预测标志其具体化的早期征兆<br />　　任命一个风险控制官，这个人不应该维护组织内部&ldquo;我能行&rdquo;的态度<br />　　建立简单的(可能是匿名的)通道，让坏消息能传递到高层</p>
+
+
+<p>防止失败</p>
+
+
+<p>　　壮士断腕<br />　　控制住失败比优化成功更能提高你全面的成绩<br />　　要有闯劲，尽早取消失败的工作<br />　　除非必要，否则就不要自己去凝聚一个团队：出去找一个已经成型的团队来用<br />　　保持好的团队在一起(只要他们自己愿意)，以帮助你的继任者避免团队凝聚得慢或者不能凝聚的问题<br />　　把凝聚在一起的团队&mdash;&mdash;准备好、并且也愿意接受新的工作&mdash;&mdash;作为项目的收获之一<br />　　项目开始时浪费的一天和最后阶段浪费的一天对项目造成的伤害是同等的<br />　　有无数种方法可以浪费一天的时间&hellip;&hellip;但是没有任何一种方法可以拿回一天的时间</p>
+
+
+<p>开发过程的建模和模拟</p>
+
+
+<p>　　将你关于完成工作过程的直觉建模<br />　　在同事的交流中使用这些模型，以便交流、提炼关于项目运转的思想<br />　　用模型来模拟项目的结果<br />　　根据实际的结果来调整模型</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[转]好的软件人员一生必看的六十本书]]></title>
+    <link href="http://wangchaoqun.com/blog/2008/04/zhuan-hao-de-ruan-jian-ren-yuan-yi-sheng-bi-kan-de-liu-shi-ben-shu.html/"/>
+    <updated>2008-04-29T13:07:09+08:00</updated>
+    <id>http://wangchaoqun.com/blog/2008/04/zhuan-hao-de-ruan-jian-ren-yuan-yi-sheng-bi-kan-de-liu-shi-ben-shu</id>
+    <content type="html"><![CDATA[<p>好的软件人员一生必看的六十本书，好歹看过一些（<strong>加粗的</strong>）：
+<a href="http://nescaped.blog.edu.cn/2008/130819.html" target="_blank">来自紫炙寒雪</a></p>
+
+<p>一、 科学哲学和管理哲学 13<!--more--></p>
+
+<ol>
+<li><p>“程序开发心理学”（The Psychology of Computer Programming ： Silver Anniversary Edition） 13</p></li>
+<li><p>“系统化思维导论”（An Introduction to Systems Thinking， Silver Anniversary Edition） 14</p></li>
+<li><p>“系统设计的一般原理”（ General Principles of Systems Design） 15</p></li>
+<li><p>“质量·软件·管理（第1卷）—— 系统思维”（Quality Software Management：Systems Thinking） 16</p></li>
+<li><p>“成为技术领导者——解决问题的有机方法”(Becoming A Technical Leader：An Organic Problem-Solving Approach) 16</p></li>
+<li><p><strong>“你的灯亮着吗？－发现问题的真正所在”</strong>（ Are Your Lights On? How to Figure Out What the Problem Really Is） 18</p></li>
+<li><p><strong>“程序员修炼之道”（The Pragmatic Programmer</strong>） 20</p></li>
+<li><p>“与熊共舞：软件项目风险管理” (Waltzing With Bears： Managing Risk on Software Projects) 23</p></li>
+<li><p>“第五项修炼： 学习型组织的艺术与实务”( The Fifth Discipline) 24</p></li>
+</ol>
+
+
+<p>二、 计算机科学基础(<strong>大学时的教材</strong>) 26</p>
+
+<ol>
+<li><p>“计算机程序设计艺术”(The Art of Computer Programming) 26</p></li>
+<li><p>“深入理解计算机系统”(Computer Systems A Programmer&rsquo;s Perspective ) 29</p></li>
+<li><p>“算法导论”（Introduction to Algorithms， Second Edition） 30</p></li>
+<li><p>“数据结构与算法分析 —— C语言描述（原书第2版） ”（Data Structure &amp; Algorithm Analysis in C, Second Edition) 31</p></li>
+<li><p>“自动机理论、语言和计算导论（第2版）”（Introduction to Automata Theory， Languages， and Computation（Second
+Edition）） 32</p></li>
+<li><p>“离散数学及其应用（原书第四版）”(Discrete Mathematics and Its Applications，Fourth Edition) 33</p></li>
+<li><p>“编译原理”（Compilers： Principles， Techniques and Tools） 34</p></li>
+<li><p>“现代操作系统”(Modern Operating System) 35</p></li>
+<li><p>“计算机网络（第4版）”(Computer Networks) 35</p></li>
+<li><p>“数据库系统导论（第7版）”(An Introduction to Database Systems(Seventh Edition)) 36</p></li>
+</ol>
+
+
+<p>三、 软件工程思想 37</p>
+
+<ol>
+<li><p>“人件”（Peopleware ： Productive Projects and Teams， 2nd Ed.） 38</p></li>
+<li><p>“人件集 —— 人性化的软件开发”( The Peopleware Papers： Notes on the Human Side of Software) 39</p></li>
+<li><p><strong>“人月神话”</strong>（The Mythical Man-Month） 40</p></li>
+<li><p>“软件工程 — 实践者的研究方法（原书第5版）”（Software Engineering： A Practitioner&rsquo;s Approach， Fifth Edition） 56</p></li>
+<li><p><strong>“敏捷软件开发-原则、模式与实践”</strong>(Agile Software Development： Principles， Patterns， and Practices) 57</p></li>
+<li><p>“规划极限编程”(  Planning Extreme Programming) 58</p></li>
+<li><p>“RUP导论（原书第3版）”(The Rational Unified Process：An Introduction，Third Edition ) 59</p></li>
+<li><p>“统一软件开发过程”(The Unified Software Development Process) 60</p></li>
+</ol>
+
+
+<p>四、 软件需求 62</p>
+
+<ol>
+<li><p>“探索需求－设计前的质量”（  Exploring Requirements： Quality Before Design） 63</p></li>
+<li><p>“编写有效用例”（Writing Effective Use Cases ） 64</p></li>
+</ol>
+
+
+<p>五、 软件设计和建模 66</p>
+
+<ol>
+<li><p>“面向对象方法原理与实践” 66</p></li>
+<li><p>“面向对象软件构造（英文版.第2版）”(Object-Oriented Software Construction，Second Edition ) 68</p></li>
+<li><p>“面向对象分析与设计（原书第2版）”(Object-Oriented Analysis and Design with Applications,2E ) 69</p></li>
+<li><p>“UML面向对象设计基础”（Fundamentals of Object-Oriented Design in UML） 70</p></li>
+<li><p>“UML精粹 —— 标准对象建模语言简明指南（第2版）”（  UML Distilled： A Brief Guide to the Standard Object Modeling
+Language (2nd Edition)） 71</p></li>
+<li><p>“UML和模式应用（原书第2版）”（Applying UML and Patterns： An Introduction to Object-Oriented Analysis and
+Design and the Unified Process， Second Edition ） 72</p></li>
+<li><p>“设计模式精解”(Design Patterns Explained) 74</p></li>
+<li><p><strong>“设计模式：可复用面向对象软件的基础”</strong>（  Design Patterns：Elements of Reusable Object-Oriented software） 75</p></li>
+<li><p>“面向模式的软件体系结构 卷1：模式系统”（ Pattern-Oriented Software Architecture， Volume 1： A System of
+Patterns） 76</p></li>
+<li><p>“软件设计的艺术”(Bringing Design to Software) 77</p></li>
+</ol>
+
+
+<p>六、 程序设计 79</p>
+
+<ol>
+<li><p>“编程珠矶”（Programming Pearls Second Edition ） 80</p></li>
+<li><p>“C程序设计语言（第2版·新版）”（The C Programming Language ） 81</p></li>
+<li><p>“C++ 程序设计语言（特别版）”（The C++ Programming Language， Special Edition） 82</p></li>
+<li><p>“C++ Primer (3RD)” 83</p></li>
+<li><p>“C++语言的设计和演化”（  The Design and Evolution of C++） 84</p></li>
+<li><p>“C++ 编程思想（2ND）”（Thinking in C++ Second Edition） 85</p></li>
+<li><p>“Effective C++” &amp; “More Effective C++” 86</p></li>
+<li><p>“C++编程艺术 ”（The Art of C++ ） 88</p></li>
+<li><p><strong>“Java 编程思想：第3版”</strong>( Thinking in Java， Third Edition) 89</p></li>
+<li><p>“Effective Java” 90</p></li>
+</ol>
+
+
+<p>七、 软件测试 91</p>
+
+<ol>
+<li><p>“测试驱动开发（中文版）”（Test-driven development：by example ） 91</p></li>
+<li><p>“面向对象系统的测试”（Testing Object-Oriented System： Models， Patterns， and Tools） 92</p></li>
+<li><p>“单元测试之道Java版 —— 使用Junit”/ “单元测试之道C#版——使用NUnit” （Pragmatic Unit Testing：In Java with JUnit
+/  Pragmatic Unit Testing：In C# with NUnit ) 93</p></li>
+</ol>
+
+
+<p>八、 软件维护和重构 95</p>
+
+<ol>
+<li><strong>“重构－改善既有代码的设计”</strong>（Refactoring： Improving the Design of Existing Code） 96</li>
+</ol>
+
+
+<p>九、 配置管理和版本控制 97</p>
+
+<ol>
+<li>“版本控制之道 —— 使用CVS”（程序员修炼三部曲第一部：Pragmatic Version Control Using CVS） 97</li>
+</ol>
+
+
+<p>十、 领域专题（网络、平台、数据库相关） 99</p>
+
+<ol>
+<li><p>“TCP/IP详解”（ TCP/IP Illustracted） 99</p></li>
+<li><p>“Unix网络编程”(UNIX Network Programming) 100</p></li>
+<li><p>“UNIX环境高级编程”（Advanced Programming in the UNIX Environment） 102</p></li>
+<li><p>“UNIX 编程艺术”（The Art of Unix Programming） 103</p></li>
+<li><p>“数据访问模式 —— 面向对象应用中的数据库交互” 103</p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

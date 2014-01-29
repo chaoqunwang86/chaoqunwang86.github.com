@@ -1,0 +1,484 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>[转]Tomcat 生产服务器性能优化 - 超群的博客</title>
+  <meta name="author" content="wang chaoqun">
+
+  
+  <meta name="description" content="超群的博客, 生活记录, 技术博客, wang chaoqun, colalife.com, wangchaoqun.com, wangchaoqun.cn">
+  <meta name="keywords" content="超群的博客, 生活记录, 技术博客, 开源技术, 大数据, 云计算, 移动互联网以及java, web, mobile, android, ios, linux, tomcat, httpd, browser, internet, media, sql, news">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://wangchaoqun.com/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua.html/">
+  <link href="/favicon.png" rel="icon">
+  <!--<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">-->
+  <link href="http://bcs.duapp.com/colalife2000/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="超群的博客" type="application/atom+xml">
+  <!--<script src="/javascripts/modernizr-2.0.js"></script>-->
+  <script src="http://bcs.duapp.com/colalife2000/modernizr-2.0.js"></script>
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+  <!--<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>-->
+  <!--<script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.1.min.js"></script>-->
+  <script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <!--<script src="/javascripts/octopress.js" type="text/javascript"></script>-->
+  <script src="http://bcs.duapp.com/colalife2000/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+<link href="http://bcs.duapp.com/colalife2000/stylesheets/PTSans.css" rel="stylesheet" type="text/css">
+<link href="http://bcs.duapp.com/colalife2000/stylesheets/PTSerif.css" rel="stylesheet" type="text/css">
+<script language="javascript" type="text/javascript">
+$(document).ready(function(){
+	changeBg();
+	//window.setInterval("changeBg()", 30*1000);
+
+	$(document).bind('DOMNodeInserted', function(event) {
+	  addBlankTargetForLinks();
+	});
+
+/*
+	var ref=location.href;
+	var wangchaoqun_com="wangchaoqun.com";
+	var wangchaoqun_cn="wangchaoqun.cn";
+	var colalife_com="colalife.com";
+
+	if(ref.indexOf(colalife_com)!=-1){
+	  ref=ref.replace(colalife_com, wangchaoqun_com);
+	  window.location.replace(ref);
+	} else if(ref.indexOf(wangchaoqun_cn)!=-1){
+	  ref=ref.replace(wangchaoqun_cn, wangchaoqun_com);
+	  window.location.replace(ref);
+	}
+*/
+});
+function changeBg() {
+	var dir = "http://bcs.duapp.com/colalife2000/images/"
+	var bg = "url("+dir+"v"+Math.floor(Math.random()*5+1)+".jpg)";
+	$("#myheader").css({"background-image":bg});
+}
+function addBlankTargetForLinks () {
+  $('a[href^="http"]').each(function(){
+      $(this).attr('target', '_blank');
+  });
+}
+</script>
+
+  
+
+</head>
+
+<body   >
+  <header id="myheader" role="banner" style="height:92px;"><hgroup style="height:100px" onmouseover="this.style.cursor='pointer'" onclick="document.location='/';"></hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:wangchaoqun.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation" style="font-weight: bold;">
+  <li><a href="/">首页</a></li> 
+  <li><a href="/blog/archives">文章列表</a></li> 
+  <li><a href="/blog/categories/tech/">技术</a></li>
+  <li><a href="/blog/categories/du-shu/">读书</a></li> 
+  <li><a href="/blog/categories/zhi-ye/">职业</a></li>
+  <li><a href="/blog/categories/sheng-huo/">生活</a></li>
+  <li><a href="/blog/categories/qi-ta/">其他</a></li>
+  <li><a href="/tags/">标签云</a></li>
+  <li><a href="/comments/">留言板</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">[转]Tomcat 生产服务器性能优化</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-25T10:08:06+08:00" pubdate data-updated="true">2013年07月25日</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>tomcat优化+eclipse优化之类的文章网上有很多，这个收藏当作就手的工具。<br/>
+<a href="http://www.oschina.net/translate/tomcat-performance-tuning" target="_blank">来自oschina</a>  : 参与翻译(4人)：Garfielt, Lesus, MtrS, 大志darcy<br/>
+[正文]考虑一下这种场景，你开发了一个应用，它有十分优秀的布局设计，最新的特性以及其它的优秀特点。但是在性能这方面欠缺，不管这个应用如何都会遭到客户拒绝。客户总是期望它们的应用应该有更好的性能。如果你在产品中使用了Tomcat服务器，那么这篇文章就会给你几方面来提升Tomcat服务器的性能。<!--more--><br/>
+感谢ITWorld article给本文提供资源。经过沉思我已经知道了和早期版本相比最新的Tomcat提供更好的性能和稳定性。所以一直使用最新的Tomcat版本。现在本文使用下面几步来提高Tomcat服务器的性能。
+1. 增加JVM堆内存大小
+2. 修复JRE内存泄漏
+3. 线程池设置
+4. 压缩
+5. 数据库性能调优
+6. Tomcat本地库
+7. 其它选项</p>
+
+<h4>第一步  – 提高JVM栈内存Increase JVM heap memory</h4>
+
+<p>你使用过tomcat的话，简单的说就是“内存溢出”. 通常情况下，这种问题出现在实际的生产环境中.产生这种问题的原因是tomcat使用较少的内存给进程,通过配置TOmcat的配置文件(Windows 下的catalina.bat或Linux下的catalina.sh)可以解决这种问题.这种解决方法是通过增加JVM的栈内存实现的.也就是说，JVM通常不去调用垃圾回收器，所以服务器可以更多关注处理web请求，并要求尽快完成。要更改文件(catalina.sh) 位于&#8221;\tomcat server folder\bin\catalina.sh&#8221;，下面，给出这个文件的配置信息，</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>JAVA_OPTS="-Djava.awt.headless=true -Dfile.encoding=UTF-8
+</span><span class='line'>-server -Xms1024m -Xmx1024m
+</span><span class='line'>-XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m
+</span><span class='line'>-XX:MaxPermSize=512m -XX:+DisableExplicitGC"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+-Xms – 指定初始化时化的栈内存<br/>
+-Xmx – 指定最大栈内存<br/>
+在重启你的Tomcat服务器之后，这些配置的更改才会有效。下面将介绍如何处理JRE内存泄漏.</p>
+
+<h4>第二步 – 解决JRE内存泄露</h4>
+
+<p>性能表现不佳的另一个主要原因是内存泄漏，正如我之前说过：始终使用最新的tomcat服务器以获得更好的性能和可伸缩性。现在，这句话变成真的。如果我们使用最新的tomcat版本6.0.26及以上就可以解决这个错误，因为它包含了一个监听器来处理JRE和PermGen的内存泄漏。使用的监听器是，</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener" /&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>你可以在server.xml文件中找到这个监听器的配置，server.xml位置在“tomcat project folder/conf/server.xml”。接下来，我们将看看如何调整连接属性“maxThreads”。</p>
+
+<h4>第三步 – 线程池设置</h4>
+
+<p>线程池指定Web请求负载的数量，因此，为获得更好的性能这部分应小心处理。可以通过调整连接器属性“maxThreads”完成设置。maxThreads的值应该根据流量的大小，如果值过低，将有没有足够的线程来处理所有的请求，请求将进入等待状态，只有当一个的处理线程释放后才被处理；如果设置的太大，Tomcat的启动将花费更多时间。因此它取决于我们给maxThreads设置一个正确的值。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;Connector port="8080" address="localhost"
+</span><span class='line'>maxThreads="250" maxHttpHeaderSize="8192"
+</span><span class='line'>emptySessionPath="true" protocol="HTTP/1.1"
+</span><span class='line'>enableLookups="false" redirectPort="8181" acceptCount="100"
+</span><span class='line'>connectionTimeout="20000" disableUploadTimeout="true" /&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在上述配置中，maxThreads值设定为“250”，这指定可以由服务器处理的并发请求的最大数量。如果没有指定，这个属性的默认值为“200”。任何多出的并发请求将收到“拒绝连接”的错误提示，直到另一个处理请求进程被释放。错误看起来如下，</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>org.apache.tomcat.util.threads.ThreadPool logFull SEVERE: All threads (250) are
+</span><span class='line'>currently busy, waiting. Increase maxThreads (250) or check the servlet status</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果应用提示上述错误，务必检查上述错误是否是由于单个请求花费太长时间造成的，这个问题的原因是这样的，有时候如果数据库连接不释放的话，进程将不会处理其它请求。<br/>
+根据我的经验，准确值的设定可以通过将应用在在各种环境中测试得出。接下来，我们来看看如何压缩的MIME类型。</p>
+
+<h4>第4步- 压缩</h4>
+
+<p>Tomcat有一个通过在server.xml配置文件中设置压缩的选项。压缩可以在connector像如下设置中完成，</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;Connector port="8080" protocol="HTTP/1.1"
+</span><span class='line'>connectionTimeout="20000"
+</span><span class='line'>redirectPort="8181" compression="500"
+</span><span class='line'>compressableMimeType="text/html,text/xml,text/plain,application/octet-stream" /&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在前面的配置中，当文件的大小大于等于500bytes时才会压缩。如果当文件达到了大小但是却没有被压缩，那么设置属性compression=&ldquo;on&#8221;。否则Tomcat默认设置是“off”。接下来我们将看看如何调优数据库。</p>
+
+<h4>第五步- 数据库性能调优</h4>
+
+<p>Tomcat性能在等待数据库查询被执行期间会降低。如今大多数应用程序都是使用可能包含“命名查询”的关系型数据库。如果是那样的话，Tomcat会在启动时默认加载命名查询，这个可能会提升性能。另一件重要事是确保所有数据库连接正确地关闭。给数据库连接池设置正确值也是十分重要的。我所说的值是指Resource要素的最大空闲数（maxIdle），最大连接数（maxActive）,最大建立连接等待时间（maxWait）属性的值。因为配置依赖与应用要求，我也不能在本文指定正确的值。你可以通过调用数据库性能测试来找到正确的值。</p>
+
+<h4>第6步 – Tomcat原生库</h4>
+
+<p>Tomcat的原生库基于Apache可移植运行时（Apache Portable Runtime简称APR），给程序员提供了超强的扩展性和性能，在产品运作中帮助融合原生的服务器技术以展现最佳的性能。想知道安装说明的朋友请参考Tomcat Native Library – (APR) Installation。</p>
+
+<h4>第7步 – 其他选项</h4>
+
+<p>这些选项是：
+开启浏览器的缓存，这样读取存放在webapps文件夹里的静态内容会更快，大大推动整体性能。
+每当开机时，Tomcat服务器应当自动地重启。
+一般情况下HTTPS请求会比HTTP请求慢。如果你想要更好的安全性，即使慢一点我们还是要选择HTTPS。</p>
+
+<p>就这么多啦。在这篇文章里，我教给了大家一些提高Tomcat服务器性能的方法。如果你觉得这篇文章有用，或者你对提高Tomcat服务器性能有别的看法，请不要忘记留下宝贵的评论。祝你今天编程愉快！</p>
+
+<p class='post-footer'>
+            原文地址：
+            <a href='http://wangchaoqun.com/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua.html/'>http://wangchaoqun.com/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.com'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.com'>http://wangchaoqun.com</a>
+            </p>
+
+</div>
+
+
+  <footer style="height:200px">
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">wang chaoqun</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-25T10:08:06+08:00" pubdate data-updated="true">2013年07月25日</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/tech/'>tech</a>, <a class='category' href='/blog/categories/tomcat/'>tomcat</a>
+  
+</span>
+
+
+      
+<DIV style="font-size:12px;BORDER-BOTTOM: #bbbbbb 1px solid; BORDER-LEFT: #bbbbbb 1px solid; BACKGROUND: #f6f6f6; HEIGHT: 120px; BORDER-TOP: #bbbbbb 1px solid; BORDER-RIGHT: #bbbbbb 1px solid" class="myright"> 
+<DIV style="MARGIN-TOP: 9px; FLOAT: left; MARGIN-LEFT: 8px; MARGIN-RIGHT: 10px"> 
+<!--<IMG title="colalife" src="/images/myicon.jpg" width="80px" height="90px" style="border: #fff 0em solid;">-->
+<IMG title="colalife" src="http://bcs.duapp.com/colalife2000/myicon.jpg" width="80px" height="90px" style="border: #fff 0em solid;">
+</DIV> 
+<DIV style="LINE-HEIGHT: 200%; MARGIN-TOP: 10px; COLOR: #000000"> 
+作者： <A href="http://wangchaoqun.com/">王超群</A><BR> 
+出处： <A href="http://wangchaoqun.com/">http://wangchaoqun.com/</A> 
+<BR>本文基于<a target="_blank" title="Creative Commons Attribution 2.5 China Mainland License" href="http://creativecommons.org/licenses/by/2.5/cn/"> 
+署名 2.5 中国大陆</a>许可协议发布，欢迎转载，演绎或用于商业目的，但是必须保留本文的署名 
+<a href="http://wangchaoqun.com/">王超群</a>（包含链接）</DIV></DIV> 
+
+
+    </p>
+
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu.html/" title="Previous Post: Cygwin & Wine & Ruby 记录">&laquo; Cygwin & Wine & Ruby 记录</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/" title="Next Post: mongodb, mysql导出备份至ftp">mongodb, mysql导出备份至ftp &raquo;</a>
+      
+    </p>
+    
+      <!-- <div class="sharing">
+  
+  
+  
+</div>
+ -->
+<!-- baidu share Button BEGIN
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_t163" data-cmd="t163" title="分享到网易微博"></a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_hi" data-cmd="hi" title="分享到百度空间"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];</script>
+baidu share Button END -->
+
+    
+  </footer>
+</article>
+<!-- duoshuo -->
+<section id=”comment”>
+<!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"colalife"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = 'http://static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	|| document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!-- Duoshuo Comment END -->
+
+</section>
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>关于我</h1>
+<p>
+一个[程序猿，攻城狮]，这么有福气<br><br>
+纸上得来终觉浅，绝知此事要躬行<br><br>
+成长，需要积累； 记录，在此博客<br><br>
+<a href='http://me.alipay.com/colalife'><img src='https://img.alipay.com/sys/personalprod/style/mc/btn-index.png'/></a>
+</p>
+</section>
+<section>  
+  <h1>标签</h1>  
+  <ul class="tag-cloud">  
+    <a style="padding: 3px;font-size: 100%" href="/tags/books/">books</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/browser/">browser</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/cygwin/">cygwin</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/excel/">excel</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/git/">git</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/github/">github</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/hibernate/">hibernate</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/htmlparser/">htmlparser</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/httpclient/">httpclient</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/java/">java</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/jsoup/">jsoup</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/jvm/">jvm</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/linux/">linux</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/mongodb/">mongodb</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/octopress/">octopress</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/poi/">poi</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/ruby/">ruby</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/sessionfactory/">sessionfactory</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/spring-test/">spring-test</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/svn/">svn</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/tomcat/">tomcat</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/wine/">wine</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/shu-ju-ku/">数据库</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/shi-jian-guan-li/">时间管理</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/zui-hou-qi-xian/">最后期限</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/suan-fa/">算法</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/guan-li-gong-zuo/">管理工作</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/she-ji-mo-shi/">设计模式</a>
+<a style="padding: 3px;font-size: 210%" href="/tags/sui-bi/">随笔</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/xiang-mu-guan-li/">项目管理</a>
+
+  </ul>  
+</section>
+<section>
+  <h1>最新文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu.html/">[转]Code Kata：编码套路</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/">MongoDB replSet集群和shard分片</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/">Mongodb, Mysql导出备份至ftp</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua.html/">[转]Tomcat 生产服务器性能优化</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu.html/">Cygwin & Wine & Ruby 记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/an-zhuang-git-create-octopress-blog.html/">安装git, 建立Octopress博客</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/excel-dao-chu-gong-ju-lei.html/">Excel导出工具类</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai.html/">Htmlparser和httpclient解析页面并下载</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/zhuan-shen-ru-li-jie-liu-lan-qi-jian-rong-xing-mo-shi.html/">[转]深入理解浏览器兼容性模式</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei.html/">测试Hibernate动态添加实体类</a>
+      </li>
+    
+  </ul>
+</section>
+<section> 
+  <h1>文章分类</h1> 
+  <ul id="categories"> 
+    <li class='category'><a href='/blog/categories/ftp/'>ftp (1)</a></li>
+<li class='category'><a href='/blog/categories/hibernate/'>hibernate (1)</a></li>
+<li class='category'><a href='/blog/categories/java/'>java (6)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (2)</a></li>
+<li class='category'><a href='/blog/categories/mongodb/'>mongodb (2)</a></li>
+<li class='category'><a href='/blog/categories/mysql/'>mysql (1)</a></li>
+<li class='category'><a href='/blog/categories/tech/'>tech (15)</a></li>
+<li class='category'><a href='/blog/categories/tomcat/'>tomcat (1)</a></li>
+<li class='category'><a href='/blog/categories/web/'>web (2)</a></li>
+<li class='category'><a href='/blog/categories/dai-ma/'>代码 (3)</a></li>
+<li class='category'><a href='/blog/categories/qi-ta/'>其他 (1)</a></li>
+<li class='category'><a href='/blog/categories/sheng-huo/'>生活 (7)</a></li>
+<li class='category'><a href='/blog/categories/suan-fa/'>算法 (1)</a></li>
+<li class='category'><a href='/blog/categories/zhi-ye/'>职业 (2)</a></li>
+<li class='category'><a href='/blog/categories/she-ji-mo-shi/'>设计模式 (1)</a></li>
+<li class='category'><a href='/blog/categories/du-shu/'>读书 (3)</a></li>
+ 
+  </ul> 
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo" style="margin-bottom: 40px;"><!-- baidu share BEGIN -->
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"6","bdPos":"left","bdTop":"110"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];</script>
+<!-- baidu share END -->
+<p>
+  Copyright &copy; 2014 - wang chaoqun -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/javascripts/libs/totop.js"></script>
+</body>
+</html>

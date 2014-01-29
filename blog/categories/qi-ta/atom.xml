@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[文章分类：其他 | 超群的博客]]></title>
+  <link href="http://wangchaoqun.com/blog/categories/qi-ta/atom.xml" rel="self"/>
+  <link href="http://wangchaoqun.com/"/>
+  <updated>2014-01-29T10:21:58+08:00</updated>
+  <id>http://wangchaoqun.com/</id>
+  <author>
+    <name><![CDATA[wang chaoqun]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[安装git, 建立Octopress博客]]></title>
+    <link href="http://wangchaoqun.com/blog/2013/01/an-zhuang-git-create-octopress-blog.html/"/>
+    <updated>2013-01-07T14:34:24+08:00</updated>
+    <id>http://wangchaoqun.com/blog/2013/01/an-zhuang-git-create-octopress-blog</id>
+    <content type="html"><![CDATA[<p>本文参考了若干网络日志（谢过~）, 配置个人博客后整理而成</p>
+
+<h2>安装git  </h2>
+
+<p><code>  
+yum -y install git
+git --version
+</code></p>
+
+<!--more-->
+
+
+<p>在本机使用git创建SSH Key<br/>
+<code>  
+ssh-keygen -C "username" -t rsa  
+ssh -v git@github.com  
+</code><br/>
+//if denied, use <code>ssh-add ~/.ssh/id_rsa</code> to fix this.<br/>
+备注: useremail为你注册github用户时的邮箱地址 这时，在系统目录下就会生成一个.ssh文件夹，里面为对应的SSH Key，其中id_rsa.pub是Gighub需要的SSH公钥文件。 将id_ras.pub文件里内容拷贝到Github的Account Settings里的key中。 这样你就可以直接使用Git和Github了.</p>
+
+<h2>安装ruby  </h2>
+
+<p><code>  
+wget ftp://ftp.ruby-lang.org/pub/ruby/2.1/ruby-2.1.0.tar.gz  
+tar -zxvf ruby-2.1.0.tar.gz
+cd ruby-2.1.0
+./configure --prefix=/usr/local/ruby
+make
+make test
+make install
+</code></p>
+
+<h2>安装OctoPress  </h2>
+
+<p>通过Git从Github上克隆一份Octopress<br/>
+<code>  
+git clone git://github.com/imathis/octopress.git octopress
+cd octopress  
+gem install bundler  
+bundle install  
+</code>
+安装Octopress默认的Theme
+<code>  
+rake install  
+</code><br/>
+//if error: rake aborted!<br/>
+//You have already activated rake 10.1.0, but your Gemfile requires rake 0.9.2.2.
+delete your Gemfile.lock and edit the version of rake specified in your Gemfile to 10.1. Job done</p>
+
+<h2>通过_config.yml来配置博客  </h2>
+
+<h2>创建一个博客</h2>
+
+<p><code>  
+rake new_post["Hello World"]
+</code></p>
+
+<h2>创建一个博客页面</h2>
+
+<p><code>  
+rake new_page["blog"]
+</code></p>
+
+<p>预览效果：<br/>
+<code>  
+rake generate  
+rake preview  
+</code></p>
+
+<p>然后在浏览器中打开<a href="http://localhost:4000">http://localhost:4000</a></p>
+
+<h2>发布Octopress到Github</h2>
+
+<p><code>
+cd octopress  
+rake setup_github_pages  
+Repository url: git@github.com:username/username.github.com.git  
+</code>
+将博客发布到Github上，输入下面命令：
+<code>  
+rake deploy  
+</code>
+这样，生成的内容将会自动发布到master分支，并且可以使用 <a href="http://username.github.com">http://username.github.com</a> 访问内容。</p>
+
+<p>将source提交：<br/>
+<code>  
+git add .  
+git commit -m "blog init"  
+git push origin source  
+</code>
+删除之前的添加信息 (配置文件在 ~/octopress/.git/config)
+<code>  
+git remote rm origin  
+git remote add origin git@github.com:username/username.github.com.git  
+</code></p>
+
+<h2>添加多说评论  </h2>
+
+<p>在_config.yml尾部添加如下行：<br/>
+```</p>
+
+<h1>Duoshuo Comments</h1>
+
+<p>duoshuo_show_comment_count: true<br/>
+```</p>
+
+<p>在source/_layouts/post.html尾部添加如下代码：<br/>
+```<br/>
+<br/>
+```</p>
+
+<p>创建source/_includes/post/duoshuo.html文件，将从多说获得的代码放入其中。<br/>
+```</p>
+
+<!-- Duoshuo Comment BEGIN -->
+
+
+<pre><code>&lt;div class="ds-thread"&gt;&lt;/div&gt;
+</code></pre>
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"username"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = 'http://static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+<!-- Duoshuo Comment END -->
+
+
+<p>```</p>
+
+<h2>将AddThis更换为JiaThis</h2>
+
+<p>打开source/_includes/post/sharing.html，注释掉<code>&lt;div class="share"&gt;...&lt;/div&gt;</code>中的AddThis相关语句,然后在<code>&lt;/div&gt;</code>前加入从JiaThis获得的代码。</p>
+
+<h2>Octopress写作</h2>
+
+<p><code>  
+cd octopress  
+rake new_post["new blog"]  
+</code></p>
+
+<h2>another pc</h2>
+
+<p><code>  
+git clone -b source git@github.com:username/username.github.com.git octopress  
+cd octopress  
+git clone git@github.com:username/username.github.com.git _deploy  
+</code></p>
+
+<h2>增加category_list插件</h2>
+
+<p>保存以下代码到plugins/category_list_tag.rb：
+```
+module Jekyll
+  class CategoryListTag &lt; Liquid::Tag</p>
+
+<pre><code>def render(context)
+  html = ""
+  categories = context.registers[:site].categories.keys
+  categories.sort.each do |category|
+    posts_in_category = context.registers[:site].categories[category].size
+    category_dir = context.registers[:site].config['category_dir']
+    category_url = File.join(category_dir, category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase)
+    html &lt;&lt; "&lt;li class='category'&gt;&lt;a href='http://wangchaoqun.com/#{category_url}/'&gt;#{category} (#{posts_in_category})&lt;/a&gt;&lt;/li&gt;\n"
+  end
+  html
+end
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>Liquid::Template.register_tag(&lsquo;category_list&rsquo;, Jekyll::CategoryListTag)
+```</p>
+
+<p>将category加入到侧边导航栏，需要增加一个aside
+复制以下代码到source/_includes/asides/category_list.html。
+```
+<section>
+  <h1>文章分类</h1>
+  <ul id="categories"></p>
+
+<pre><code><li class='category'><a href='/blog/categories/ftp/'>ftp (1)</a></li>
+<li class='category'><a href='/blog/categories/hibernate/'>hibernate (1)</a></li>
+<li class='category'><a href='/blog/categories/java/'>java (6)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (2)</a></li>
+<li class='category'><a href='/blog/categories/mongodb/'>mongodb (2)</a></li>
+<li class='category'><a href='/blog/categories/mysql/'>mysql (1)</a></li>
+<li class='category'><a href='/blog/categories/tech/'>tech (15)</a></li>
+<li class='category'><a href='/blog/categories/tomcat/'>tomcat (1)</a></li>
+<li class='category'><a href='/blog/categories/web/'>web (2)</a></li>
+<li class='category'><a href='/blog/categories/dai-ma/'>代码 (3)</a></li>
+<li class='category'><a href='/blog/categories/qi-ta/'>其他 (1)</a></li>
+<li class='category'><a href='/blog/categories/sheng-huo/'>生活 (7)</a></li>
+<li class='category'><a href='/blog/categories/suan-fa/'>算法 (1)</a></li>
+<li class='category'><a href='/blog/categories/zhi-ye/'>职业 (2)</a></li>
+<li class='category'><a href='/blog/categories/she-ji-mo-shi/'>设计模式 (1)</a></li>
+<li class='category'><a href='/blog/categories/du-shu/'>读书 (3)</a></li>
+
+</code></pre>
+
+<p>  </ul>
+</section>
+```
+配置侧边栏需要修改_config.yml文件，修改其default_asides项：
+default_asides: [&hellip;, asides/category_list.html, &hellip;]</p>
+
+<h2>中文分类支持</h2>
+
+<p>侧边栏添加了文章分类后，英文分类没有问题，点击打开是分类下的文章列表；但中文分类，如云计算、设计模式之类就不行了，网上有各种解决办法，复杂了点；而且我发现新建日志的文件名如果是中文则会转成拼音，文章分类也是，你可以看下public/blog/categories下的文件名；所以如果能把边栏的链接地址改成拼音就行了，rakefile里有<code>rake new_post</code>代码；查看分析发现和<code>plugins/category_list_tag.rb</code>的处理类似，<br/>
+<code>category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase</code>是转换为单词‘-’分隔并且小写，rakefile里是<code> mkdir_p  
+"#{source_dir}/#{posts_dir}"  
+filename = "#{source_dir}/#{posts_dir}/#{Time.now.strftime('%Y-%m-%d')}-#{title.to_url}.#{new_post_ext}"</code><br/>
+  <strong>注意:</strong>title多了<code>.to_url</code>，原来如此，将<code>category_list_tag.rb</code>里改成<br/>
+  <code>category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase.to_url</code>，
+然后rake generate  rake preview<br/>
+done！</p>
+]]></content>
+  </entry>
+  
+</feed>

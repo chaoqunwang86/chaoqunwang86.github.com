@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>测试Hibernate动态添加实体类 - 超群的博客</title>
+  <meta name="author" content="wang chaoqun">
+
+  
+  <meta name="description" content="超群的博客, 生活记录, 技术博客, wang chaoqun, colalife.com, wangchaoqun.com, wangchaoqun.cn">
+  <meta name="keywords" content="超群的博客, 生活记录, 技术博客, 开源技术, 大数据, 云计算, 移动互联网以及java, web, mobile, android, ios, linux, tomcat, httpd, browser, internet, media, sql, news">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://wangchaoqun.com/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei.html/">
+  <link href="/favicon.png" rel="icon">
+  <!--<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">-->
+  <link href="http://bcs.duapp.com/colalife2000/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="超群的博客" type="application/atom+xml">
+  <!--<script src="/javascripts/modernizr-2.0.js"></script>-->
+  <script src="http://bcs.duapp.com/colalife2000/modernizr-2.0.js"></script>
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+  <!--<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>-->
+  <!--<script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.1.min.js"></script>-->
+  <script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <!--<script src="/javascripts/octopress.js" type="text/javascript"></script>-->
+  <script src="http://bcs.duapp.com/colalife2000/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+<link href="http://bcs.duapp.com/colalife2000/stylesheets/PTSans.css" rel="stylesheet" type="text/css">
+<link href="http://bcs.duapp.com/colalife2000/stylesheets/PTSerif.css" rel="stylesheet" type="text/css">
+<script language="javascript" type="text/javascript">
+$(document).ready(function(){
+	changeBg();
+	//window.setInterval("changeBg()", 30*1000);
+
+	$(document).bind('DOMNodeInserted', function(event) {
+	  addBlankTargetForLinks();
+	});
+
+/*
+	var ref=location.href;
+	var wangchaoqun_com="wangchaoqun.com";
+	var wangchaoqun_cn="wangchaoqun.cn";
+	var colalife_com="colalife.com";
+
+	if(ref.indexOf(colalife_com)!=-1){
+	  ref=ref.replace(colalife_com, wangchaoqun_com);
+	  window.location.replace(ref);
+	} else if(ref.indexOf(wangchaoqun_cn)!=-1){
+	  ref=ref.replace(wangchaoqun_cn, wangchaoqun_com);
+	  window.location.replace(ref);
+	}
+*/
+});
+function changeBg() {
+	var dir = "http://bcs.duapp.com/colalife2000/images/"
+	var bg = "url("+dir+"v"+Math.floor(Math.random()*5+1)+".jpg)";
+	$("#myheader").css({"background-image":bg});
+}
+function addBlankTargetForLinks () {
+  $('a[href^="http"]').each(function(){
+      $(this).attr('target', '_blank');
+  });
+}
+</script>
+
+  
+
+</head>
+
+<body   >
+  <header id="myheader" role="banner" style="height:92px;"><hgroup style="height:100px" onmouseover="this.style.cursor='pointer'" onclick="document.location='/';"></hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:wangchaoqun.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation" style="font-weight: bold;">
+  <li><a href="/">首页</a></li> 
+  <li><a href="/blog/archives">文章列表</a></li> 
+  <li><a href="/blog/categories/tech/">技术</a></li>
+  <li><a href="/blog/categories/du-shu/">读书</a></li> 
+  <li><a href="/blog/categories/zhi-ye/">职业</a></li>
+  <li><a href="/blog/categories/sheng-huo/">生活</a></li>
+  <li><a href="/blog/categories/qi-ta/">其他</a></li>
+  <li><a href="/tags/">标签云</a></li>
+  <li><a href="/comments/">留言板</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">测试Hibernate动态添加实体类</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-28T07:54:33+08:00" pubdate data-updated="true">2012年09月28日</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>大家知道通过hibernate cfg或和spring集成的配置里，可用packagesToScan或mapping*之类声明实体类；但有需求可能要在某个项目中编码式加载实体类（例如某个不常用的或特定用户的实体类，并未事先配置），然后进行增删改查操作。下面代码配合spring test framework做了测试（注：hibernate升级到了4.3.final，与4.2有不同，spring3或4测试通过）：<!--more--></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@RunWith</span><span class="o">(</span><span class="n">SpringJUnit4ClassRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+</span><span class='line'><span class="nd">@ContextConfiguration</span><span class="o">(</span><span class="n">locations</span> <span class="o">=</span> <span class="o">{</span> <span class="s">&quot;/spring-hibernate.xml&quot;</span> <span class="o">})</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConfigurationTest</span> <span class="kd">extends</span> <span class="n">AbstractJUnit4SpringContextTests</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">session_factory</span> <span class="o">=</span> <span class="s">&quot;sessionFactory&quot;</span><span class="o">;</span>
+</span><span class='line'>  <span class="c1">// 值得注意: org.springframework.beans.factory.FactoryBean that creates a Hibernate org.hibernate.SessionFactory</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">local_session_factory</span> <span class="o">=</span> <span class="s">&quot;&amp;sessionFactory&quot;</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Test</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sessionFactoryAndFactoryBean</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">ClassNotFoundException</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">SessionFactory</span> <span class="n">sessionFactory</span> <span class="o">=</span> <span class="o">(</span><span class="n">SessionFactory</span><span class="o">)</span> <span class="n">applicationContext</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="n">session_factory</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">ClassMetadata</span><span class="o">&gt;</span> <span class="n">meta</span> <span class="o">=</span> <span class="n">sessionFactory</span><span class="o">.</span><span class="na">getAllClassMetadata</span><span class="o">();</span>
+</span><span class='line'>      <span class="k">for</span> <span class="o">(</span><span class="n">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">ClassMetadata</span><span class="o">&gt;</span> <span class="n">each</span> <span class="o">:</span> <span class="n">meta</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">ClassMetadata</span> <span class="n">value</span> <span class="o">=</span> <span class="n">each</span><span class="o">.</span><span class="na">getValue</span><span class="o">();</span>
+</span><span class='line'>          <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;entity name:&quot;</span> <span class="o">+</span> <span class="n">value</span><span class="o">.</span><span class="na">getEntityName</span><span class="o">());</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">LocalSessionFactoryBean</span> <span class="n">sessionFactoryBean</span> <span class="o">=</span> <span class="o">(</span><span class="n">LocalSessionFactoryBean</span><span class="o">)</span> <span class="n">applicationContext</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="n">local_session_factory</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">Configuration</span> <span class="n">config</span> <span class="o">=</span> <span class="n">sessionFactoryBean</span><span class="o">.</span><span class="na">getConfiguration</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="na">addAnnotatedClass</span><span class="o">(</span><span class="n">User</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">ServiceRegistry</span> <span class="n">serviceRegistry</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StandardServiceRegistryBuilder</span><span class="o">().</span><span class="na">applySettings</span><span class="o">(</span><span class="n">config</span><span class="o">.</span><span class="na">getProperties</span><span class="o">()).</span><span class="na">build</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">SessionFactory</span> <span class="n">newSessionFactory</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="na">buildSessionFactory</span><span class="o">(</span><span class="n">serviceRegistry</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">Session</span> <span class="n">session</span> <span class="o">=</span> <span class="n">newSessionFactory</span><span class="o">.</span><span class="na">openSession</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">user</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&quot;username&quot;</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">session</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">session</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">user</span> <span class="o">=</span> <span class="o">(</span><span class="n">User</span><span class="o">)</span> <span class="n">session</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">User</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+</span><span class='line'>      <span class="n">session</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;------&quot;</span> <span class="o">+</span> <span class="n">user</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;------&quot;</span> <span class="o">+</span> <span class="n">user</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Table</span><span class="o">&gt;</span> <span class="n">mappings</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="na">getTableMappings</span><span class="o">();</span>
+</span><span class='line'>      <span class="k">while</span> <span class="o">(</span><span class="n">mappings</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">Table</span> <span class="n">each</span> <span class="o">=</span> <span class="n">mappings</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+</span><span class='line'>          <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;table name:&quot;</span> <span class="o">+</span> <span class="n">each</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p class='post-footer'>
+            原文地址：
+            <a href='http://wangchaoqun.com/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei.html/'>http://wangchaoqun.com/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.com'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.com'>http://wangchaoqun.com</a>
+            </p>
+
+</div>
+
+
+  <footer style="height:200px">
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">wang chaoqun</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-28T07:54:33+08:00" pubdate data-updated="true">2012年09月28日</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/hibernate/'>hibernate</a>, <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/tech/'>tech</a>
+  
+</span>
+
+
+      
+<DIV style="font-size:12px;BORDER-BOTTOM: #bbbbbb 1px solid; BORDER-LEFT: #bbbbbb 1px solid; BACKGROUND: #f6f6f6; HEIGHT: 120px; BORDER-TOP: #bbbbbb 1px solid; BORDER-RIGHT: #bbbbbb 1px solid" class="myright"> 
+<DIV style="MARGIN-TOP: 9px; FLOAT: left; MARGIN-LEFT: 8px; MARGIN-RIGHT: 10px"> 
+<!--<IMG title="colalife" src="/images/myicon.jpg" width="80px" height="90px" style="border: #fff 0em solid;">-->
+<IMG title="colalife" src="http://bcs.duapp.com/colalife2000/myicon.jpg" width="80px" height="90px" style="border: #fff 0em solid;">
+</DIV> 
+<DIV style="LINE-HEIGHT: 200%; MARGIN-TOP: 10px; COLOR: #000000"> 
+作者： <A href="http://wangchaoqun.com/">王超群</A><BR> 
+出处： <A href="http://wangchaoqun.com/">http://wangchaoqun.com/</A> 
+<BR>本文基于<a target="_blank" title="Creative Commons Attribution 2.5 China Mainland License" href="http://creativecommons.org/licenses/by/2.5/cn/"> 
+署名 2.5 中国大陆</a>许可协议发布，欢迎转载，演绎或用于商业目的，但是必须保留本文的署名 
+<a href="http://wangchaoqun.com/">王超群</a>（包含链接）</DIV></DIV> 
+
+
+    </p>
+
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/04/guan-yu-gong-si-ji-zhu-guan-li-gong-zuo-de-ji-dian-si-kao.html/" title="Previous Post: 关于公司技术管理工作的几点思考">&laquo; 关于公司技术管理工作的几点思考</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/11/zhuan-shen-ru-li-jie-liu-lan-qi-jian-rong-xing-mo-shi.html/" title="Next Post: [转]深入理解浏览器兼容性模式">[转]深入理解浏览器兼容性模式 &raquo;</a>
+      
+    </p>
+    
+      <!-- <div class="sharing">
+  
+  
+  
+</div>
+ -->
+<!-- baidu share Button BEGIN
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_t163" data-cmd="t163" title="分享到网易微博"></a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_hi" data-cmd="hi" title="分享到百度空间"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];</script>
+baidu share Button END -->
+
+    
+  </footer>
+</article>
+<!-- duoshuo -->
+<section id=”comment”>
+<!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"colalife"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = 'http://static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	|| document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!-- Duoshuo Comment END -->
+
+</section>
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>关于我</h1>
+<p>
+一个[程序猿，攻城狮]，这么有福气<br><br>
+纸上得来终觉浅，绝知此事要躬行<br><br>
+成长，需要积累； 记录，在此博客<br><br>
+<a href='http://me.alipay.com/colalife'><img src='https://img.alipay.com/sys/personalprod/style/mc/btn-index.png'/></a>
+</p>
+</section>
+<section>  
+  <h1>标签</h1>  
+  <ul class="tag-cloud">  
+    <a style="padding: 3px;font-size: 100%" href="/tags/books/">books</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/browser/">browser</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/cygwin/">cygwin</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/excel/">excel</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/git/">git</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/github/">github</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/hibernate/">hibernate</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/htmlparser/">htmlparser</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/httpclient/">httpclient</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/java/">java</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/jsoup/">jsoup</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/jvm/">jvm</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/linux/">linux</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/mongodb/">mongodb</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/octopress/">octopress</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/poi/">poi</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/ruby/">ruby</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/sessionfactory/">sessionfactory</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/spring-test/">spring-test</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/svn/">svn</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/tomcat/">tomcat</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/wine/">wine</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/shu-ju-ku/">数据库</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/shi-jian-guan-li/">时间管理</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/zui-hou-qi-xian/">最后期限</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/suan-fa/">算法</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/guan-li-gong-zuo/">管理工作</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/she-ji-mo-shi/">设计模式</a>
+<a style="padding: 3px;font-size: 210%" href="/tags/sui-bi/">随笔</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/xiang-mu-guan-li/">项目管理</a>
+
+  </ul>  
+</section>
+<section>
+  <h1>最新文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu.html/">[转]Code Kata：编码套路</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/">MongoDB replSet集群和shard分片</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/">Mongodb, Mysql导出备份至ftp</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua.html/">[转]Tomcat 生产服务器性能优化</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu.html/">Cygwin & Wine & Ruby 记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/an-zhuang-git-create-octopress-blog.html/">安装git, 建立Octopress博客</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/excel-dao-chu-gong-ju-lei.html/">Excel导出工具类</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai.html/">Htmlparser和httpclient解析页面并下载</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/zhuan-shen-ru-li-jie-liu-lan-qi-jian-rong-xing-mo-shi.html/">[转]深入理解浏览器兼容性模式</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei.html/">测试Hibernate动态添加实体类</a>
+      </li>
+    
+  </ul>
+</section>
+<section> 
+  <h1>文章分类</h1> 
+  <ul id="categories"> 
+    <li class='category'><a href='/blog/categories/ftp/'>ftp (1)</a></li>
+<li class='category'><a href='/blog/categories/hibernate/'>hibernate (1)</a></li>
+<li class='category'><a href='/blog/categories/java/'>java (6)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (2)</a></li>
+<li class='category'><a href='/blog/categories/mongodb/'>mongodb (2)</a></li>
+<li class='category'><a href='/blog/categories/mysql/'>mysql (1)</a></li>
+<li class='category'><a href='/blog/categories/tech/'>tech (15)</a></li>
+<li class='category'><a href='/blog/categories/tomcat/'>tomcat (1)</a></li>
+<li class='category'><a href='/blog/categories/web/'>web (2)</a></li>
+<li class='category'><a href='/blog/categories/dai-ma/'>代码 (3)</a></li>
+<li class='category'><a href='/blog/categories/qi-ta/'>其他 (1)</a></li>
+<li class='category'><a href='/blog/categories/sheng-huo/'>生活 (7)</a></li>
+<li class='category'><a href='/blog/categories/suan-fa/'>算法 (1)</a></li>
+<li class='category'><a href='/blog/categories/zhi-ye/'>职业 (2)</a></li>
+<li class='category'><a href='/blog/categories/she-ji-mo-shi/'>设计模式 (1)</a></li>
+<li class='category'><a href='/blog/categories/du-shu/'>读书 (3)</a></li>
+ 
+  </ul> 
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo" style="margin-bottom: 40px;"><!-- baidu share BEGIN -->
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"6","bdPos":"left","bdTop":"110"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];</script>
+<!-- baidu share END -->
+<p>
+  Copyright &copy; 2014 - wang chaoqun -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/javascripts/libs/totop.js"></script>
+</body>
+</html>

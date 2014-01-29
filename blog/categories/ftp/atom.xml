@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[文章分类：ftp | 超群的博客]]></title>
+  <link href="http://wangchaoqun.com/blog/categories/ftp/atom.xml" rel="self"/>
+  <link href="http://wangchaoqun.com/"/>
+  <updated>2014-01-29T10:21:58+08:00</updated>
+  <id>http://wangchaoqun.com/</id>
+  <author>
+    <name><![CDATA[wang chaoqun]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mongodb, Mysql导出备份至ftp]]></title>
+    <link href="http://wangchaoqun.com/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/"/>
+    <updated>2013-11-03T17:10:32+08:00</updated>
+    <id>http://wangchaoqun.com/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp</id>
+    <content type="html"><![CDATA[<p>前提是mongodb和mysql已经安装使用，先安装vsftp，配置完成后，在编写shell脚本，使用计划任务执行<br/>
+1. 安装vsftp<br/>
+<code>
+rpm -q vsftpd
+yum -y install vsftpd
+</code></p>
+
+<!--more-->
+
+
+<p>设置开机启动<br/>
+<code>
+chkconfig vsftpd on
+</code>
+启动vsftpd服务 <br/>
+<code>
+service vsftpd start
+</code>
+增加新用户ftpuser，设置权限和密码<br/>
+<code>
+useradd -d /home/ftpuser -s /sbin/nologin ftpuser
+chown -R ftpuser /home/ftpuser
+chmod 777 -R /home/ftpuser
+passwd ftpuser
+</code>
+配置vsftp
+<code>
+vi /etc/vsftpd/vsftpd.conf
+</code>
+内容删掉换成以下
+<code>
+anonymous_enable=NO
+local_enable=YES
+write_enable=YES
+local_umask=022
+dirmessage_enable=YES
+xferlog_enable=YES
+connect_from_port_20=YES
+xferlog_std_format=YES
+chroot_list_enable=YES
+chroot_list_file=/etc/vsftpd/chroot_list
+listen=YES
+pam_service_name=vsftpd
+userlist_enable=YES
+tcp_wrappers=YES
+pasv_min_port=10000
+pasv_max_port=10030
+</code>
+添加chroot_list文件
+<code>
+vi /etc/vsftpd/chroot_list
+</code>
+内容<code>ftpuser</code><br/>
+重启服务<code>service vsftpd restart</code><br/>
+防火墙开放21端口
+<code>
+service iptables stop
+vi /etc/sysconfig/iptables
+</code>
+添加
+<code>
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 21 -j ACCEPT
+</code><br/>
+重启防火墙服务
+<code>
+service iptables start
+</code><br/>
+解决用户无法进入目录问题，终端执行：<br/>
+<code>
+setsebool -P ftp_home_dir 1
+</code><br/>
+然后重启FTP服务：
+<code>
+service vsftpd restart
+</code></p>
+
+<h2>2. mongodb导出、压缩、上传脚本，删除过期文件  </h2>
+
+<p>先定义好服务器、数据库、各目录、用户名、密码</p>
+
+<p>```</p>
+
+<h1>!/bin/bash</h1>
+
+<p>MONGO_HOST=&ldquo;127.0.0.1:27017&rdquo;
+MONGO_DB=&ldquo;mydbname&rdquo;
+MONGO_DUMP=&ldquo;/usr/local/mongo/bin/mongodump&rdquo;
+MONGO_BACKUP=&ldquo;/usr/local/mongo/backup&rdquo;
+NEW_TIMESTAMP=$(date +%F-%H%M)
+OLD_TIMESTAMP=$(date -d &lsquo;-5 days&rsquo; &ldquo;+%F-%H%M&rdquo;)
+NEW_BACKUP_FILE=&ldquo;$MONGO_DB.$NEW_TIMESTAMP.tar.gz&rdquo;
+OLD_BACKUP_FILE=&ldquo;$MONGO_DB.$OLD_TIMESTAMP.tar.gz&rdquo;</p>
+
+<h1>0.temp dir</h1>
+
+<p>if [ ! -d $MONGO_BACKUP/$MONGO_DB.$NEW_TIMESTAMP ]
+then
+ mkdir $MONGO_BACKUP/$MONGO_DB.$NEW_TIMESTAMP
+fi</p>
+
+<h1>1.mongodump then delete old dir and file</h1>
+
+<p>$MONGO_DUMP -h $MONGO_HOST -d $MONGO_DB -o $MONGO_BACKUP/$MONGO_DB.$NEW_TIMESTAMP
+cd $MONGO_BACKUP/$MONGO_DB.$NEW_TIMESTAMP &amp;&amp; tar -zcf $MONGO_BACKUP/$NEW_BACKUP_FILE */
+rm -rf $MONGO_BACKUP/$MONGO_DB.$NEW_TIMESTAMP
+rm -rf $MONGO_BACKUP/$OLD_BACKUP_FILE</p>
+
+<h1>2.upload new and delte old files</h1>
+
+<h1>!/bin/sh</h1>
+
+<p>FTP_HOST=&ldquo;192.168.100.119&rdquo;
+FTP_PORT=&ldquo;21&rdquo;
+FTP_USER=&ldquo;ftpuser&rdquo;
+FTP_PSWD=&ldquo;123456&rdquo;
+FTP_DIR=&ldquo;mongo-backup&rdquo;</p>
+
+<p>ftp -nv &lt;&lt;!
+open $FTP_HOST $FTP_PORT
+user $FTP_USER $FTP_PSWD
+binary
+prompt
+cd $FTP_DIR
+mdelete $OLD_BACKUP_FILE
+lcd $MONGO_BACKUP
+mput $NEW_BACKUP_FILE
+close
+bye
+!
+echo &ldquo;============== $MONGO_DB backup ends at $NEW_TIMESTAMP ==============&rdquo;
+```</p>
+
+<h2>3. mysql导出、压缩、上传脚本  </h2>
+
+<p>```</p>
+
+<h1>! /bin/bash</h1>
+
+<p>MYSQL_HOST=&ldquo;192.168.100.119&rdquo;
+MYSQL_PORT=&lsquo;3306&rsquo;
+MYSQL_USER=&lsquo;myuser&rsquo;
+MYSQL_PSWD=&lsquo;mypass&rsquo;
+MYSQL_DB=&lsquo;mydbname&rsquo;
+MYSQL_DUMP=&ldquo;/usr/bin/mysqldump&rdquo;
+MYSQL_BACKUP=&ldquo;/usr/local/mysql/backup&rdquo;
+NEW_TIMESTAMP=$(date +%F-%H%M)
+OLD_TIMESTAMP=$(date -d &lsquo;-5 days&rsquo; &ldquo;+%F-%H%M&rdquo;)
+GZIP=&ldquo;$(which gzip)&rdquo;</p>
+
+<h1>1.mysql dump and delete old files</h1>
+
+<p>$MYSQL_DUMP -h $MYSQL_HOST -P $MYSQL_PORT -u $MYSQL_USER -p$MYSQL_PSWD $MYSQL_DB | $GZIP -9 > $MYSQL_BACKUP/$MYSQL_DB.$NEW_TIMESTAMP.gz
+rm -rf $MYSQL_BACKUP/$MYSQL_DB.$OLD_TIMESTAMP.gz
+echo &ldquo;============== mysqldump ends at $NEW_TIMESTAMP ==============&rdquo;</p>
+
+<h1>2.upload new and delete old files</h1>
+
+<p>FTP_HOST=&ldquo;192.168.100.119&rdquo;
+FTP_PORT=&ldquo;21&rdquo;
+FTP_USER=&ldquo;ftpuser&rdquo;
+FTP_PSWD=&ldquo;123456&rdquo;
+FTP_DIR=&ldquo;mysql-backup&rdquo;</p>
+
+<p>ftp -nv &lt;&lt;!
+open $FTP_HOST $FTP_PORT
+user $FTP_USER $FTP_PSWD
+binary
+prompt
+cd $FTP_DIR
+lcd $MYSQL_BACKUP
+mput $MYSQL_DB.$NEW_TIMESTAMP.gz
+mdelete $MYSQL_DB.$OLD_TIMESTAMP.gz
+close
+bye
+!
+echo &ldquo;============== mysql upload ends at $NEW_TIMESTAMP ==============&rdquo;
+```</p>
+
+<h2>4. 添加计划任务</h2>
+
+<p>```
+crontab -e</p>
+
+<h1>every day at 00m</h1>
+
+<p>00 * * * * /bin/bash /usr/local/mongo/cmd/mongo_backup.sh
+```</p>
+]]></content>
+  </entry>
+  
+</feed>
