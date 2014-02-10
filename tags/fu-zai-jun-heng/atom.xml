@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tag: 负载均衡 | 超群的博客]]></title>
-  <link href="http://colalife.com/tags/fu-zai-jun-heng/atom.xml" rel="self"/>
-  <link href="http://colalife.com/"/>
-  <updated>2014-02-10T11:32:32+08:00</updated>
-  <id>http://colalife.com/</id>
+  <link href="http://wangchaoqun.cn/tags/fu-zai-jun-heng/atom.xml" rel="self"/>
+  <link href="http://wangchaoqun.cn/"/>
+  <updated>2014-02-10T13:41:34+08:00</updated>
+  <id>http://wangchaoqun.cn/</id>
   <author>
     <name><![CDATA[wang chaoqun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[[转]大型网站架构演变和知识体系]]></title>
-    <link href="http://colalife.com/blog/2008/09/zhuan-da-xing-wang-zhan-jia-gou-yan-bian-he-zhi-shi-ti-xi.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2008/09/zhuan-da-xing-wang-zhan-jia-gou-yan-bian-he-zhi-shi-ti-xi.html/"/>
     <updated>2008-09-06T14:57:20+08:00</updated>
-    <id>http://colalife.com/blog/2008/09/zhuan-da-xing-wang-zhan-jia-gou-yan-bian-he-zhi-shi-ti-xi</id>
+    <id>http://wangchaoqun.cn/blog/2008/09/zhuan-da-xing-wang-zhan-jia-gou-yan-bian-he-zhi-shi-ti-xi</id>
     <content type="html"><![CDATA[<p><a href="http://www.blogjava.net/BlueDavy/archive/2008/09/03/226749.html">转自BlueDavy之技术Blog</a> 之前也有一些介绍大型网站架构演变的文章，例如LiveJournal的、ebay的，都是非常值得参考的，不过感觉他们讲的更多的是每次演变的结果，而没有很详细的讲为什么需要做这样的演变，再加上近来感觉有不少同学都很难明白为什么一个网站需要那么复杂的技术，于是有了写这篇文章的想法，在这篇文章中 将阐述一个普通的网站发展成大型网站过程中的一种较为典型的架构演变历程和所需掌握的知识体系，希望能给想从事互联网行业的同学一点初步的概念，:)，文中的不对之处也请各位多给点建议，让本文真正起到抛砖引玉的效果。<!--more--></p>
 
 <h2>架构演变第一步：物理分离webserver和数据库</h2>

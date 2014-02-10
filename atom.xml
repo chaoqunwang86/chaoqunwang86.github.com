@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[超群的博客]]></title>
-  <link href="http://colalife.com/atom.xml" rel="self"/>
-  <link href="http://colalife.com/"/>
-  <updated>2014-02-10T11:32:32+08:00</updated>
-  <id>http://colalife.com/</id>
+  <link href="http://wangchaoqun.cn/atom.xml" rel="self"/>
+  <link href="http://wangchaoqun.cn/"/>
+  <updated>2014-02-10T13:41:34+08:00</updated>
+  <id>http://wangchaoqun.cn/</id>
   <author>
     <name><![CDATA[wang chaoqun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[[转]Code Kata：编码套路]]></title>
-    <link href="http://colalife.com/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu.html/"/>
     <updated>2013-12-03T10:39:05+08:00</updated>
-    <id>http://colalife.com/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu</id>
+    <id>http://wangchaoqun.cn/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu</id>
     <content type="html"><![CDATA[<p><a href="http://blog.csdn.net/happydeer/article/details/17023229" target="_blank">来自happydeer</a><br/>
 [正文]
 最近，我大量阅读了Steve Yegge的文章。其中有一篇叫“Practicing Programming”（练习编程），写成于2005年，读后令我惊讶不已：</p>
@@ -97,9 +97,9 @@
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu.html/'>http://colalife.com/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu.html/'>http://wangchaoqun.cn/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>
@@ -107,9 +107,9 @@
   
   <entry>
     <title type="html"><![CDATA[MongoDB replSet集群和shard分片]]></title>
-    <link href="http://colalife.com/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/"/>
     <updated>2013-11-17T16:11:35+08:00</updated>
-    <id>http://colalife.com/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian</id>
+    <id>http://wangchaoqun.cn/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian</id>
     <content type="html"><![CDATA[<p>mongodb的集群有两种：1.主从(master, slave)  2.副本集(Replica Set)<br/>
 区别是副本集没有固定的&#8221;主节点&#8221;, 有一个活跃节点(primary)和  一个或多个备份节点(secondary), 而且可以在活跃节点有问题时自动切换（仲裁\选举方式）<br/>
 本文内容的结果是：建立2个分片，每个分片3个备份节点（端口1000x,2000x），2个选举节点（端口10000,20000），1个路由(端口7701，想选7000被占了)，3个config节点(端口660x，想选6000也被占了)，总共12个<!--more--></p>
@@ -371,9 +371,9 @@
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/'>http://colalife.com/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/'>http://wangchaoqun.cn/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>
@@ -381,9 +381,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mongodb, Mysql导出备份至ftp]]></title>
-    <link href="http://colalife.com/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/"/>
     <updated>2013-11-03T17:10:32+08:00</updated>
-    <id>http://colalife.com/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp</id>
+    <id>http://wangchaoqun.cn/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp</id>
     <content type="html"><![CDATA[<p>前提是mongodb和mysql已经安装使用，先安装vsftp，配置完成后，在编写shell脚本，使用计划任务执行<br/>
 1. 安装vsftp</p>
 
@@ -689,9 +689,9 @@
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/'>http://colalife.com/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/'>http://wangchaoqun.cn/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>
@@ -699,9 +699,9 @@
   
   <entry>
     <title type="html"><![CDATA[[转]Tomcat 生产服务器性能优化]]></title>
-    <link href="http://colalife.com/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua.html/"/>
     <updated>2013-07-25T10:08:06+08:00</updated>
-    <id>http://colalife.com/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua</id>
+    <id>http://wangchaoqun.cn/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua</id>
     <content type="html"><![CDATA[<p>tomcat优化+eclipse优化之类的文章网上有很多，这个收藏当作就手的工具。<br/>
 <a href="http://www.oschina.net/translate/tomcat-performance-tuning" target="_blank">来自oschina</a>  : 参与翻译(4人)：Garfielt, Lesus, MtrS, 大志darcy<br/>
 [正文]考虑一下这种场景，你开发了一个应用，它有十分优秀的布局设计，最新的特性以及其它的优秀特点。但是在性能这方面欠缺，不管这个应用如何都会遭到客户拒绝。客户总是期望它们的应用应该有更好的性能。如果你在产品中使用了Tomcat服务器，那么这篇文章就会给你几方面来提升Tomcat服务器的性能。<!--more--><br/>
@@ -805,9 +805,9 @@
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua.html/'>http://colalife.com/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua.html/'>http://wangchaoqun.cn/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>
@@ -815,9 +815,9 @@
   
   <entry>
     <title type="html"><![CDATA[Cygwin & Wine & Ruby 记录]]></title>
-    <link href="http://colalife.com/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu.html/"/>
     <updated>2013-01-16T16:03:36+08:00</updated>
-    <id>http://colalife.com/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu</id>
+    <id>http://wangchaoqun.cn/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu</id>
     <content type="html"><![CDATA[<p>cygwin是一个在windows平台上运行的unix模拟环境, wine则可以安装在Linux，再对应到Windows相应的函数来调用DLL以运行Windows程序。这两个就是利器，windows下不想用虚拟机（占用资源还挺多）或双系统，就可以用用cygwin；服务器上想搞点exe的东西就安装个wine。至于ruby，是因为octopress要用，开个虚拟机写博客很不爽，windows下折腾安装配置，却中文编码没解决，还是cygwin搞定。<!--more--></p>
 
 <h2>cygwin的安装</h2>
@@ -970,9 +970,9 @@ Liquid error: incompatible encoding regexp match (ascii-8bit regexp with utf-8 s
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu.html/'>http://colalife.com/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu.html/'>http://wangchaoqun.cn/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>
@@ -980,9 +980,9 @@ Liquid error: incompatible encoding regexp match (ascii-8bit regexp with utf-8 s
   
   <entry>
     <title type="html"><![CDATA[安装git, 建立Octopress博客]]></title>
-    <link href="http://colalife.com/blog/2013/01/an-zhuang-git-create-octopress-blog.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2013/01/an-zhuang-git-create-octopress-blog.html/"/>
     <updated>2013-01-07T14:34:24+08:00</updated>
-    <id>http://colalife.com/blog/2013/01/an-zhuang-git-create-octopress-blog</id>
+    <id>http://wangchaoqun.cn/blog/2013/01/an-zhuang-git-create-octopress-blog</id>
     <content type="html"><![CDATA[<p>本文参考了若干网络日志（谢过~）, 配置个人博客后整理而成</p>
 
 <h2>安装git  </h2>
@@ -993,7 +993,7 @@ Liquid error: incompatible encoding regexp match (ascii-8bit regexp with utf-8 s
 </span><span class='line'>git --version</span></code></pre></td></tr></table></div></figure>
 
 
-<p></p>
+<blockquote></blockquote>
 
 <!--more-->
 
@@ -1182,9 +1182,7 @@ delete your Gemfile.lock and edit the version of rake specified in your Gemfile 
 </span><span class='line'>rake new_post["new blog"]  </span></code></pre></td></tr></table></div></figure>
 
 
-<p></p>
-
-<h2>another pc</h2>
+<blockquote><h2>another pc</h2></blockquote>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -1224,7 +1222,7 @@ delete your Gemfile.lock and edit the version of rake specified in your Gemfile 
 </span><span class='line'>        posts_in_category = context.registers[:site].categories[category].size
 </span><span class='line'>        category_dir = context.registers[:site].config['category_dir']
 </span><span class='line'>        category_url = File.join(category_dir, category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase)
-</span><span class='line'>        html &lt;&lt; "&lt;li class='category'&gt;&lt;a href='http://colalife.com/#{category_url}/'&gt;#{category} (#{posts_in_category})&lt;/a&gt;&lt;/li&gt;\n"
+</span><span class='line'>        html &lt;&lt; "&lt;li class='category'&gt;&lt;a href='http://wangchaoqun.cn/#{category_url}/'&gt;#{category} (#{posts_in_category})&lt;/a&gt;&lt;/li&gt;\n"
 </span><span class='line'>      end
 </span><span class='line'>      html
 </span><span class='line'>    end
@@ -1246,23 +1244,23 @@ delete your Gemfile.lock and edit the version of rake specified in your Gemfile 
 </pre></td><td class='code'><pre><code class=''><span class='line'>&lt;section&gt;
 </span><span class='line'>  &lt;h1&gt;文章分类&lt;/h1&gt;
 </span><span class='line'>  &lt;ul id="categories"&gt;
-</span><span class='line'>    <li class='category'><a href='http://colalife.com/blog/categories/ftp/'>ftp (1)</a></li>
-<li class='category'><a href='http://colalife.com/blog/categories/hibernate/'>hibernate (1)</a></li>
-<li class='category'><a href='http://colalife.com/blog/categories/java/'>java (6)</a></li>
-<li class='category'><a href='http://colalife.com/blog/categories/linux/'>linux (2)</a></li>
-<li class='category'><a href='http://colalife.com/blog/categories/mongodb/'>mongodb (2)</a></li>
-<li class='category'><a href='http://colalife.com/blog/categories/mysql/'>mysql (1)</a></li>
-<li class='category'><a href='http://colalife.com/blog/categories/tech/'>tech (16)</a></li>
-<li class='category'><a href='http://colalife.com/blog/categories/tomcat/'>tomcat (1)</a></li>
-<li class='category'><a href='http://colalife.com/blog/categories/web/'>web (2)</a></li>
-<li class='category'><a href='http://colalife.com/blog/categories/dai-ma/'>代码 (3)</a></li>
-<li class='category'><a href='http://colalife.com/blog/categories/qi-ta/'>其他 (1)</a></li>
-<li class='category'><a href='http://colalife.com/blog/categories/jia-gou/'>架构 (1)</a></li>
-<li class='category'><a href='http://colalife.com/blog/categories/sheng-huo/'>生活 (7)</a></li>
-<li class='category'><a href='http://colalife.com/blog/categories/suan-fa/'>算法 (1)</a></li>
-<li class='category'><a href='http://colalife.com/blog/categories/zhi-ye/'>职业 (2)</a></li>
-<li class='category'><a href='http://colalife.com/blog/categories/she-ji-mo-shi/'>设计模式 (1)</a></li>
-<li class='category'><a href='http://colalife.com/blog/categories/du-shu/'>读书 (3)</a></li>
+</span><span class='line'>    <li class='category'><a href='http://wangchaoqun.cn/blog/categories/ftp/'>ftp (1)</a></li>
+<li class='category'><a href='http://wangchaoqun.cn/blog/categories/hibernate/'>hibernate (1)</a></li>
+<li class='category'><a href='http://wangchaoqun.cn/blog/categories/java/'>java (6)</a></li>
+<li class='category'><a href='http://wangchaoqun.cn/blog/categories/linux/'>linux (2)</a></li>
+<li class='category'><a href='http://wangchaoqun.cn/blog/categories/mongodb/'>mongodb (2)</a></li>
+<li class='category'><a href='http://wangchaoqun.cn/blog/categories/mysql/'>mysql (1)</a></li>
+<li class='category'><a href='http://wangchaoqun.cn/blog/categories/tech/'>tech (16)</a></li>
+<li class='category'><a href='http://wangchaoqun.cn/blog/categories/tomcat/'>tomcat (1)</a></li>
+<li class='category'><a href='http://wangchaoqun.cn/blog/categories/web/'>web (2)</a></li>
+<li class='category'><a href='http://wangchaoqun.cn/blog/categories/dai-ma/'>代码 (3)</a></li>
+<li class='category'><a href='http://wangchaoqun.cn/blog/categories/qi-ta/'>其他 (1)</a></li>
+<li class='category'><a href='http://wangchaoqun.cn/blog/categories/jia-gou/'>架构 (1)</a></li>
+<li class='category'><a href='http://wangchaoqun.cn/blog/categories/sheng-huo/'>生活 (7)</a></li>
+<li class='category'><a href='http://wangchaoqun.cn/blog/categories/suan-fa/'>算法 (1)</a></li>
+<li class='category'><a href='http://wangchaoqun.cn/blog/categories/zhi-ye/'>职业 (2)</a></li>
+<li class='category'><a href='http://wangchaoqun.cn/blog/categories/she-ji-mo-shi/'>设计模式 (1)</a></li>
+<li class='category'><a href='http://wangchaoqun.cn/blog/categories/du-shu/'>读书 (3)</a></li>
 
 </span><span class='line'>  &lt;/ul&gt;
 </span><span class='line'>&lt;/section&gt;</span></code></pre></td></tr></table></div></figure>
@@ -1284,9 +1282,9 @@ done！</p>
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2013/01/an-zhuang-git-create-octopress-blog.html/'>http://colalife.com/blog/2013/01/an-zhuang-git-create-octopress-blog.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2013/01/an-zhuang-git-create-octopress-blog.html/'>http://wangchaoqun.cn/blog/2013/01/an-zhuang-git-create-octopress-blog.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>
@@ -1294,9 +1292,9 @@ done！</p>
   
   <entry>
     <title type="html"><![CDATA[Excel导出工具类]]></title>
-    <link href="http://colalife.com/blog/2013/01/excel-dao-chu-gong-ju-lei.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2013/01/excel-dao-chu-gong-ju-lei.html/"/>
     <updated>2013-01-01T16:32:42+08:00</updated>
-    <id>http://colalife.com/blog/2013/01/excel-dao-chu-gong-ju-lei</id>
+    <id>http://wangchaoqun.cn/blog/2013/01/excel-dao-chu-gong-ju-lei</id>
     <content type="html"><![CDATA[<p>前端使用jquery easyui，datagrid添加导出按钮（另外的js逻辑）即可将当前页或所有页数据(支持查询条件的导出)导出到excel，支持office excel 2003和2007+;<br/>
 使用apache poi（+ooxml）实现，主要代码片段如下：</p>
 
@@ -2106,9 +2104,9 @@ done！</p>
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2013/01/excel-dao-chu-gong-ju-lei.html/'>http://colalife.com/blog/2013/01/excel-dao-chu-gong-ju-lei.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2013/01/excel-dao-chu-gong-ju-lei.html/'>http://wangchaoqun.cn/blog/2013/01/excel-dao-chu-gong-ju-lei.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>
@@ -2116,9 +2114,9 @@ done！</p>
   
   <entry>
     <title type="html"><![CDATA[Htmlparser和httpclient解析页面并下载]]></title>
-    <link href="http://colalife.com/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai.html/"/>
     <updated>2012-12-18T03:05:41+08:00</updated>
-    <id>http://colalife.com/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai</id>
+    <id>http://wangchaoqun.cn/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai</id>
     <content type="html"><![CDATA[<p>如果你想抓取某个网页（如新浪、csdn之类）获取最新资讯列表，或者到某个站点下载文件、图片之类，就需要html解析例如htmlparser,jsoup之类的jar包，下载可用httpclient。如果想更高效率可以搞线程池，抓取解析线程和下载线程，类似消费者和生产者模型（此处不涉及，仅演示使用），代码如下：</p>
 
 <!--more-->
@@ -2264,9 +2262,9 @@ done！</p>
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai.html/'>http://colalife.com/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai.html/'>http://wangchaoqun.cn/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>
@@ -2274,9 +2272,9 @@ done！</p>
   
   <entry>
     <title type="html"><![CDATA[[转]深入理解浏览器兼容性模式]]></title>
-    <link href="http://colalife.com/blog/2012/11/zhuan-shen-ru-li-jie-liu-lan-qi-jian-rong-xing-mo-shi.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2012/11/zhuan-shen-ru-li-jie-liu-lan-qi-jian-rong-xing-mo-shi.html/"/>
     <updated>2012-11-02T01:27:53+08:00</updated>
-    <id>http://colalife.com/blog/2012/11/zhuan-shen-ru-li-jie-liu-lan-qi-jian-rong-xing-mo-shi</id>
+    <id>http://wangchaoqun.cn/blog/2012/11/zhuan-shen-ru-li-jie-liu-lan-qi-jian-rong-xing-mo-shi</id>
     <content type="html"><![CDATA[<p>web开发人员遇到浏览器兼容简直就是噩梦，尤其各种ie内核的浏览器，还有搜狗、360等；这篇文章讲得比较详细，转了<a href="http://www.ituring.com.cn/article/15231" target="_blank">来自图灵社区</a><br/>
 正文 &mdash;&mdash;<br/>
 关于各种浏览器模式，网上已经有许多文档和资料了，但是很少有能够完全将几个概念阐述清楚的。大部分的资料稍显过时，有些内容可能已经不再适用了。本文中笔者将尽可能将几个概念阐述清楚，并去掉一些过时的内容，仅保留必要的干货。<!--more--></p>
@@ -2524,9 +2522,9 @@ UA:Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET C
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2012/11/zhuan-shen-ru-li-jie-liu-lan-qi-jian-rong-xing-mo-shi.html/'>http://colalife.com/blog/2012/11/zhuan-shen-ru-li-jie-liu-lan-qi-jian-rong-xing-mo-shi.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2012/11/zhuan-shen-ru-li-jie-liu-lan-qi-jian-rong-xing-mo-shi.html/'>http://wangchaoqun.cn/blog/2012/11/zhuan-shen-ru-li-jie-liu-lan-qi-jian-rong-xing-mo-shi.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>
@@ -2534,9 +2532,9 @@ UA:Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET C
   
   <entry>
     <title type="html"><![CDATA[测试Hibernate动态添加实体类]]></title>
-    <link href="http://colalife.com/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei.html/"/>
     <updated>2012-09-28T07:54:33+08:00</updated>
-    <id>http://colalife.com/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei</id>
+    <id>http://wangchaoqun.cn/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei</id>
     <content type="html"><![CDATA[<p>大家知道通过hibernate cfg或和spring集成的配置里，可用packagesToScan或mapping*之类声明实体类；但有需求可能要在某个项目中编码式加载实体类（例如某个不常用的或特定用户的实体类，并未事先配置），然后进行增删改查操作。下面代码配合spring test framework做了测试（注：hibernate升级到了4.3.final，与4.2有不同，spring3或4测试通过）：<!--more--></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -2628,9 +2626,9 @@ UA:Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET C
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei.html/'>http://colalife.com/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei.html/'>http://wangchaoqun.cn/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>
@@ -2638,9 +2636,9 @@ UA:Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET C
   
   <entry>
     <title type="html"><![CDATA[关于公司技术管理工作的几点思考]]></title>
-    <link href="http://colalife.com/blog/2011/04/guan-yu-gong-si-ji-zhu-guan-li-gong-zuo-de-ji-dian-si-kao.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2011/04/guan-yu-gong-si-ji-zhu-guan-li-gong-zuo-de-ji-dian-si-kao.html/"/>
     <updated>2011-04-14T15:06:42+08:00</updated>
-    <id>http://colalife.com/blog/2011/04/guan-yu-gong-si-ji-zhu-guan-li-gong-zuo-de-ji-dian-si-kao</id>
+    <id>http://wangchaoqun.cn/blog/2011/04/guan-yu-gong-si-ji-zhu-guan-li-gong-zuo-de-ji-dian-si-kao</id>
     <content type="html"><![CDATA[<p>一. 关于文档规范</p>
 
 <p>文档规范化正在形成的过程中，具体标准根据项目大小、要求、进度等不同而不同。开发人员写文档的能力向来是个短板，多看多借鉴国标、成熟的开发过程以及其他公司的文档，明白知道各文档所应涵盖的内容，学会并提高文档书写水平，是文档规范化的前提。在此基础之上，再召开会议讨论制定文档规范化模板，制定公司特色的文档体系才是可行的。<!--more--></p>
@@ -2689,9 +2687,9 @@ UA:Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET C
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2011/04/guan-yu-gong-si-ji-zhu-guan-li-gong-zuo-de-ji-dian-si-kao.html/'>http://colalife.com/blog/2011/04/guan-yu-gong-si-ji-zhu-guan-li-gong-zuo-de-ji-dian-si-kao.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2011/04/guan-yu-gong-si-ji-zhu-guan-li-gong-zuo-de-ji-dian-si-kao.html/'>http://wangchaoqun.cn/blog/2011/04/guan-yu-gong-si-ji-zhu-guan-li-gong-zuo-de-ji-dian-si-kao.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>
@@ -2699,9 +2697,9 @@ UA:Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET C
   
   <entry>
     <title type="html"><![CDATA[9种排序算法的java实现]]></title>
-    <link href="http://colalife.com/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian.html/"/>
     <updated>2010-08-09T13:09:09+08:00</updated>
-    <id>http://colalife.com/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian</id>
+    <id>http://wangchaoqun.cn/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian</id>
     <content type="html"><![CDATA[<p>使用枚举类型存入各算法和接口实现，main方法打印排序后的数组，也可以加入nanotime、currentTimeMillis测试效率，但可能数组太小不明显</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -3565,9 +3563,9 @@ UA:Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET C
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian.html/'>http://colalife.com/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian.html/'>http://wangchaoqun.cn/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>
@@ -3575,9 +3573,9 @@ UA:Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET C
   
   <entry>
     <title type="html"><![CDATA[宁静（二）]]></title>
-    <link href="http://colalife.com/blog/2009/07/ning-jing-2.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2009/07/ning-jing-2.html/"/>
     <updated>2009-07-09T14:40:21+08:00</updated>
-    <id>http://colalife.com/blog/2009/07/ning-jing-2</id>
+    <id>http://wangchaoqun.cn/blog/2009/07/ning-jing-2</id>
     <content type="html"><![CDATA[<p>我已经开始喜欢这种感觉了，
 晚上，
 关了门，关了灯，一个人，
@@ -3651,9 +3649,9 @@ oh,my God，真是美妙！</p>
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2009/07/ning-jing-2.html/'>http://colalife.com/blog/2009/07/ning-jing-2.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2009/07/ning-jing-2.html/'>http://wangchaoqun.cn/blog/2009/07/ning-jing-2.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>
@@ -3661,9 +3659,9 @@ oh,my God，真是美妙！</p>
   
   <entry>
     <title type="html"><![CDATA[宁静（一）]]></title>
-    <link href="http://colalife.com/blog/2009/07/ning-jing-1.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2009/07/ning-jing-1.html/"/>
     <updated>2009-07-05T15:11:10+08:00</updated>
-    <id>http://colalife.com/blog/2009/07/ning-jing-1</id>
+    <id>http://wangchaoqun.cn/blog/2009/07/ning-jing-1</id>
     <content type="html"><![CDATA[<p>现在是周五的晚上，已经十点半了，我想睡觉，可是，要求如此却也不能如愿：房间隔音效果不太好，这倒问题不大，但兄弟姐妹们着实很喜欢聊天，唱歌，喧嚣……好几次我是睡了又起，看会书，等等再睡，这次就写点东西吧 &ndash; 是为记。</p>
 
 <p>我一直觉得，在人生的不同阶段，对于人生的认识多少都会有所改变，在我们的童年，基本上没有谁会考虑生死；青春少年时，思想萌动，恰如“独上西楼，为赋新诗强说愁”，其实我们的那点阅历和体验简直如西湖里的单细胞生物般微不足道，更多时候脑袋里充斥着青春期的躁动、叛逆……对于生命，有过多少真正的思考呢？<!--more--><br/>
@@ -3686,9 +3684,9 @@ oh,my God，真是美妙！</p>
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2009/07/ning-jing-1.html/'>http://colalife.com/blog/2009/07/ning-jing-1.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2009/07/ning-jing-1.html/'>http://wangchaoqun.cn/blog/2009/07/ning-jing-1.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>
@@ -3696,9 +3694,9 @@ oh,my God，真是美妙！</p>
   
   <entry>
     <title type="html"><![CDATA[本地搭建SVN服务器及配置]]></title>
-    <link href="http://colalife.com/blog/2008/10/ben-di-da-jian-svnfu-wu-qi-ji-pei-zhi.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2008/10/ben-di-da-jian-svnfu-wu-qi-ji-pei-zhi.html/"/>
     <updated>2008-10-23T12:50:35+08:00</updated>
-    <id>http://colalife.com/blog/2008/10/ben-di-da-jian-svnfu-wu-qi-ji-pei-zhi</id>
+    <id>http://wangchaoqun.cn/blog/2008/10/ben-di-da-jian-svnfu-wu-qi-ji-pei-zhi</id>
     <content type="html"><![CDATA[<h4>1. 创建SVN数据库</h4>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -3760,9 +3758,9 @@ oh,my God，真是美妙！</p>
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2008/10/ben-di-da-jian-svnfu-wu-qi-ji-pei-zhi.html/'>http://colalife.com/blog/2008/10/ben-di-da-jian-svnfu-wu-qi-ji-pei-zhi.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2008/10/ben-di-da-jian-svnfu-wu-qi-ji-pei-zhi.html/'>http://wangchaoqun.cn/blog/2008/10/ben-di-da-jian-svnfu-wu-qi-ji-pei-zhi.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>
@@ -3770,9 +3768,9 @@ oh,my God，真是美妙！</p>
   
   <entry>
     <title type="html"><![CDATA[何以如此]]></title>
-    <link href="http://colalife.com/blog/2008/10/he-yi-ru-ci.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2008/10/he-yi-ru-ci.html/"/>
     <updated>2008-10-12T19:16:27+08:00</updated>
-    <id>http://colalife.com/blog/2008/10/he-yi-ru-ci</id>
+    <id>http://wangchaoqun.cn/blog/2008/10/he-yi-ru-ci</id>
     <content type="html"><![CDATA[<p>乌云未散，夜雨不止</p>
 
 <p>还是没有什么；</p>
@@ -3800,9 +3798,9 @@ oh,my God，真是美妙！</p>
 <p>我的灵魂，宁静清澈<p class='post-footer'></p>
 
 <pre><code>        原文地址：
-        &lt;a href='http://colalife.com/blog/2008/10/he-yi-ru-ci.html/'&gt;http://colalife.com/blog/2008/10/he-yi-ru-ci.html/&lt;/a&gt;&lt;br/&gt;
-        &amp;nbsp;written by &amp;nbsp;&lt;a href='http://colalife.com'&gt;wang chaoqun&lt;/a&gt;
-        &amp;nbsp;posted at &amp;nbsp;&lt;a href='http://colalife.com'&gt;http://colalife.com&lt;/a&gt;
+        &lt;a href='http://wangchaoqun.cn/blog/2008/10/he-yi-ru-ci.html/'&gt;http://wangchaoqun.cn/blog/2008/10/he-yi-ru-ci.html/&lt;/a&gt;&lt;br/&gt;
+        &amp;nbsp;written by &amp;nbsp;&lt;a href='http://wangchaoqun.cn'&gt;wang chaoqun&lt;/a&gt;
+        &amp;nbsp;posted at &amp;nbsp;&lt;a href='http://wangchaoqun.cn'&gt;http://wangchaoqun.cn&lt;/a&gt;
         &lt;/p&gt;
 </code></pre>
 ]]></content>
@@ -3810,9 +3808,9 @@ oh,my God，真是美妙！</p>
   
   <entry>
     <title type="html"><![CDATA[《时间管理》读书笔记]]></title>
-    <link href="http://colalife.com/blog/2008/09/shi-jian-guan-li-zhi-du-shu-bi-ji.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2008/09/shi-jian-guan-li-zhi-du-shu-bi-ji.html/"/>
     <updated>2008-09-23T18:44:23+08:00</updated>
-    <id>http://colalife.com/blog/2008/09/shi-jian-guan-li-zhi-du-shu-bi-ji</id>
+    <id>http://wangchaoqun.cn/blog/2008/09/shi-jian-guan-li-zhi-du-shu-bi-ji</id>
     <content type="html"><![CDATA[<p style=""text-align: center""><table style=""margin-top: 16px; width: 440px; height: 107px"" cellspacing=""0"" cellpadding=""0"" width=""440"" border=""0"">    <tbody>        <tr>            <td style=""text-align: center"">【原 书 名】 <a target=""_blank"" href=""http://www.amazon.com/Management-System-Administrators-Thomas-Limoncelli/dp/0596007833/ref=pd_bbs_sr_1/102-0116773-7214567?ie=UTF8&amp;s=books&amp;qid=1190013340&amp;sr=1-1""><font color=""#012c83"">Time Management for System Administrators </font></a></td>        </tr>        <tr>            <td style=""text-align: center"">【原出版社】 <a target=""_blank"" href=""http://www.china-pub.com/search/power_search/power_search.asp?key1=O'Reilly+Media%2c+Inc.""><font color=""#012c83"">O&#8217;Reilly Media, Inc. </font></a></td>        </tr>        <tr>            <td style=""text-align: center"">【作 者】<font color=""#012c83"">Thomas A. Limoncelli <span>[同作者作品]</span></font> <font color=""#012c83"">[作译者介绍]</font></td>        </tr>        <tr>            <td style=""text-align: center"">【译 者】 <font color=""#012c83"">O&rsquo;Reilly[同译者作品]</font> <font color=""#012c83"">Taiwan公司</font></td>        </tr>        <tr>            <td style=""text-align: center"">【出 版 社】&nbsp;东南大学出版社 &nbsp;&nbsp;&nbsp;&nbsp;【书 号】 9787564109059</td>        </tr>    </tbody></table></p>
 
 
@@ -3914,9 +3912,9 @@ oh,my God，真是美妙！</p>
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2008/09/shi-jian-guan-li-zhi-du-shu-bi-ji.html/'>http://colalife.com/blog/2008/09/shi-jian-guan-li-zhi-du-shu-bi-ji.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2008/09/shi-jian-guan-li-zhi-du-shu-bi-ji.html/'>http://wangchaoqun.cn/blog/2008/09/shi-jian-guan-li-zhi-du-shu-bi-ji.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>
@@ -3924,9 +3922,9 @@ oh,my God，真是美妙！</p>
   
   <entry>
     <title type="html"><![CDATA[《最后期限》读书笔记]]></title>
-    <link href="http://colalife.com/blog/2008/09/zui-hou-qi-xian-zhi-du-shu-bi-ji.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2008/09/zui-hou-qi-xian-zhi-du-shu-bi-ji.html/"/>
     <updated>2008-09-16T13:49:44+08:00</updated>
-    <id>http://colalife.com/blog/2008/09/zui-hou-qi-xian-zhi-du-shu-bi-ji</id>
+    <id>http://wangchaoqun.cn/blog/2008/09/zui-hou-qi-xian-zhi-du-shu-bi-ji</id>
     <content type="html"><![CDATA[<p>优质管理的四大要素</p>
 
 
@@ -3989,9 +3987,9 @@ oh,my God，真是美妙！</p>
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2008/09/zui-hou-qi-xian-zhi-du-shu-bi-ji.html/'>http://colalife.com/blog/2008/09/zui-hou-qi-xian-zhi-du-shu-bi-ji.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2008/09/zui-hou-qi-xian-zhi-du-shu-bi-ji.html/'>http://wangchaoqun.cn/blog/2008/09/zui-hou-qi-xian-zhi-du-shu-bi-ji.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>
@@ -3999,9 +3997,9 @@ oh,my God，真是美妙！</p>
   
   <entry>
     <title type="html"><![CDATA[[转]大型网站架构演变和知识体系]]></title>
-    <link href="http://colalife.com/blog/2008/09/zhuan-da-xing-wang-zhan-jia-gou-yan-bian-he-zhi-shi-ti-xi.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2008/09/zhuan-da-xing-wang-zhan-jia-gou-yan-bian-he-zhi-shi-ti-xi.html/"/>
     <updated>2008-09-06T14:57:20+08:00</updated>
-    <id>http://colalife.com/blog/2008/09/zhuan-da-xing-wang-zhan-jia-gou-yan-bian-he-zhi-shi-ti-xi</id>
+    <id>http://wangchaoqun.cn/blog/2008/09/zhuan-da-xing-wang-zhan-jia-gou-yan-bian-he-zhi-shi-ti-xi</id>
     <content type="html"><![CDATA[<p><a href="http://www.blogjava.net/BlueDavy/archive/2008/09/03/226749.html">转自BlueDavy之技术Blog</a> 之前也有一些介绍大型网站架构演变的文章，例如LiveJournal的、ebay的，都是非常值得参考的，不过感觉他们讲的更多的是每次演变的结果，而没有很详细的讲为什么需要做这样的演变，再加上近来感觉有不少同学都很难明白为什么一个网站需要那么复杂的技术，于是有了写这篇文章的想法，在这篇文章中 将阐述一个普通的网站发展成大型网站过程中的一种较为典型的架构演变历程和所需掌握的知识体系，希望能给想从事互联网行业的同学一点初步的概念，:)，文中的不对之处也请各位多给点建议，让本文真正起到抛砖引玉的效果。<!--more--></p>
 
 <h2>架构演变第一步：物理分离webserver和数据库</h2>
@@ -4153,9 +4151,9 @@ oh,my God，真是美妙！</p>
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2008/09/zhuan-da-xing-wang-zhan-jia-gou-yan-bian-he-zhi-shi-ti-xi.html/'>http://colalife.com/blog/2008/09/zhuan-da-xing-wang-zhan-jia-gou-yan-bian-he-zhi-shi-ti-xi.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2008/09/zhuan-da-xing-wang-zhan-jia-gou-yan-bian-he-zhi-shi-ti-xi.html/'>http://wangchaoqun.cn/blog/2008/09/zhuan-da-xing-wang-zhan-jia-gou-yan-bian-he-zhi-shi-ti-xi.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>
@@ -4163,9 +4161,9 @@ oh,my God，真是美妙！</p>
   
   <entry>
     <title type="html"><![CDATA[SQL Server 2005的安装和JDBC连接方法]]></title>
-    <link href="http://colalife.com/blog/2008/08/sql-server-2005-de-an-zhuang-he-jdbc-lian-jie-fang-fa.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2008/08/sql-server-2005-de-an-zhuang-he-jdbc-lian-jie-fang-fa.html/"/>
     <updated>2008-08-11T13:29:34+08:00</updated>
-    <id>http://colalife.com/blog/2008/08/sql-server-2005-de-an-zhuang-he-jdbc-lian-jie-fang-fa</id>
+    <id>http://wangchaoqun.cn/blog/2008/08/sql-server-2005-de-an-zhuang-he-jdbc-lian-jie-fang-fa</id>
     <content type="html"><![CDATA[<p>本文先介绍Windows XP SP2/SP3 下Microsoft SQL Server 2005 的安装及有关问题的解决方法，然后介绍Eclipse3.2 / 3.3 或 MyEclipse6.0 / 6.5 进行JDBC连接SQL Server 2005数据库的方法。</p>
 
 
@@ -4288,9 +4286,9 @@ oh,my God，真是美妙！</p>
 
 <p class='post-footer'>
             原文地址：
-            <a href='http://colalife.com/blog/2008/08/sql-server-2005-de-an-zhuang-he-jdbc-lian-jie-fang-fa.html/'>http://colalife.com/blog/2008/08/sql-server-2005-de-an-zhuang-he-jdbc-lian-jie-fang-fa.html/</a><br/>
-            &nbsp;written by &nbsp;<a href='http://colalife.com'>wang chaoqun</a>
-            &nbsp;posted at &nbsp;<a href='http://colalife.com'>http://colalife.com</a>
+            <a href='http://wangchaoqun.cn/blog/2008/08/sql-server-2005-de-an-zhuang-he-jdbc-lian-jie-fang-fa.html/'>http://wangchaoqun.cn/blog/2008/08/sql-server-2005-de-an-zhuang-he-jdbc-lian-jie-fang-fa.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.cn'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.cn'>http://wangchaoqun.cn</a>
             </p>
 
 ]]></content>

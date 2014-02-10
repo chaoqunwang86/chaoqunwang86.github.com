@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tag: git | 超群的博客]]></title>
-  <link href="http://colalife.com/tags/git/atom.xml" rel="self"/>
-  <link href="http://colalife.com/"/>
-  <updated>2014-02-10T11:32:32+08:00</updated>
-  <id>http://colalife.com/</id>
+  <link href="http://wangchaoqun.cn/tags/git/atom.xml" rel="self"/>
+  <link href="http://wangchaoqun.cn/"/>
+  <updated>2014-02-10T13:41:34+08:00</updated>
+  <id>http://wangchaoqun.cn/</id>
   <author>
     <name><![CDATA[wang chaoqun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[安装git, 建立Octopress博客]]></title>
-    <link href="http://colalife.com/blog/2013/01/an-zhuang-git-create-octopress-blog.html/"/>
+    <link href="http://wangchaoqun.cn/blog/2013/01/an-zhuang-git-create-octopress-blog.html/"/>
     <updated>2013-01-07T14:34:24+08:00</updated>
-    <id>http://colalife.com/blog/2013/01/an-zhuang-git-create-octopress-blog</id>
+    <id>http://wangchaoqun.cn/blog/2013/01/an-zhuang-git-create-octopress-blog</id>
     <content type="html"><![CDATA[<p>本文参考了若干网络日志（谢过~）, 配置个人博客后整理而成</p>
 
 <h2>安装git  </h2>
@@ -189,7 +189,7 @@ module Jekyll
     posts_in_category = context.registers[:site].categories[category].size
     category_dir = context.registers[:site].config['category_dir']
     category_url = File.join(category_dir, category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase)
-    html &lt;&lt; "&lt;li class='category'&gt;&lt;a href='http://colalife.com/#{category_url}/'&gt;#{category} (#{posts_in_category})&lt;/a&gt;&lt;/li&gt;\n"
+    html &lt;&lt; "&lt;li class='category'&gt;&lt;a href='http://wangchaoqun.cn/#{category_url}/'&gt;#{category} (#{posts_in_category})&lt;/a&gt;&lt;/li&gt;\n"
   end
   html
 end
