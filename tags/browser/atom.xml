@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tag: browser | 超群的博客]]></title>
-  <link href="http://wangchaoqun.com/tags/browser/atom.xml" rel="self"/>
-  <link href="http://wangchaoqun.com/"/>
-  <updated>2014-01-29T10:21:58+08:00</updated>
-  <id>http://wangchaoqun.com/</id>
+  <link href="http://colalife.com/tags/browser/atom.xml" rel="self"/>
+  <link href="http://colalife.com/"/>
+  <updated>2014-02-10T11:32:32+08:00</updated>
+  <id>http://colalife.com/</id>
   <author>
     <name><![CDATA[wang chaoqun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[[转]深入理解浏览器兼容性模式]]></title>
-    <link href="http://wangchaoqun.com/blog/2012/11/zhuan-shen-ru-li-jie-liu-lan-qi-jian-rong-xing-mo-shi.html/"/>
+    <link href="http://colalife.com/blog/2012/11/zhuan-shen-ru-li-jie-liu-lan-qi-jian-rong-xing-mo-shi.html/"/>
     <updated>2012-11-02T01:27:53+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2012/11/zhuan-shen-ru-li-jie-liu-lan-qi-jian-rong-xing-mo-shi</id>
+    <id>http://colalife.com/blog/2012/11/zhuan-shen-ru-li-jie-liu-lan-qi-jian-rong-xing-mo-shi</id>
     <content type="html"><![CDATA[<p>web开发人员遇到浏览器兼容简直就是噩梦，尤其各种ie内核的浏览器，还有搜狗、360等；这篇文章讲得比较详细，转了<a href="http://www.ituring.com.cn/article/15231" target="_blank">来自图灵社区</a><br/>
 正文 &mdash;&mdash;<br/>
 关于各种浏览器模式，网上已经有许多文档和资料了，但是很少有能够完全将几个概念阐述清楚的。大部分的资料稍显过时，有些内容可能已经不再适用了。本文中笔者将尽可能将几个概念阐述清楚，并去掉一些过时的内容，仅保留必要的干货。<!--more--></p>

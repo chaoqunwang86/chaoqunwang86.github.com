@@ -1,0 +1,642 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>MongoDB replSet集群和shard分片 - 超群的博客</title>
+  <meta name="author" content="wang chaoqun">
+
+  
+  <meta name="description" content="mongodb 集群 replSet 分片 shard">
+  <meta name="keywords" content="mongodb 集群 replSet 分片 shard">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://wangchaoqun.com/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/">
+  <link href="/favicon.png" rel="icon">
+  <!--<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">-->
+  <link href="http://bcs.duapp.com/colalife2000/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="超群的博客" type="application/atom+xml">
+  <!--<script src="/javascripts/modernizr-2.0.js"></script>-->
+  <script src="http://bcs.duapp.com/colalife2000/modernizr-2.0.js"></script>
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+  <!--<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>-->
+  <!--<script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.1.min.js"></script>-->
+  <script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <!--<script src="/javascripts/octopress.js" type="text/javascript"></script>-->
+  <script src="http://bcs.duapp.com/colalife2000/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+<link href="http://bcs.duapp.com/colalife2000/stylesheets/PTSans.css" rel="stylesheet" type="text/css">
+<link href="http://bcs.duapp.com/colalife2000/stylesheets/PTSerif.css" rel="stylesheet" type="text/css">
+<script language="javascript" type="text/javascript">
+$(document).ready(function(){
+	changeBg();
+	//window.setInterval("changeBg()", 30*1000);
+
+	$(document).bind('DOMNodeInserted', function(event) {
+	  addBlankTargetForLinks();
+	});
+
+/*
+	var ref=location.href;
+	var wangchaoqun_com="wangchaoqun.com";
+	var wangchaoqun_cn="wangchaoqun.cn";
+	var colalife_com="colalife.com";
+
+	if(ref.indexOf(colalife_com)!=-1){
+	  ref=ref.replace(colalife_com, wangchaoqun_com);
+	  window.location.replace(ref);
+	} else if(ref.indexOf(wangchaoqun_cn)!=-1){
+	  ref=ref.replace(wangchaoqun_cn, wangchaoqun_com);
+	  window.location.replace(ref);
+	}
+*/
+});
+function changeBg() {
+	var dir = "http://bcs.duapp.com/colalife2000/images/"
+	var bg = "url("+dir+"v"+Math.floor(Math.random()*5+1)+".jpg)";
+	$("#myheader").css({"background-image":bg});
+}
+function addBlankTargetForLinks () {
+  $('a[href^="http"]').each(function(){
+      $(this).attr('target', '_blank');
+  });
+}
+</script>
+
+  
+
+</head>
+
+<body   >
+  <header id="myheader" role="banner" style="height:92px;"><hgroup style="height:100px" onmouseover="this.style.cursor='pointer'" onclick="document.location='/';"></hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:wangchaoqun.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation" style="font-weight: bold;">
+  <li><a href="/">首页</a></li> 
+  <li><a href="/blog/archives">文章列表</a></li> 
+  <li><a href="/blog/categories/tech/">技术</a></li>
+  <li><a href="/blog/categories/du-shu/">读书</a></li> 
+  <li><a href="/blog/categories/zhi-ye/">职业</a></li>
+  <li><a href="/blog/categories/sheng-huo/">生活</a></li>
+  <li><a href="/blog/categories/qi-ta/">其他</a></li>
+  <li><a href="/tags/">标签云</a></li>
+  <li><a href="/comments/">留言板</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">MongoDB replSet集群和shard分片</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-17T16:11:35+08:00" pubdate data-updated="true">2013年11月17日</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>mongodb的集群有两种：1.主从(master, slave)  2.副本集(Replica Set)<br/>
+区别是副本集没有固定的&#8221;主节点&#8221;, 有一个活跃节点(primary)和  一个或多个备份节点(secondary), 而且可以在活跃节点有问题时自动切换（仲裁\选举方式）<br/>
+本文内容的结果是：建立2个分片，每个分片3个备份节点（端口1000x,2000x），2个选举节点（端口10000,20000），1个路由(端口7701，想选7000被占了)，3个config节点(端口660x，想选6000也被占了)，总共12个<!--more--></p>
+
+<h4>1. MongoDB集群</h4>
+
+<p>将mongodb的zip解压到不同的文件夹（本文是windows下，linux类似），建立3个节点（1000X是myshard1分片的），注意端口号，启动：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>c:\mongo10001\bin\mongod -f c:\mongo10001\config
+</span><span class='line'>c:\mongo10002\bin\mongod -f c:\mongo10002\config
+</span><span class='line'>c:\mongo10003\bin\mongod -f c:\mongo10003\config</span></code></pre></td></tr></table></div></figure>
+
+
+<p>使用config文件配置，mongo10001节点的内容如下，其他相应修改即可：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>port=10001
+</span><span class='line'>dbpath=C:\mongo10001\data\
+</span><span class='line'>logpath=C:\mongo10001\log\mongo.log
+</span><span class='line'>replSet=myshard1/127.0.0.1:10002,127.0.0.1:10003
+</span><span class='line'>shardsvr=true
+</span><span class='line'>logappend=true
+</span><span class='line'>rest=true</span></code></pre></td></tr></table></div></figure>
+
+
+<p>仲裁节点（可选，要的话后面还有要addArb）</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>c:\mongo10000\bin\mongod -f c:\mongo10000\config
+</span><span class='line'>or
+</span><span class='line'>c:\mongo10000\bin\mongod --dbpath=c:\mongo10000\data --port 10000 --replSet myshard1/127.0.0.1:10001  </span></code></pre></td></tr></table></div></figure>
+
+
+<p>将各节点启动后，cmd下连接并执行初始化命令：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mongo 127.0.0.1:10001/admin
+</span><span class='line'>db.runCommand({"replSetInitiate":{ "_id":"myshard1", "members":[{ "_id":1, "host":"127.0.0.1:10001"}, { "_id":2, "host":"127.0.0.1:10002"}, { "_id":3, "host":"127.0.0.1:10003"}] }})</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这个2000X是myshard2分片的3个节点，需要像前面一样配好、启动、执行，不分片可忽略</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mongo 127.0.0.1:20001/admin
+</span><span class='line'>db.runCommand({"replSetInitiate":{ "_id":"myshard2", "members":[{ "_id":1, "host":"127.0.0.1:20001"}, { "_id":2, "host":"127.0.0.1:20002"}, { "_id":3, "host":"127.0.0.1:20003"}] }})</span></code></pre></td></tr></table></div></figure>
+
+
+<p>查看状态</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rs.status()</span></code></pre></td></tr></table></div></figure>
+
+
+<p>仲裁节点（可选，前面没配置就不要add了）</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rs.addArb("127.0.0.1:10000")</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><strong>测试</strong>在一个节点导入数据后，查看其他节点数据也有了</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mongorestore -h 127.0.0.1:10001 --directoryperdb b:\mongo\dump</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+<strong>注意</strong>：关于节点的读写操作
+在primary节点中添加数据: db.xxxx.insert
+如果在secondary备份节点查询，会出现错误:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>error: { "$err" : "not master and slaveok=false", "code" : 13435 }</span></code></pre></td></tr></table></div></figure>
+
+
+<p>执行如下语句:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>db.getMongo().setSlaveOk();</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这是因为对于replica set中的secondary节点默认是不可读的，由Secondary来分担读的压力，Primary只承担写操作，通过在连接时指定或者在主库指定slaveOk即可</p>
+
+<h4>spring data mongodb的集群配置（未分片）</h4>
+
+<p>原来使用单一mongo的，现在要用集群，就把spring xml配置和properties做相应修改：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;mongo:mongo replica-set="${mongo.replica.set}"/&gt;
+</span><span class='line'>
+</span><span class='line'>mongo.replica.set=127.0.0.1:10001,127.0.0.1:10002,127.0.0.1:10003</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>2. MongoDB分片</h4>
+
+<p>[摘录]基本思想就是将集合切分成小块，这些块分散到若干片里面，每个片只负责总数据的一部分；应用程序不必知道
+哪片对应哪些数据，甚至不需要知道数据已经被拆分了，所以在分片之前要运行一个路由进程，进程名mongos，这个路由器知道
+所有数据的存放位置，所以应用可以连接它来正常发送请求；对应用来说，它仅知道连接了一个普通的mongod；路由器知道和片的
+对应关系，能够转发请求到正确的片上；如果请求有了回应，路由器将其收集起来回送给应用。</p>
+
+<p>所以，<strong>在下面的分片完成后</strong>，上面spring data mongodb的集群配置就要<strong>改回单一mongo的，注意要连接的是mongos，不是原来那个</strong></p>
+
+<p>好了，这里要有路由节点和config节点<br/>
+开启<strong>config服务器</strong>（我配了3个，为了测试有节点挂掉的情况，这只是第1个），使用参数或config文件启动</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>c:\mongo6001\bin\mongod --dbpath=c:\mongo6001\data --port 6001 --configsvr
+</span><span class='line'>c:\mongo6001\bin\mongod -f c:\mongo6001\config</span></code></pre></td></tr></table></div></figure>
+
+
+<p>config文件：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>port=6001
+</span><span class='line'>dbpath=C:\mongo6001\data\
+</span><span class='line'>logpath=C:\mongo6001\log\mongo.log
+</span><span class='line'>configsvr=true
+</span><span class='line'>logappend=true
+</span><span class='line'>rest=true</span></code></pre></td></tr></table></div></figure>
+
+
+<p>开启<strong>mongos服务器</strong>，使用参数或config文件启动</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>c:\mongo7701\bin\mongos --port 7701 --configdb=127.0.0.1:6001
+</span><span class='line'>c:\mongo7701\bin\mongos -f c:\mongo7701\config  </span></code></pre></td></tr></table></div></figure>
+
+
+<p>config文件：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>port=7701
+</span><span class='line'>logpath=C:\mongo7701\log\mongo.log
+</span><span class='line'>#configdb说明：一个就写一个，多个就写多个，这里是3个
+</span><span class='line'>configdb=127.0.0.1:6001,127.0.0.1:6002,127.0.0.1:6003 
+</span><span class='line'>logappend=true</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>启动mongod服务器，上面集群配了3个，启动即可（2000X是myshard2分片的，也启动）</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>c:\mongo10001\bin\mongod -f c:\mongo10001\config
+</span><span class='line'>c:\mongo10002\bin\mongod -f c:\mongo10002\config
+</span><span class='line'>c:\mongo10003\bin\mongod -f c:\mongo10003\config
+</span><span class='line'>c:\mongo20001\bin\mongod -f c:\mongo20001\config
+</span><span class='line'>c:\mongo20002\bin\mongod -f c:\mongo20002\config
+</span><span class='line'>c:\mongo20003\bin\mongod -f c:\mongo20003\config</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>连接mongos服务器</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>C:\Users\wangchaoqun&gt;mongo 127.0.0.1:7701/admin
+</span><span class='line'>MongoDB shell version: 2.4.8
+</span><span class='line'>connecting to: 127.0.0.1:7701/admin</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后将10001，10002，10003的mongod交给mongos,添加分片也就是addshard()<br/>
+<strong>两个分片的集群，每个分片3个备份节点</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>db.runCommand({addshard:"myshard1/127.0.0.1:10001,127.0.0.1:10002,127.0.0.1:10003",allowlocal:true})
+</span><span class='line'>db.runCommand({addshard:"myshard2/127.0.0.1:20001,127.0.0.1:20002,127.0.0.1:20003",allowlocal:true})</span></code></pre></td></tr></table></div></figure>
+
+
+<p>片已经集群了，但是mongos不知道该如何切分数据，要在mongos设置片键：<br/>
+1. 开启数据库分片功能</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mongos&gt; db.runCommand({"enablesharding":"mytestdb"})
+</span><span class='line'>{ "ok" : 1 }</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+2. 指定集合中分片的片键，这里使用users里的name</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mongos&gt; db.runCommand({shardcollection:"mytestdb.users",key:{name:1}})
+</span><span class='line'>{ "collectionsharded" : "mytestdb.users", "ok" : 1 }</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<h4>3. 测试</h4>
+
+<p>通过mongos向mongodb插入10w记录</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>use mytestdb
+</span><span class='line'>for(var i=0;i&lt;100000;i++){
+</span><span class='line'>  var x="poiuytrewqasdfghjklmnbvcxz";
+</span><span class='line'>  var c=x.charAt(Math.ceil(Math.random() * 25));
+</span><span class='line'>  var t=Math.ceil(Math.random() * 100000);
+</span><span class='line'>  var content=c+t;
+</span><span class='line'>  var time=new Date().getTime()-Math.ceil(Math.random() * 100)*t;
+</span><span class='line'>  db.users.insert({"content":content,"creatorId":""+i%7,"createtime":time});
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+通过printShardingStatus命令查看mongodb的数据分片情况</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>db.printShardingStatus();</span></code></pre></td></tr></table></div></figure>
+
+
+<p>每个节点都看看，是不是数据都有了</p>
+
+<h4>4. 参考</h4>
+
+<p><a href="http://blog.sina.com.cn/s/blog_498e79cc0101115v.html">http://blog.sina.com.cn/s/blog_498e79cc0101115v.html</a>
+<a href="http://www.cnblogs.com/huangxincheng/archive/2012/03/04/2379755.html">http://www.cnblogs.com/huangxincheng/archive/2012/03/04/2379755.html</a>
+<a href="http://www.cnblogs.com/refactor/archive/2012/08/13/2600140.html">http://www.cnblogs.com/refactor/archive/2012/08/13/2600140.html</a></p>
+
+<p class='post-footer'>
+            原文地址：
+            <a href='http://wangchaoqun.com/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/'>http://wangchaoqun.com/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.com'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.com'>http://wangchaoqun.com</a>
+            </p>
+
+</div>
+
+
+  <footer style="height:200px">
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">wang chaoqun</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-17T16:11:35+08:00" pubdate data-updated="true">2013年11月17日</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/mongodb/'>mongodb</a>, <a class='category' href='/blog/categories/tech/'>tech</a>
+  
+</span>
+
+
+      
+<DIV style="font-size:12px;BORDER-BOTTOM: #bbbbbb 1px solid; BORDER-LEFT: #bbbbbb 1px solid; BACKGROUND: #f6f6f6; HEIGHT: 120px; BORDER-TOP: #bbbbbb 1px solid; BORDER-RIGHT: #bbbbbb 1px solid" class="myright"> 
+<DIV style="MARGIN-TOP: 9px; FLOAT: left; MARGIN-LEFT: 8px; MARGIN-RIGHT: 10px"> 
+<!--<IMG title="colalife" src="/images/myicon.jpg" width="80px" height="90px" style="border: #fff 0em solid;">-->
+<IMG title="colalife" src="http://bcs.duapp.com/colalife2000/myicon.jpg" width="80px" height="90px" style="border: #fff 0em solid;">
+</DIV> 
+<DIV style="LINE-HEIGHT: 200%; MARGIN-TOP: 10px; COLOR: #000000"> 
+作者： <A href="http://wangchaoqun.com/">王超群</A><BR> 
+出处： <A href="http://wangchaoqun.com/">http://wangchaoqun.com/</A> 
+<BR>本文基于<a target="_blank" title="Creative Commons Attribution 2.5 China Mainland License" href="http://creativecommons.org/licenses/by/2.5/cn/"> 
+署名 2.5 中国大陆</a>许可协议发布，欢迎转载，演绎或用于商业目的，但是必须保留本文的署名 
+<a href="http://wangchaoqun.com/">王超群</a>（包含链接）</DIV></DIV> 
+
+
+    </p>
+
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/" title="Previous Post: mongodb, mysql导出备份至ftp">&laquo; mongodb, mysql导出备份至ftp</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu.html/" title="Next Post: [转]Code Kata：编码套路">[转]Code Kata：编码套路 &raquo;</a>
+      
+    </p>
+    
+      <!-- <div class="sharing">
+  
+  
+  
+</div>
+ -->
+<!-- baidu share Button BEGIN
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_t163" data-cmd="t163" title="分享到网易微博"></a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_hi" data-cmd="hi" title="分享到百度空间"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];</script>
+baidu share Button END -->
+
+    
+  </footer>
+</article>
+<!-- duoshuo -->
+<section id=”comment”>
+<!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"colalife"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = 'http://static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	|| document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!-- Duoshuo Comment END -->
+
+</section>
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>关于我</h1>
+<p>
+一个[程序猿，攻城狮]，这么有福气<br><br>
+纸上得来终觉浅，绝知此事要躬行<br><br>
+成长，需要积累； 记录，在此博客<br><br>
+<a href='http://me.alipay.com/colalife'><img src='https://img.alipay.com/sys/personalprod/style/mc/btn-index.png'/></a>
+</p>
+</section>
+<section>  
+  <h1>标签</h1>  
+  <ul class="tag-cloud">  
+    <a style="padding: 3px;font-size: 100%" href="/tags/books/">books</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/browser/">browser</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/cygwin/">cygwin</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/excel/">excel</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/git/">git</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/github/">github</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/hibernate/">hibernate</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/htmlparser/">htmlparser</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/httpclient/">httpclient</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/java/">java</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/jsoup/">jsoup</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/jvm/">jvm</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/linux/">linux</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/mongodb/">mongodb</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/octopress/">octopress</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/poi/">poi</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/ruby/">ruby</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/sessionfactory/">sessionfactory</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/spring-test/">spring-test</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/svn/">svn</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/tomcat/">tomcat</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/wine/">wine</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/shu-ju-ku/">数据库</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/shi-jian-guan-li/">时间管理</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/zui-hou-qi-xian/">最后期限</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/suan-fa/">算法</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/guan-li-gong-zuo/">管理工作</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/she-ji-mo-shi/">设计模式</a>
+<a style="padding: 3px;font-size: 210%" href="/tags/sui-bi/">随笔</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/xiang-mu-guan-li/">项目管理</a>
+
+  </ul>  
+</section>
+<section>
+  <h1>最新文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu.html/">[转]Code Kata：编码套路</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/">MongoDB replSet集群和shard分片</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/">Mongodb, Mysql导出备份至ftp</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua.html/">[转]Tomcat 生产服务器性能优化</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu.html/">Cygwin & Wine & Ruby 记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/an-zhuang-git-create-octopress-blog.html/">安装git, 建立Octopress博客</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/excel-dao-chu-gong-ju-lei.html/">Excel导出工具类</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai.html/">Htmlparser和httpclient解析页面并下载</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/zhuan-shen-ru-li-jie-liu-lan-qi-jian-rong-xing-mo-shi.html/">[转]深入理解浏览器兼容性模式</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei.html/">测试Hibernate动态添加实体类</a>
+      </li>
+    
+  </ul>
+</section>
+<section> 
+  <h1>文章分类</h1> 
+  <ul id="categories"> 
+    <li class='category'><a href='/blog/categories/ftp/'>ftp (1)</a></li>
+<li class='category'><a href='/blog/categories/hibernate/'>hibernate (1)</a></li>
+<li class='category'><a href='/blog/categories/java/'>java (6)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (2)</a></li>
+<li class='category'><a href='/blog/categories/mongodb/'>mongodb (2)</a></li>
+<li class='category'><a href='/blog/categories/mysql/'>mysql (1)</a></li>
+<li class='category'><a href='/blog/categories/tech/'>tech (15)</a></li>
+<li class='category'><a href='/blog/categories/tomcat/'>tomcat (1)</a></li>
+<li class='category'><a href='/blog/categories/web/'>web (2)</a></li>
+<li class='category'><a href='/blog/categories/dai-ma/'>代码 (3)</a></li>
+<li class='category'><a href='/blog/categories/qi-ta/'>其他 (1)</a></li>
+<li class='category'><a href='/blog/categories/sheng-huo/'>生活 (7)</a></li>
+<li class='category'><a href='/blog/categories/suan-fa/'>算法 (1)</a></li>
+<li class='category'><a href='/blog/categories/zhi-ye/'>职业 (2)</a></li>
+<li class='category'><a href='/blog/categories/she-ji-mo-shi/'>设计模式 (1)</a></li>
+<li class='category'><a href='/blog/categories/du-shu/'>读书 (3)</a></li>
+ 
+  </ul> 
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo" style="margin-bottom: 40px;"><!-- baidu share BEGIN -->
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"6","bdPos":"left","bdTop":"110"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];</script>
+<!-- baidu share END -->
+<p>
+  Copyright &copy; 2014 - wang chaoqun -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/javascripts/libs/totop.js"></script>
+</body>
+</html>

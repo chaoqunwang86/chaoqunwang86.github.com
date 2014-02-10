@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tag: 数据库 | 超群的博客]]></title>
-  <link href="http://wangchaoqun.com/tags/shu-ju-ku/atom.xml" rel="self"/>
-  <link href="http://wangchaoqun.com/"/>
-  <updated>2014-01-29T10:21:58+08:00</updated>
-  <id>http://wangchaoqun.com/</id>
+  <link href="http://colalife.com/tags/shu-ju-ku/atom.xml" rel="self"/>
+  <link href="http://colalife.com/"/>
+  <updated>2014-02-10T11:32:32+08:00</updated>
+  <id>http://colalife.com/</id>
   <author>
     <name><![CDATA[wang chaoqun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SQL Server 2005的安装和JDBC连接方法]]></title>
-    <link href="http://wangchaoqun.com/blog/2008/08/sql-server-2005-de-an-zhuang-he-jdbc-lian-jie-fang-fa.html/"/>
+    <link href="http://colalife.com/blog/2008/08/sql-server-2005-de-an-zhuang-he-jdbc-lian-jie-fang-fa.html/"/>
     <updated>2008-08-11T13:29:34+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2008/08/sql-server-2005-de-an-zhuang-he-jdbc-lian-jie-fang-fa</id>
+    <id>http://colalife.com/blog/2008/08/sql-server-2005-de-an-zhuang-he-jdbc-lian-jie-fang-fa</id>
     <content type="html"><![CDATA[<p>本文先介绍Windows XP SP2/SP3 下Microsoft SQL Server 2005 的安装及有关问题的解决方法，然后介绍Eclipse3.2 / 3.3 或 MyEclipse6.0 / 6.5 进行JDBC连接SQL Server 2005数据库的方法。</p>
 
 

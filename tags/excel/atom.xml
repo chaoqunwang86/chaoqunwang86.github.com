@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tag: excel | 超群的博客]]></title>
-  <link href="http://wangchaoqun.com/tags/excel/atom.xml" rel="self"/>
-  <link href="http://wangchaoqun.com/"/>
-  <updated>2014-01-29T10:21:58+08:00</updated>
-  <id>http://wangchaoqun.com/</id>
+  <link href="http://colalife.com/tags/excel/atom.xml" rel="self"/>
+  <link href="http://colalife.com/"/>
+  <updated>2014-02-10T11:32:32+08:00</updated>
+  <id>http://colalife.com/</id>
   <author>
     <name><![CDATA[wang chaoqun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[excel导出工具类]]></title>
-    <link href="http://wangchaoqun.com/blog/2013/01/excel-dao-chu-gong-ju-lei.html/"/>
+    <link href="http://colalife.com/blog/2013/01/excel-dao-chu-gong-ju-lei.html/"/>
     <updated>2013-01-01T16:32:42+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2013/01/excel-dao-chu-gong-ju-lei</id>
+    <id>http://colalife.com/blog/2013/01/excel-dao-chu-gong-ju-lei</id>
     <content type="html"><![CDATA[<p>前端使用jquery easyui，datagrid添加导出按钮（另外的js逻辑）即可将当前页或所有页数据(支持查询条件的导出)导出到excel，支持office excel 2003和2007+;<br/>
 使用apache poi（+ooxml）实现，主要代码片段如下：</p>
 

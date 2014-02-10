@@ -18,37 +18,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://wangchaoqun.com/blog/page/4/index.html">
+  <link id="currentUrl" rel="canonical" href="http://colalife.com/blog/page/4/index.html">
   <link href="/favicon.png" rel="icon">
   <!--<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">-->
-  <link href="http://bcs.duapp.com/colalife2000/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://bcs.duapp.com/colalife2000/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="超群的博客" type="application/atom+xml">
   <!--<script src="/javascripts/modernizr-2.0.js"></script>-->
-  <script src="http://bcs.duapp.com/colalife2000/modernizr-2.0.js"></script>
+  <script src="http://bcs.duapp.com/colalife2000/javascripts/modernizr-2.0.js"></script>
   <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
   <!--<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>-->
   <!--<script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.1.min.js"></script>-->
   <script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <!--<script src="/javascripts/octopress.js" type="text/javascript"></script>-->
-  <script src="http://bcs.duapp.com/colalife2000/octopress.js" type="text/javascript"></script>
+  <script src="http://bcs.duapp.com/colalife2000/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts 
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 -->
 <link href="http://bcs.duapp.com/colalife2000/stylesheets/PTSans.css" rel="stylesheet" type="text/css">
 <link href="http://bcs.duapp.com/colalife2000/stylesheets/PTSerif.css" rel="stylesheet" type="text/css">
+<style>html{display:none;}</style>
+<script>
+	if (self == top) {
+		document.documentElement.style.display = 'block';
+	} else {
+		top.location = self.location;
+	}
+</script>
 <script language="javascript" type="text/javascript">
 $(document).ready(function(){
 	changeBg();
 	//window.setInterval("changeBg()", 30*1000);
-
+	
+	var error404=$("#currentUrl").attr("href");
+	if(error404.indexOf("/404.html")!=-1){
+		window.setTimeout("document.location='/';", 5*1000);
+	}
+	
 	$(document).bind('DOMNodeInserted', function(event) {
-	  addBlankTargetForLinks();
+		addBlankTargetForLinks();
 	});
 
 /*
-	var ref=location.href;
 	var wangchaoqun_com="wangchaoqun.com";
 	var wangchaoqun_cn="wangchaoqun.cn";
 	var colalife_com="colalife.com";
@@ -64,8 +76,8 @@ $(document).ready(function(){
 });
 function changeBg() {
 	var dir = "http://bcs.duapp.com/colalife2000/images/"
-	var bg = "url("+dir+"v"+Math.floor(Math.random()*5+1)+".jpg)";
-	$("#myheader").css({"background-image":bg});
+	var image = "url("+dir+"yh"+Math.floor(Math.random()*5+1)+".jpg)";
+	$("#myheader").css({"background-image":image});
 }
 function addBlankTargetForLinks () {
   $('a[href^="http"]').each(function(){
@@ -79,7 +91,7 @@ function addBlankTargetForLinks () {
 </head>
 
 <body   >
-  <header id="myheader" role="banner" style="height:92px;"><hgroup style="height:100px" onmouseover="this.style.cursor='pointer'" onclick="document.location='/';"></hgroup>
+  <header id="myheader" role="banner" style="height:106px;"><hgroup style="height:100px" onmouseover="this.style.cursor='pointer'" onclick="document.location='/';"></hgroup>
 
 </header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
@@ -89,7 +101,7 @@ function addBlankTargetForLinks () {
   
 <form action="http://google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:wangchaoqun.com" />
+    <input type="hidden" name="q" value="site:colalife.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -111,6 +123,45 @@ function addBlankTargetForLinks () {
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/09/zhuan-da-xing-wang-zhan-jia-gou-yan-bian-he-zhi-shi-ti-xi.html/">[转]大型网站架构演变和知识体系</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-06T14:57:20+08:00" pubdate data-updated="true">2008年09月06日</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.blogjava.net/BlueDavy/archive/2008/09/03/226749.html">转自BlueDavy之技术Blog</a> 之前也有一些介绍大型网站架构演变的文章，例如LiveJournal的、ebay的，都是非常值得参考的，不过感觉他们讲的更多的是每次演变的结果，而没有很详细的讲为什么需要做这样的演变，再加上近来感觉有不少同学都很难明白为什么一个网站需要那么复杂的技术，于是有了写这篇文章的想法，在这篇文章中 将阐述一个普通的网站发展成大型网站过程中的一种较为典型的架构演变历程和所需掌握的知识体系，希望能给想从事互联网行业的同学一点初步的概念，:)，文中的不对之处也请各位多给点建议，让本文真正起到抛砖引玉的效果。</div>
+  
+  
+    <footer style="text-align:right;">
+      <a rel="full-article" href="/blog/2008/09/zhuan-da-xing-wang-zhan-jia-gou-yan-bian-he-zhi-shi-ti-xi.html/">&larr;点击阅读全文</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -332,45 +383,6 @@ function addBlankTargetForLinks () {
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/12/fu-yun-jiao-yue.html/">浮云皎月</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-12-09T23:06:54+08:00" pubdate data-updated="true">2006年12月09日</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Time flies and it&rsquo;s hard to die! <br />            <br />            夜，很静；风，很凉；皎洁的月，挂在天上；薄纱似的云飘过&hellip;&hellip; <br />            <br />            不远处灯火阑珊，校园也宁静；无聊吗，一个人静静地坐在这石头上，心底渴求的宁静，也许找得到 <br /></div>
-  
-  
-    <footer style="text-align:right;">
-      <a rel="full-article" href="/blog/2006/12/fu-yun-jiao-yue.html/">&larr;点击阅读全文</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; 前一页</a>
@@ -388,8 +400,11 @@ function addBlankTargetForLinks () {
 <p>
 一个[程序猿，攻城狮]，这么有福气<br><br>
 纸上得来终觉浅，绝知此事要躬行<br><br>
-成长，需要积累； 记录，在此博客<br><br>
-<a href='http://me.alipay.com/colalife'><img src='https://img.alipay.com/sys/personalprod/style/mc/btn-index.png'/></a>
+成长，需要积累； 记录，在此博客
+</p>
+<p>
+<center><a href='http://me.alipay.com/colalife'><img src='https://img.alipay.com/sys/personalprod/style/mc/btn-index.png'/></a><br>
+感谢支持，感谢捐赠</center>
 </p>
 </section>
 <section>  
@@ -397,7 +412,6 @@ function addBlankTargetForLinks () {
   <ul class="tag-cloud">  
     <a style="padding: 3px;font-size: 100%" href="/tags/books/">books</a>
 <a style="padding: 3px;font-size: 100%" href="/tags/browser/">browser</a>
-<a style="padding: 3px;font-size: 100%" href="/tags/cygwin/">cygwin</a>
 <a style="padding: 3px;font-size: 100%" href="/tags/excel/">excel</a>
 <a style="padding: 3px;font-size: 100%" href="/tags/git/">git</a>
 <a style="padding: 3px;font-size: 100%" href="/tags/github/">github</a>
@@ -406,7 +420,6 @@ function addBlankTargetForLinks () {
 <a style="padding: 3px;font-size: 100%" href="/tags/httpclient/">httpclient</a>
 <a style="padding: 3px;font-size: 100%" href="/tags/java/">java</a>
 <a style="padding: 3px;font-size: 100%" href="/tags/jsoup/">jsoup</a>
-<a style="padding: 3px;font-size: 100%" href="/tags/jvm/">jvm</a>
 <a style="padding: 3px;font-size: 139%" href="/tags/linux/">linux</a>
 <a style="padding: 3px;font-size: 139%" href="/tags/mongodb/">mongodb</a>
 <a style="padding: 3px;font-size: 139%" href="/tags/octopress/">octopress</a>
@@ -415,14 +428,16 @@ function addBlankTargetForLinks () {
 <a style="padding: 3px;font-size: 100%" href="/tags/sessionfactory/">sessionfactory</a>
 <a style="padding: 3px;font-size: 100%" href="/tags/spring-test/">spring-test</a>
 <a style="padding: 3px;font-size: 100%" href="/tags/svn/">svn</a>
-<a style="padding: 3px;font-size: 100%" href="/tags/tomcat/">tomcat</a>
-<a style="padding: 3px;font-size: 100%" href="/tags/wine/">wine</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/fen-bu-shi/">分布式</a>
 <a style="padding: 3px;font-size: 100%" href="/tags/shu-ju-ku/">数据库</a>
 <a style="padding: 3px;font-size: 100%" href="/tags/shi-jian-guan-li/">时间管理</a>
 <a style="padding: 3px;font-size: 100%" href="/tags/zui-hou-qi-xian/">最后期限</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/jia-gou/">架构</a>
 <a style="padding: 3px;font-size: 100%" href="/tags/suan-fa/">算法</a>
 <a style="padding: 3px;font-size: 100%" href="/tags/guan-li-gong-zuo/">管理工作</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/wang-zhan/">网站</a>
 <a style="padding: 3px;font-size: 100%" href="/tags/she-ji-mo-shi/">设计模式</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/fu-zai-jun-heng/">负载均衡</a>
 <a style="padding: 3px;font-size: 210%" href="/tags/sui-bi/">随笔</a>
 <a style="padding: 3px;font-size: 100%" href="/tags/xiang-mu-guan-li/">项目管理</a>
 
@@ -483,11 +498,12 @@ function addBlankTargetForLinks () {
 <li class='category'><a href='/blog/categories/linux/'>linux (2)</a></li>
 <li class='category'><a href='/blog/categories/mongodb/'>mongodb (2)</a></li>
 <li class='category'><a href='/blog/categories/mysql/'>mysql (1)</a></li>
-<li class='category'><a href='/blog/categories/tech/'>tech (15)</a></li>
+<li class='category'><a href='/blog/categories/tech/'>tech (16)</a></li>
 <li class='category'><a href='/blog/categories/tomcat/'>tomcat (1)</a></li>
 <li class='category'><a href='/blog/categories/web/'>web (2)</a></li>
 <li class='category'><a href='/blog/categories/dai-ma/'>代码 (3)</a></li>
 <li class='category'><a href='/blog/categories/qi-ta/'>其他 (1)</a></li>
+<li class='category'><a href='/blog/categories/jia-gou/'>架构 (1)</a></li>
 <li class='category'><a href='/blog/categories/sheng-huo/'>生活 (7)</a></li>
 <li class='category'><a href='/blog/categories/suan-fa/'>算法 (1)</a></li>
 <li class='category'><a href='/blog/categories/zhi-ye/'>职业 (2)</a></li>
@@ -544,7 +560,28 @@ function addBlankTargetForLinks () {
         <a href="http://dongxicheng.org/">董的博客</a>
         </li>
         <li>
-        <a href="http://blog.csdn.net/lifetragedy">lifetragedy</a>
+        <a href="http://bluedavy.me/">bluedavy</a>
+        </li>
+        <li>
+        <a href="http://dbanotes.net/">Fenng</a>
+        </li>
+        <li>
+        <a href="http://kenwublog.com/">Ken Wu&#8217;s Blog</a>
+        </li>
+        <li>
+        <a href=""></a>
+        </li>
+        <li>
+        <a href=""></a>
+        </li>
+        <li>
+        <a href=""></a>
+        </li>
+        <li>
+        <a href=""></a>
+        </li>
+        <li>
+        <a href=""></a>
         </li>
 </ul>
 </section>

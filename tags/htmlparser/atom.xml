@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tag: htmlparser | 超群的博客]]></title>
-  <link href="http://wangchaoqun.com/tags/htmlparser/atom.xml" rel="self"/>
-  <link href="http://wangchaoqun.com/"/>
-  <updated>2014-01-29T10:21:58+08:00</updated>
-  <id>http://wangchaoqun.com/</id>
+  <link href="http://colalife.com/tags/htmlparser/atom.xml" rel="self"/>
+  <link href="http://colalife.com/"/>
+  <updated>2014-02-10T11:32:32+08:00</updated>
+  <id>http://colalife.com/</id>
   <author>
     <name><![CDATA[wang chaoqun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[htmlparser和httpclient解析页面并下载]]></title>
-    <link href="http://wangchaoqun.com/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai.html/"/>
+    <link href="http://colalife.com/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai.html/"/>
     <updated>2012-12-18T03:05:41+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai</id>
+    <id>http://colalife.com/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai</id>
     <content type="html"><![CDATA[<p>如果你想抓取某个网页（如新浪、csdn之类）获取最新资讯列表，或者到某个站点下载文件、图片之类，就需要html解析例如htmlparser,jsoup之类的jar包，下载可用httpclient。如果想更高效率可以搞线程池，抓取解析线程和下载线程，类似消费者和生产者模型（此处不涉及，仅演示使用），代码如下：</p>
 
 <!--more-->

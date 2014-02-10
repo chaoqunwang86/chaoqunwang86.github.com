@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: svn | 超群的博客]]></title>
+  <link href="http://wangchaoqun.com/tags/svn/atom.xml" rel="self"/>
+  <link href="http://wangchaoqun.com/"/>
+  <updated>2014-01-29T10:21:58+08:00</updated>
+  <id>http://wangchaoqun.com/</id>
+  <author>
+    <name><![CDATA[wang chaoqun]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[本地搭建SVN服务器及配置]]></title>
+    <link href="http://wangchaoqun.com/blog/2008/10/ben-di-da-jian-svnfu-wu-qi-ji-pei-zhi.html/"/>
+    <updated>2008-10-23T12:50:35+08:00</updated>
+    <id>http://wangchaoqun.com/blog/2008/10/ben-di-da-jian-svnfu-wu-qi-ji-pei-zhi</id>
+    <content type="html"><![CDATA[<h4>1. 创建SVN数据库</h4>
+
+<p><code>
+svnadmin create D:\svn
+</code>
+说明：
+ repository创建完毕后会在目录下生成若干个文件和文件夹，
+ dav目录是提供给Apache与mod_dav_svn使用的目录，让它们存储内部数据；
+ db目录就是所有版本控制的数据文件；
+ hooks目录放置hook脚本文件的目录；
+ locks用来放置Subversion文件库锁定数据的目录，用来追踪存取文件库的客户端；
+ format文件是一个文本文件，里面只放了一个整数，表示当前文件库配置的版本号；</p>
+
+<!--more-->
+
+
+<h4>2. 创建服务</h4>
+
+<p><code>
+sc create svnservice binpath= "D:\Subversion\bin\svnserve.exe --service -r D:\svn" displayname= "SVNService" depend= Tcpip
+</code></p>
+
+<h4>3. 删除服务</h4>
+
+<p><code>
+sc delete svnservice
+</code></p>
+
+<h4>4. 启动服务/停止服务</h4>
+
+<p><code>
+net start svnservice
+</code>
+<code>
+net stop svnservice
+</code>
+也可以在运行里输入 services.msc 找到名称为“svnservice”的服务 手动启动或停止</p>
+
+<h4>5. 导入工程</h4>
+
+<p><code>
+svn import E:\workspace\myproject\ svn://localhost/svn -m "initial import" --username admin --password mypassword
+</code></p>
+
+<h4>6. 导出工程</h4>
+
+<p><code>
+svn co svn://localhost/server --username admin --password mypassword
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>

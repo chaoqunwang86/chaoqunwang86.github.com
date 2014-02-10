@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[文章分类：职业 | 超群的博客]]></title>
-  <link href="http://wangchaoqun.com/blog/categories/zhi-ye/atom.xml" rel="self"/>
-  <link href="http://wangchaoqun.com/"/>
-  <updated>2014-01-29T10:21:58+08:00</updated>
-  <id>http://wangchaoqun.com/</id>
+  <link href="http://colalife.com/blog/categories/zhi-ye/atom.xml" rel="self"/>
+  <link href="http://colalife.com/"/>
+  <updated>2014-02-10T11:32:32+08:00</updated>
+  <id>http://colalife.com/</id>
   <author>
     <name><![CDATA[wang chaoqun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[[转]Code Kata：编码套路]]></title>
-    <link href="http://wangchaoqun.com/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu.html/"/>
+    <link href="http://colalife.com/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu.html/"/>
     <updated>2013-12-03T10:39:05+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu</id>
+    <id>http://colalife.com/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu</id>
     <content type="html"><![CDATA[<p><a href="http://blog.csdn.net/happydeer/article/details/17023229" target="_blank">来自happydeer</a><br/>
 [正文]
 最近，我大量阅读了Steve Yegge的文章。其中有一篇叫“Practicing Programming”（练习编程），写成于2005年，读后令我惊讶不已：</p>
@@ -99,9 +99,9 @@
   
   <entry>
     <title type="html"><![CDATA[关于公司技术管理工作的几点思考]]></title>
-    <link href="http://wangchaoqun.com/blog/2011/04/guan-yu-gong-si-ji-zhu-guan-li-gong-zuo-de-ji-dian-si-kao.html/"/>
+    <link href="http://colalife.com/blog/2011/04/guan-yu-gong-si-ji-zhu-guan-li-gong-zuo-de-ji-dian-si-kao.html/"/>
     <updated>2011-04-14T15:06:42+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2011/04/guan-yu-gong-si-ji-zhu-guan-li-gong-zuo-de-ji-dian-si-kao</id>
+    <id>http://colalife.com/blog/2011/04/guan-yu-gong-si-ji-zhu-guan-li-gong-zuo-de-ji-dian-si-kao</id>
     <content type="html"><![CDATA[<p>一. 关于文档规范</p>
 
 <p>文档规范化正在形成的过程中，具体标准根据项目大小、要求、进度等不同而不同。开发人员写文档的能力向来是个短板，多看多借鉴国标、成熟的开发过程以及其他公司的文档，明白知道各文档所应涵盖的内容，学会并提高文档书写水平，是文档规范化的前提。在此基础之上，再召开会议讨论制定文档规范化模板，制定公司特色的文档体系才是可行的。<!--more--></p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[文章分类：tech | 超群的博客]]></title>
-  <link href="http://wangchaoqun.com/blog/categories/tech/atom.xml" rel="self"/>
-  <link href="http://wangchaoqun.com/"/>
-  <updated>2014-01-29T10:21:58+08:00</updated>
-  <id>http://wangchaoqun.com/</id>
+  <link href="http://colalife.com/blog/categories/tech/atom.xml" rel="self"/>
+  <link href="http://colalife.com/"/>
+  <updated>2014-02-10T11:32:32+08:00</updated>
+  <id>http://colalife.com/</id>
   <author>
     <name><![CDATA[wang chaoqun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[[转]Code Kata：编码套路]]></title>
-    <link href="http://wangchaoqun.com/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu.html/"/>
+    <link href="http://colalife.com/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu.html/"/>
     <updated>2013-12-03T10:39:05+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu</id>
+    <id>http://colalife.com/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu</id>
     <content type="html"><![CDATA[<p><a href="http://blog.csdn.net/happydeer/article/details/17023229" target="_blank">来自happydeer</a><br/>
 [正文]
 最近，我大量阅读了Steve Yegge的文章。其中有一篇叫“Practicing Programming”（练习编程），写成于2005年，读后令我惊讶不已：</p>
@@ -99,9 +99,9 @@
   
   <entry>
     <title type="html"><![CDATA[MongoDB replSet集群和shard分片]]></title>
-    <link href="http://wangchaoqun.com/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/"/>
+    <link href="http://colalife.com/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/"/>
     <updated>2013-11-17T16:11:35+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian</id>
+    <id>http://colalife.com/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian</id>
     <content type="html"><![CDATA[<p>mongodb的集群有两种：1.主从(master, slave)  2.副本集(Replica Set)<br/>
 区别是副本集没有固定的"主节点", 有一个活跃节点(primary)和  一个或多个备份节点(secondary), 而且可以在活跃节点有问题时自动切换（仲裁\选举方式）<br/>
 本文内容的结果是：建立2个分片，每个分片3个备份节点（端口1000x,2000x），2个选举节点（端口10000,20000），1个路由(端口7701，想选7000被占了)，3个config节点(端口660x，想选6000也被占了)，总共12个<!--more--></p>
@@ -284,9 +284,9 @@ db.printShardingStatus();
   
   <entry>
     <title type="html"><![CDATA[Mongodb, Mysql导出备份至ftp]]></title>
-    <link href="http://wangchaoqun.com/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/"/>
+    <link href="http://colalife.com/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/"/>
     <updated>2013-11-03T17:10:32+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp</id>
+    <id>http://colalife.com/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp</id>
     <content type="html"><![CDATA[<p>前提是mongodb和mysql已经安装使用，先安装vsftp，配置完成后，在编写shell脚本，使用计划任务执行<br/>
 1. 安装vsftp<br/>
 <code>
@@ -479,9 +479,9 @@ crontab -e</p>
   
   <entry>
     <title type="html"><![CDATA[[转]Tomcat 生产服务器性能优化]]></title>
-    <link href="http://wangchaoqun.com/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua.html/"/>
+    <link href="http://colalife.com/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua.html/"/>
     <updated>2013-07-25T10:08:06+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua</id>
+    <id>http://colalife.com/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua</id>
     <content type="html"><![CDATA[<p>tomcat优化+eclipse优化之类的文章网上有很多，这个收藏当作就手的工具。<br/>
 <a href="http://www.oschina.net/translate/tomcat-performance-tuning" target="_blank">来自oschina</a>  : 参与翻译(4人)：Garfielt, Lesus, MtrS, 大志darcy<br/>
 [正文]考虑一下这种场景，你开发了一个应用，它有十分优秀的布局设计，最新的特性以及其它的优秀特点。但是在性能这方面欠缺，不管这个应用如何都会遭到客户拒绝。客户总是期望它们的应用应该有更好的性能。如果你在产品中使用了Tomcat服务器，那么这篇文章就会给你几方面来提升Tomcat服务器的性能。<!--more--><br/>
@@ -567,9 +567,9 @@ compressableMimeType="text/html,text/xml,text/plain,application/octet-stream" /&
   
   <entry>
     <title type="html"><![CDATA[Cygwin & Wine & Ruby 记录]]></title>
-    <link href="http://wangchaoqun.com/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu.html/"/>
+    <link href="http://colalife.com/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu.html/"/>
     <updated>2013-01-16T16:03:36+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu</id>
+    <id>http://colalife.com/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu</id>
     <content type="html"><![CDATA[<p>cygwin是一个在windows平台上运行的unix模拟环境, wine则可以安装在Linux，再对应到Windows相应的函数来调用DLL以运行Windows程序。这两个就是利器，windows下不想用虚拟机（占用资源还挺多）或双系统，就可以用用cygwin；服务器上想搞点exe的东西就安装个wine。至于ruby，是因为octopress要用，开个虚拟机写博客很不爽，windows下折腾安装配置，却中文编码没解决，还是cygwin搞定。<!--more--></p>
 
 <h2>cygwin的安装</h2>

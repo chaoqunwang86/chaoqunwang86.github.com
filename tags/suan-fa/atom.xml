@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tag: 算法 | 超群的博客]]></title>
-  <link href="http://wangchaoqun.com/tags/suan-fa/atom.xml" rel="self"/>
-  <link href="http://wangchaoqun.com/"/>
-  <updated>2014-01-29T10:21:58+08:00</updated>
-  <id>http://wangchaoqun.com/</id>
+  <link href="http://colalife.com/tags/suan-fa/atom.xml" rel="self"/>
+  <link href="http://colalife.com/"/>
+  <updated>2014-02-10T11:32:32+08:00</updated>
+  <id>http://colalife.com/</id>
   <author>
     <name><![CDATA[wang chaoqun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[9种排序算法的java实现]]></title>
-    <link href="http://wangchaoqun.com/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian.html/"/>
+    <link href="http://colalife.com/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian.html/"/>
     <updated>2010-08-09T13:09:09+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian</id>
+    <id>http://colalife.com/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian</id>
     <content type="html"><![CDATA[<p>使用枚举类型存入各算法和接口实现，main方法打印排序后的数组，也可以加入nanotime、currentTimeMillis测试效率，但可能数组太小不明显</p>
 
 <p><code>java

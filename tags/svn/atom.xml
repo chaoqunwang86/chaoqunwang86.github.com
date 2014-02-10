@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tag: svn | 超群的博客]]></title>
-  <link href="http://wangchaoqun.com/tags/svn/atom.xml" rel="self"/>
-  <link href="http://wangchaoqun.com/"/>
-  <updated>2014-01-29T10:21:58+08:00</updated>
-  <id>http://wangchaoqun.com/</id>
+  <link href="http://colalife.com/tags/svn/atom.xml" rel="self"/>
+  <link href="http://colalife.com/"/>
+  <updated>2014-02-10T11:32:32+08:00</updated>
+  <id>http://colalife.com/</id>
   <author>
     <name><![CDATA[wang chaoqun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[本地搭建SVN服务器及配置]]></title>
-    <link href="http://wangchaoqun.com/blog/2008/10/ben-di-da-jian-svnfu-wu-qi-ji-pei-zhi.html/"/>
+    <link href="http://colalife.com/blog/2008/10/ben-di-da-jian-svnfu-wu-qi-ji-pei-zhi.html/"/>
     <updated>2008-10-23T12:50:35+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2008/10/ben-di-da-jian-svnfu-wu-qi-ji-pei-zhi</id>
+    <id>http://colalife.com/blog/2008/10/ben-di-da-jian-svnfu-wu-qi-ji-pei-zhi</id>
     <content type="html"><![CDATA[<h4>1. 创建SVN数据库</h4>
 
 <p><code>

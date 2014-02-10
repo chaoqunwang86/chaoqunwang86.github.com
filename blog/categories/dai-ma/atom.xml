@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[文章分类：代码 | 超群的博客]]></title>
-  <link href="http://wangchaoqun.com/blog/categories/dai-ma/atom.xml" rel="self"/>
-  <link href="http://wangchaoqun.com/"/>
-  <updated>2014-01-29T10:21:58+08:00</updated>
-  <id>http://wangchaoqun.com/</id>
+  <link href="http://colalife.com/blog/categories/dai-ma/atom.xml" rel="self"/>
+  <link href="http://colalife.com/"/>
+  <updated>2014-02-10T11:32:32+08:00</updated>
+  <id>http://colalife.com/</id>
   <author>
     <name><![CDATA[wang chaoqun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Excel导出工具类]]></title>
-    <link href="http://wangchaoqun.com/blog/2013/01/excel-dao-chu-gong-ju-lei.html/"/>
+    <link href="http://colalife.com/blog/2013/01/excel-dao-chu-gong-ju-lei.html/"/>
     <updated>2013-01-01T16:32:42+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2013/01/excel-dao-chu-gong-ju-lei</id>
+    <id>http://colalife.com/blog/2013/01/excel-dao-chu-gong-ju-lei</id>
     <content type="html"><![CDATA[<p>前端使用jquery easyui，datagrid添加导出按钮（另外的js逻辑）即可将当前页或所有页数据(支持查询条件的导出)导出到excel，支持office excel 2003和2007+;<br/>
 使用apache poi（+ooxml）实现，主要代码片段如下：</p>
 
@@ -466,9 +466,9 @@ return json;
   
   <entry>
     <title type="html"><![CDATA[Htmlparser和httpclient解析页面并下载]]></title>
-    <link href="http://wangchaoqun.com/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai.html/"/>
+    <link href="http://colalife.com/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai.html/"/>
     <updated>2012-12-18T03:05:41+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai</id>
+    <id>http://colalife.com/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai</id>
     <content type="html"><![CDATA[<p>如果你想抓取某个网页（如新浪、csdn之类）获取最新资讯列表，或者到某个站点下载文件、图片之类，就需要html解析例如htmlparser,jsoup之类的jar包，下载可用httpclient。如果想更高效率可以搞线程池，抓取解析线程和下载线程，类似消费者和生产者模型（此处不涉及，仅演示使用），代码如下：</p>
 
 <!--more-->
@@ -556,9 +556,9 @@ private static void download(String url, String fileName) {
   
   <entry>
     <title type="html"><![CDATA[9种排序算法的java实现]]></title>
-    <link href="http://wangchaoqun.com/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian.html/"/>
+    <link href="http://colalife.com/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian.html/"/>
     <updated>2010-08-09T13:09:09+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian</id>
+    <id>http://colalife.com/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian</id>
     <content type="html"><![CDATA[<p>使用枚举类型存入各算法和接口实现，main方法打印排序后的数组，也可以加入nanotime、currentTimeMillis测试效率，但可能数组太小不明显</p>
 
 <p><code>java

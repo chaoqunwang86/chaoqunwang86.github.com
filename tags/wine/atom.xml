@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tag: wine | 超群的博客]]></title>
-  <link href="http://wangchaoqun.com/tags/wine/atom.xml" rel="self"/>
-  <link href="http://wangchaoqun.com/"/>
-  <updated>2014-01-29T10:21:58+08:00</updated>
-  <id>http://wangchaoqun.com/</id>
+  <link href="http://colalife.com/tags/wine/atom.xml" rel="self"/>
+  <link href="http://colalife.com/"/>
+  <updated>2014-02-10T11:32:32+08:00</updated>
+  <id>http://colalife.com/</id>
   <author>
     <name><![CDATA[wang chaoqun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Cygwin & Wine & Ruby 记录]]></title>
-    <link href="http://wangchaoqun.com/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu.html/"/>
+    <link href="http://colalife.com/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu.html/"/>
     <updated>2013-01-16T16:03:36+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu</id>
+    <id>http://colalife.com/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu</id>
     <content type="html"><![CDATA[<p>cygwin是一个在windows平台上运行的unix模拟环境, wine则可以安装在Linux，再对应到Windows相应的函数来调用DLL以运行Windows程序。这两个就是利器，windows下不想用虚拟机（占用资源还挺多）或双系统，就可以用用cygwin；服务器上想搞点exe的东西就安装个wine。至于ruby，是因为octopress要用，开个虚拟机写博客很不爽，windows下折腾安装配置，却中文编码没解决，还是cygwin搞定。<!--more--></p>
 
 <h2>cygwin的安装</h2>

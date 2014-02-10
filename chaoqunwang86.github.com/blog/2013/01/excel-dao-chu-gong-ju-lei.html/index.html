@@ -1,0 +1,1190 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Excel导出工具类 - 超群的博客</title>
+  <meta name="author" content="wang chaoqun">
+
+  
+  <meta name="description" content="超群的博客, 生活记录, 技术博客, wang chaoqun, colalife.com, wangchaoqun.com, wangchaoqun.cn">
+  <meta name="keywords" content="excel poi 代码">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://wangchaoqun.com/blog/2013/01/excel-dao-chu-gong-ju-lei.html/">
+  <link href="/favicon.png" rel="icon">
+  <!--<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">-->
+  <link href="http://bcs.duapp.com/colalife2000/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="超群的博客" type="application/atom+xml">
+  <!--<script src="/javascripts/modernizr-2.0.js"></script>-->
+  <script src="http://bcs.duapp.com/colalife2000/modernizr-2.0.js"></script>
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+  <!--<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>-->
+  <!--<script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.1.min.js"></script>-->
+  <script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <!--<script src="/javascripts/octopress.js" type="text/javascript"></script>-->
+  <script src="http://bcs.duapp.com/colalife2000/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+<link href="http://bcs.duapp.com/colalife2000/stylesheets/PTSans.css" rel="stylesheet" type="text/css">
+<link href="http://bcs.duapp.com/colalife2000/stylesheets/PTSerif.css" rel="stylesheet" type="text/css">
+<script language="javascript" type="text/javascript">
+$(document).ready(function(){
+	changeBg();
+	//window.setInterval("changeBg()", 30*1000);
+
+	$(document).bind('DOMNodeInserted', function(event) {
+	  addBlankTargetForLinks();
+	});
+
+/*
+	var ref=location.href;
+	var wangchaoqun_com="wangchaoqun.com";
+	var wangchaoqun_cn="wangchaoqun.cn";
+	var colalife_com="colalife.com";
+
+	if(ref.indexOf(colalife_com)!=-1){
+	  ref=ref.replace(colalife_com, wangchaoqun_com);
+	  window.location.replace(ref);
+	} else if(ref.indexOf(wangchaoqun_cn)!=-1){
+	  ref=ref.replace(wangchaoqun_cn, wangchaoqun_com);
+	  window.location.replace(ref);
+	}
+*/
+});
+function changeBg() {
+	var dir = "http://bcs.duapp.com/colalife2000/images/"
+	var bg = "url("+dir+"v"+Math.floor(Math.random()*5+1)+".jpg)";
+	$("#myheader").css({"background-image":bg});
+}
+function addBlankTargetForLinks () {
+  $('a[href^="http"]').each(function(){
+      $(this).attr('target', '_blank');
+  });
+}
+</script>
+
+  
+
+</head>
+
+<body   >
+  <header id="myheader" role="banner" style="height:92px;"><hgroup style="height:100px" onmouseover="this.style.cursor='pointer'" onclick="document.location='/';"></hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:wangchaoqun.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation" style="font-weight: bold;">
+  <li><a href="/">首页</a></li> 
+  <li><a href="/blog/archives">文章列表</a></li> 
+  <li><a href="/blog/categories/tech/">技术</a></li>
+  <li><a href="/blog/categories/du-shu/">读书</a></li> 
+  <li><a href="/blog/categories/zhi-ye/">职业</a></li>
+  <li><a href="/blog/categories/sheng-huo/">生活</a></li>
+  <li><a href="/blog/categories/qi-ta/">其他</a></li>
+  <li><a href="/tags/">标签云</a></li>
+  <li><a href="/comments/">留言板</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Excel导出工具类</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-01T16:32:42+08:00" pubdate data-updated="true">2013年01月01日</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>前端使用jquery easyui，datagrid添加导出按钮（另外的js逻辑）即可将当前页或所有页数据(支持查询条件的导出)导出到excel，支持office excel 2003和2007+;<br/>
+使用apache poi（+ooxml）实现，主要代码片段如下：</p>
+
+<!--more-->
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+<span class='line-number'>139</span>
+<span class='line-number'>140</span>
+<span class='line-number'>141</span>
+<span class='line-number'>142</span>
+<span class='line-number'>143</span>
+<span class='line-number'>144</span>
+<span class='line-number'>145</span>
+<span class='line-number'>146</span>
+<span class='line-number'>147</span>
+<span class='line-number'>148</span>
+<span class='line-number'>149</span>
+<span class='line-number'>150</span>
+<span class='line-number'>151</span>
+<span class='line-number'>152</span>
+<span class='line-number'>153</span>
+<span class='line-number'>154</span>
+<span class='line-number'>155</span>
+<span class='line-number'>156</span>
+<span class='line-number'>157</span>
+<span class='line-number'>158</span>
+<span class='line-number'>159</span>
+<span class='line-number'>160</span>
+<span class='line-number'>161</span>
+<span class='line-number'>162</span>
+<span class='line-number'>163</span>
+<span class='line-number'>164</span>
+<span class='line-number'>165</span>
+<span class='line-number'>166</span>
+<span class='line-number'>167</span>
+<span class='line-number'>168</span>
+<span class='line-number'>169</span>
+<span class='line-number'>170</span>
+<span class='line-number'>171</span>
+<span class='line-number'>172</span>
+<span class='line-number'>173</span>
+<span class='line-number'>174</span>
+<span class='line-number'>175</span>
+<span class='line-number'>176</span>
+<span class='line-number'>177</span>
+<span class='line-number'>178</span>
+<span class='line-number'>179</span>
+<span class='line-number'>180</span>
+<span class='line-number'>181</span>
+<span class='line-number'>182</span>
+<span class='line-number'>183</span>
+<span class='line-number'>184</span>
+<span class='line-number'>185</span>
+<span class='line-number'>186</span>
+<span class='line-number'>187</span>
+<span class='line-number'>188</span>
+<span class='line-number'>189</span>
+<span class='line-number'>190</span>
+<span class='line-number'>191</span>
+<span class='line-number'>192</span>
+<span class='line-number'>193</span>
+<span class='line-number'>194</span>
+<span class='line-number'>195</span>
+<span class='line-number'>196</span>
+<span class='line-number'>197</span>
+<span class='line-number'>198</span>
+<span class='line-number'>199</span>
+<span class='line-number'>200</span>
+<span class='line-number'>201</span>
+<span class='line-number'>202</span>
+<span class='line-number'>203</span>
+<span class='line-number'>204</span>
+<span class='line-number'>205</span>
+<span class='line-number'>206</span>
+<span class='line-number'>207</span>
+<span class='line-number'>208</span>
+<span class='line-number'>209</span>
+<span class='line-number'>210</span>
+<span class='line-number'>211</span>
+<span class='line-number'>212</span>
+<span class='line-number'>213</span>
+<span class='line-number'>214</span>
+<span class='line-number'>215</span>
+<span class='line-number'>216</span>
+<span class='line-number'>217</span>
+<span class='line-number'>218</span>
+<span class='line-number'>219</span>
+<span class='line-number'>220</span>
+<span class='line-number'>221</span>
+<span class='line-number'>222</span>
+<span class='line-number'>223</span>
+<span class='line-number'>224</span>
+<span class='line-number'>225</span>
+<span class='line-number'>226</span>
+<span class='line-number'>227</span>
+<span class='line-number'>228</span>
+<span class='line-number'>229</span>
+<span class='line-number'>230</span>
+<span class='line-number'>231</span>
+<span class='line-number'>232</span>
+<span class='line-number'>233</span>
+<span class='line-number'>234</span>
+<span class='line-number'>235</span>
+<span class='line-number'>236</span>
+<span class='line-number'>237</span>
+<span class='line-number'>238</span>
+<span class='line-number'>239</span>
+<span class='line-number'>240</span>
+<span class='line-number'>241</span>
+<span class='line-number'>242</span>
+<span class='line-number'>243</span>
+<span class='line-number'>244</span>
+<span class='line-number'>245</span>
+<span class='line-number'>246</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">colalife</span><span class="o">.</span><span class="na">core</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">excel</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExcelExportUtil</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">static</span> <span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">ExcelExportUtil</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">CellStyle</span><span class="o">&gt;</span> <span class="n">styles</span><span class="o">;</span>
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * sheetName Excel导出文档里的标签页名，默认为Sheet1</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DEFAULT_SHEET_NAME</span> <span class="o">=</span> <span class="s">&quot;Sheet1&quot;</span><span class="o">;</span>
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * excel导出时文件名，默认为&quot;导出excel.xls&quot;</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DEFAULT_EXCEL_FILE_NAME</span> <span class="o">=</span> <span class="s">&quot;导出excel.xls&quot;</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * Excel导出,sheetName默认为Sheet1</span>
+</span><span class='line'><span class="cm">  * @param dataList 数据，可用bean list</span>
+</span><span class='line'><span class="cm">  * @param columns 字段和字段显示名的键值对</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">export</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;?&gt;</span> <span class="n">dataList</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">columns</span><span class="o">,</span> <span class="n">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span>
+</span><span class='line'>          <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">String</span><span class="o">[]</span> <span class="n">fields</span> <span class="o">=</span> <span class="n">columns</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+</span><span class='line'>      <span class="n">String</span><span class="o">[]</span> <span class="n">titles</span> <span class="o">=</span> <span class="n">columns</span><span class="o">.</span><span class="na">values</span><span class="o">().</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+</span><span class='line'>      <span class="n">export</span><span class="o">(</span><span class="n">dataList</span><span class="o">,</span> <span class="n">fields</span><span class="o">,</span> <span class="n">titles</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * Excel导出,sheetName默认为Sheet1</span>
+</span><span class='line'><span class="cm">  * @param dataList 数据，可用bean list</span>
+</span><span class='line'><span class="cm">  * @param EasyuiDataGrid 用来获取fields titles 字段和字段显示名的数组</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">export</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;?&gt;</span> <span class="n">dataList</span><span class="o">,</span> <span class="n">EasyuiDataGrid</span> <span class="n">dg</span><span class="o">,</span> <span class="n">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span>
+</span><span class='line'>          <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">String</span><span class="o">[]</span> <span class="n">fields</span> <span class="o">=</span> <span class="n">dg</span><span class="o">.</span><span class="na">getFields</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">&quot;,&quot;</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">String</span><span class="o">[]</span> <span class="n">titles</span> <span class="o">=</span> <span class="n">dg</span><span class="o">.</span><span class="na">getTitles</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">&quot;,&quot;</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">Workbook</span> <span class="n">excel</span> <span class="o">=</span> <span class="n">ExcelExportUtil</span><span class="o">.</span><span class="na">getExcel</span><span class="o">(</span><span class="n">dataList</span><span class="o">,</span> <span class="n">fields</span><span class="o">,</span> <span class="n">titles</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">ExcelExportUtil</span><span class="o">.</span><span class="na">setResponseForExcel</span><span class="o">(</span><span class="n">response</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">excel</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">());</span>
+</span><span class='line'>      <span class="n">response</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">().</span><span class="na">flush</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">response</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">().</span><span class="na">close</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * Excel导出,sheetName默认为Sheet1</span>
+</span><span class='line'><span class="cm">  * @param dataList 数据，可用bean list</span>
+</span><span class='line'><span class="cm">  * @param fields titles 字段和字段显示名的数组</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">export</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;?&gt;</span> <span class="n">dataList</span><span class="o">,</span> <span class="n">String</span><span class="o">[]</span> <span class="n">fields</span><span class="o">,</span> <span class="n">String</span><span class="o">[]</span> <span class="n">titles</span><span class="o">,</span> <span class="n">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span>
+</span><span class='line'>          <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">Workbook</span> <span class="n">excel</span> <span class="o">=</span> <span class="n">ExcelExportUtil</span><span class="o">.</span><span class="na">getExcel</span><span class="o">(</span><span class="n">dataList</span><span class="o">,</span> <span class="n">fields</span><span class="o">,</span> <span class="n">titles</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">ExcelExportUtil</span><span class="o">.</span><span class="na">setResponseForExcel</span><span class="o">(</span><span class="n">response</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">excel</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">());</span>
+</span><span class='line'>      <span class="n">response</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">().</span><span class="na">flush</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">response</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">().</span><span class="na">close</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * Excel导出的实现,sheetName默认为Sheet1</span>
+</span><span class='line'><span class="cm">  * @param data 数据，可用bean list</span>
+</span><span class='line'><span class="cm">  * @param columns 字段和字段显示名的键值对</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="n">Workbook</span> <span class="nf">getExcel</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;?&gt;</span> <span class="n">data</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">columns</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="nf">getExcel</span><span class="o">(</span><span class="n">data</span><span class="o">,</span> <span class="n">DEFAULT_SHEET_NAME</span><span class="o">,</span> <span class="n">columns</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * Excel导出的实现,sheetName默认为Sheet1</span>
+</span><span class='line'><span class="cm">  * @param data 数据，可用bean list</span>
+</span><span class='line'><span class="cm">  * @param columns 字段和字段显示名的键值对</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="n">Workbook</span> <span class="nf">getExcel</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;?&gt;</span> <span class="n">data</span><span class="o">,</span> <span class="n">String</span><span class="o">[]</span> <span class="n">fields</span><span class="o">,</span> <span class="n">String</span><span class="o">[]</span> <span class="n">titles</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="nf">getExcel</span><span class="o">(</span><span class="n">data</span><span class="o">,</span> <span class="n">DEFAULT_SHEET_NAME</span><span class="o">,</span> <span class="n">fields</span><span class="o">,</span> <span class="n">titles</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * Excel导出的实现</span>
+</span><span class='line'><span class="cm">  * @param data 数据，可用bean list</span>
+</span><span class='line'><span class="cm">  * @param sheetName 导出文档里的标签页名</span>
+</span><span class='line'><span class="cm">  * @param columns 字段和字段显示名的键值对</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="n">Workbook</span> <span class="nf">getExcel</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;?&gt;</span> <span class="n">data</span><span class="o">,</span> <span class="n">String</span> <span class="n">sheetName</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">columns</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">String</span><span class="o">[]</span> <span class="n">fields</span> <span class="o">=</span> <span class="n">columns</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+</span><span class='line'>      <span class="n">String</span><span class="o">[]</span> <span class="n">titles</span> <span class="o">=</span> <span class="n">columns</span><span class="o">.</span><span class="na">values</span><span class="o">().</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+</span><span class='line'>      <span class="k">return</span> <span class="nf">getExcel</span><span class="o">(</span><span class="n">data</span><span class="o">,</span> <span class="n">sheetName</span><span class="o">,</span> <span class="n">fields</span><span class="o">,</span> <span class="n">titles</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * Excel导出的实现</span>
+</span><span class='line'><span class="cm">  * @param data 数据，可用bean list</span>
+</span><span class='line'><span class="cm">  * @param sheetName 导出文档里的标签页名</span>
+</span><span class='line'><span class="cm">  * @param fields titles 字段和字段显示名的数组</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="n">Workbook</span> <span class="nf">getExcel</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;?&gt;</span> <span class="n">data</span><span class="o">,</span> <span class="n">String</span> <span class="n">sheetName</span><span class="o">,</span> <span class="n">String</span><span class="o">[]</span> <span class="n">fields</span><span class="o">,</span> <span class="n">String</span><span class="o">[]</span> <span class="n">titles</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">Workbook</span> <span class="n">workbook</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HSSFWorkbook</span><span class="o">();</span>
+</span><span class='line'>      <span class="c1">//创建所有Cell Style</span>
+</span><span class='line'>      <span class="n">createStyles</span><span class="o">(</span><span class="n">workbook</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">Sheet</span> <span class="n">sheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="na">createSheet</span><span class="o">(</span><span class="n">sheetName</span><span class="o">);</span>
+</span><span class='line'>      <span class="c1">// 创建第一行,为excel表头</span>
+</span><span class='line'>      <span class="n">Row</span> <span class="n">row</span> <span class="o">=</span> <span class="n">sheet</span><span class="o">.</span><span class="na">createRow</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</span><span class='line'>      <span class="c1">// 序号列</span>
+</span><span class='line'>      <span class="n">Cell</span> <span class="n">numHeader</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="na">createCell</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">numHeader</span><span class="o">.</span><span class="na">setCellValue</span><span class="o">(</span><span class="k">new</span> <span class="n">HSSFRichTextString</span><span class="o">(</span><span class="s">&quot;序号&quot;</span><span class="o">));</span>
+</span><span class='line'>      <span class="n">numHeader</span><span class="o">.</span><span class="na">setCellStyle</span><span class="o">(</span><span class="n">styles</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;header&quot;</span><span class="o">));</span>
+</span><span class='line'>      <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">titles</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">Cell</span> <span class="n">header</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="na">createCell</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">header</span><span class="o">.</span><span class="na">setCellValue</span><span class="o">(</span><span class="k">new</span> <span class="n">HSSFRichTextString</span><span class="o">(</span><span class="n">titles</span><span class="o">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]));</span>
+</span><span class='line'>          <span class="n">header</span><span class="o">.</span><span class="na">setCellStyle</span><span class="o">(</span><span class="n">styles</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;header&quot;</span><span class="o">));</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>      <span class="c1">// 创建其他各数据行</span>
+</span><span class='line'>      <span class="k">if</span> <span class="o">(!</span><span class="n">data</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>          <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">data</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>              <span class="n">Object</span> <span class="n">bean</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">j</span><span class="o">);</span>
+</span><span class='line'>              <span class="n">Row</span> <span class="n">dataRow</span> <span class="o">=</span> <span class="n">sheet</span><span class="o">.</span><span class="na">createRow</span><span class="o">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+</span><span class='line'>              <span class="c1">// 序号列</span>
+</span><span class='line'>              <span class="n">Cell</span> <span class="n">num</span> <span class="o">=</span> <span class="n">dataRow</span><span class="o">.</span><span class="na">createCell</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</span><span class='line'>              <span class="n">num</span><span class="o">.</span><span class="na">setCellValue</span><span class="o">(</span><span class="k">new</span> <span class="n">HSSFRichTextString</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)));</span>
+</span><span class='line'>              <span class="n">num</span><span class="o">.</span><span class="na">setCellStyle</span><span class="o">(</span><span class="n">styles</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;normal&quot;</span><span class="o">));</span>
+</span><span class='line'>              <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">fields</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">k</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>                  <span class="n">Cell</span> <span class="n">cell</span> <span class="o">=</span> <span class="n">dataRow</span><span class="o">.</span><span class="na">createCell</span><span class="o">(</span><span class="n">k</span><span class="o">);</span>
+</span><span class='line'>                  <span class="n">Object</span> <span class="n">value</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'>                  <span class="kt">boolean</span> <span class="n">isDate</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+</span><span class='line'>                  <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>                      <span class="n">value</span> <span class="o">=</span> <span class="n">PropertyUtils</span><span class="o">.</span><span class="na">getSimpleProperty</span><span class="o">(</span><span class="n">bean</span><span class="o">,</span> <span class="n">fields</span><span class="o">[</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]);</span>
+</span><span class='line'>                      <span class="k">if</span> <span class="o">(</span><span class="n">value</span> <span class="k">instanceof</span> <span class="n">Date</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                          <span class="n">value</span> <span class="o">=</span> <span class="n">DateUtil</span><span class="o">.</span><span class="na">formatDate</span><span class="o">((</span><span class="n">Date</span><span class="o">)</span> <span class="n">value</span><span class="o">);</span>
+</span><span class='line'>                          <span class="n">isDate</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+</span><span class='line'>                      <span class="o">}</span>
+</span><span class='line'>                  <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                      <span class="n">logger</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">&quot;Excel导出，获取属性值异常：&quot;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+</span><span class='line'>                  <span class="o">}</span>
+</span><span class='line'>                  <span class="n">HSSFRichTextString</span> <span class="n">cellValue</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HSSFRichTextString</span><span class="o">(</span><span class="n">ObjectUtils</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">value</span><span class="o">));</span>
+</span><span class='line'>                  <span class="n">cell</span><span class="o">.</span><span class="na">setCellValue</span><span class="o">(</span><span class="n">cellValue</span><span class="o">);</span>
+</span><span class='line'>                  <span class="n">cell</span><span class="o">.</span><span class="na">setCellStyle</span><span class="o">(</span><span class="n">isDate</span> <span class="o">?</span> <span class="n">styles</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;dateCell&quot;</span><span class="o">)</span> <span class="o">:</span> <span class="n">styles</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;normal&quot;</span><span class="o">));</span>
+</span><span class='line'>              <span class="o">}</span>
+</span><span class='line'>          <span class="o">}</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>      <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">titles</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="c1">// 自适应宽度</span>
+</span><span class='line'>          <span class="n">sheet</span><span class="o">.</span><span class="na">autoSizeColumn</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">workbook</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * excel导出时用到的方法，直接调用</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setResponseForExcel</span><span class="o">(</span><span class="n">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">setResponseForExcel</span><span class="o">(</span><span class="n">response</span><span class="o">,</span> <span class="n">DEFAULT_EXCEL_FILE_NAME</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * excel导出时用到的方法，直接调用</span>
+</span><span class='line'><span class="cm">  * @throws UnsupportedEncodingException</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setResponseForExcel</span><span class="o">(</span><span class="n">HttpServletResponse</span> <span class="n">response</span><span class="o">,</span> <span class="n">String</span> <span class="n">fileName</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">&quot;application/vnd.ms-excel;charset=UTF-8&quot;</span><span class="o">);</span>
+</span><span class='line'>      <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>          <span class="c1">// 解决excel文件乱码问题</span>
+</span><span class='line'>          <span class="n">response</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">&quot;Content-Disposition&quot;</span><span class="o">,</span> <span class="s">&quot;attachment;filename=&quot;</span>
+</span><span class='line'>                  <span class="o">+</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">fileName</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">&quot;GB2312&quot;</span><span class="o">),</span> <span class="s">&quot;ISO8859-1&quot;</span><span class="o">));</span>
+</span><span class='line'>      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedEncodingException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">logger</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">&quot;Excel导出，转码异常：&quot;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>      <span class="n">response</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">&quot;Cache-Control&quot;</span><span class="o">,</span> <span class="s">&quot;must-revalidate, post-check=0, pre-check=0&quot;</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">response</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">&quot;Pragma&quot;</span><span class="o">,</span> <span class="s">&quot;public&quot;</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">response</span><span class="o">.</span><span class="na">setDateHeader</span><span class="o">(</span><span class="s">&quot;Expires&quot;</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">CellStyle</span><span class="o">&gt;</span> <span class="n">createStyles</span><span class="o">(</span><span class="n">Workbook</span> <span class="n">wb</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">styles</span> <span class="o">=</span> <span class="n">Maps</span><span class="o">.</span><span class="na">newHashMap</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">DataFormat</span> <span class="n">df</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="na">createDataFormat</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// --字体设定 --//</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">//普通字体</span>
+</span><span class='line'>      <span class="n">Font</span> <span class="n">normalFont</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="na">createFont</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">normalFont</span><span class="o">.</span><span class="na">setFontName</span><span class="o">(</span><span class="s">&quot;宋体&quot;</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">normalFont</span><span class="o">.</span><span class="na">setFontHeightInPoints</span><span class="o">((</span><span class="kt">short</span><span class="o">)</span> <span class="mi">12</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">//加粗字体</span>
+</span><span class='line'>      <span class="n">Font</span> <span class="n">boldFont</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="na">createFont</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">boldFont</span><span class="o">.</span><span class="na">setFontHeightInPoints</span><span class="o">((</span><span class="kt">short</span><span class="o">)</span> <span class="mi">12</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">boldFont</span><span class="o">.</span><span class="na">setBoldweight</span><span class="o">(</span><span class="n">Font</span><span class="o">.</span><span class="na">BOLDWEIGHT_BOLD</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">//蓝色加粗字体</span>
+</span><span class='line'>      <span class="n">Font</span> <span class="n">blueBoldFont</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="na">createFont</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">blueBoldFont</span><span class="o">.</span><span class="na">setFontHeightInPoints</span><span class="o">((</span><span class="kt">short</span><span class="o">)</span> <span class="mi">12</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">blueBoldFont</span><span class="o">.</span><span class="na">setBoldweight</span><span class="o">(</span><span class="n">Font</span><span class="o">.</span><span class="na">BOLDWEIGHT_BOLD</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">blueBoldFont</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="n">IndexedColors</span><span class="o">.</span><span class="na">BLUE</span><span class="o">.</span><span class="na">getIndex</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// --Cell Style设定-- //</span>
+</span><span class='line'>      <span class="c1">//普通格式</span>
+</span><span class='line'>      <span class="n">CellStyle</span> <span class="n">normalStyle</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="na">createCellStyle</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">normalStyle</span><span class="o">.</span><span class="na">setFont</span><span class="o">(</span><span class="n">normalFont</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">styles</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;normal&quot;</span><span class="o">,</span> <span class="n">normalStyle</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">//标题格式</span>
+</span><span class='line'>      <span class="n">CellStyle</span> <span class="n">headerStyle</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="na">createCellStyle</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">headerStyle</span><span class="o">.</span><span class="na">setFont</span><span class="o">(</span><span class="n">boldFont</span><span class="o">);</span>
+</span><span class='line'>      <span class="c1">// 指定单元格居中对齐</span>
+</span><span class='line'>      <span class="n">headerStyle</span><span class="o">.</span><span class="na">setAlignment</span><span class="o">(</span><span class="n">HSSFCellStyle</span><span class="o">.</span><span class="na">ALIGN_CENTER</span><span class="o">);</span>
+</span><span class='line'>        <span class="c1">// 指定单元格垂直居中对齐</span>
+</span><span class='line'>      <span class="n">headerStyle</span><span class="o">.</span><span class="na">setVerticalAlignment</span><span class="o">(</span><span class="n">HSSFCellStyle</span><span class="o">.</span><span class="na">VERTICAL_CENTER</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">styles</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;header&quot;</span><span class="o">,</span> <span class="n">headerStyle</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">//日期格式</span>
+</span><span class='line'>      <span class="n">CellStyle</span> <span class="n">dateCellStyle</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="na">createCellStyle</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">dateCellStyle</span><span class="o">.</span><span class="na">setFont</span><span class="o">(</span><span class="n">normalFont</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">dateCellStyle</span><span class="o">.</span><span class="na">setDataFormat</span><span class="o">(</span><span class="n">df</span><span class="o">.</span><span class="na">getFormat</span><span class="o">(</span><span class="s">&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="o">));</span>
+</span><span class='line'><span class="c1">//       setBorder(dateCellStyle);</span>
+</span><span class='line'>      <span class="n">styles</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;dateCell&quot;</span><span class="o">,</span> <span class="n">dateCellStyle</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">//数字格式</span>
+</span><span class='line'>      <span class="n">CellStyle</span> <span class="n">numberCellStyle</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="na">createCellStyle</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">numberCellStyle</span><span class="o">.</span><span class="na">setFont</span><span class="o">(</span><span class="n">normalFont</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">numberCellStyle</span><span class="o">.</span><span class="na">setDataFormat</span><span class="o">(</span><span class="n">df</span><span class="o">.</span><span class="na">getFormat</span><span class="o">(</span><span class="s">&quot;#,##0.00&quot;</span><span class="o">));</span>
+</span><span class='line'>      <span class="n">setBorder</span><span class="o">(</span><span class="n">numberCellStyle</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">styles</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;numberCell&quot;</span><span class="o">,</span> <span class="n">numberCellStyle</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">//合计列格式</span>
+</span><span class='line'>      <span class="n">CellStyle</span> <span class="n">totalStyle</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="na">createCellStyle</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">totalStyle</span><span class="o">.</span><span class="na">setFont</span><span class="o">(</span><span class="n">blueBoldFont</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">totalStyle</span><span class="o">.</span><span class="na">setWrapText</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">totalStyle</span><span class="o">.</span><span class="na">setAlignment</span><span class="o">(</span><span class="n">CellStyle</span><span class="o">.</span><span class="na">ALIGN_RIGHT</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">setBorder</span><span class="o">(</span><span class="n">totalStyle</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">styles</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;total&quot;</span><span class="o">,</span> <span class="n">totalStyle</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">return</span> <span class="n">styles</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setBorder</span><span class="o">(</span><span class="n">CellStyle</span> <span class="n">style</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="c1">//设置边框</span>
+</span><span class='line'>      <span class="n">style</span><span class="o">.</span><span class="na">setBorderRight</span><span class="o">(</span><span class="n">CellStyle</span><span class="o">.</span><span class="na">BORDER_THIN</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">style</span><span class="o">.</span><span class="na">setRightBorderColor</span><span class="o">(</span><span class="n">IndexedColors</span><span class="o">.</span><span class="na">BLACK</span><span class="o">.</span><span class="na">getIndex</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">style</span><span class="o">.</span><span class="na">setBorderLeft</span><span class="o">(</span><span class="n">CellStyle</span><span class="o">.</span><span class="na">BORDER_THIN</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">style</span><span class="o">.</span><span class="na">setLeftBorderColor</span><span class="o">(</span><span class="n">IndexedColors</span><span class="o">.</span><span class="na">BLACK</span><span class="o">.</span><span class="na">getIndex</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">style</span><span class="o">.</span><span class="na">setBorderTop</span><span class="o">(</span><span class="n">CellStyle</span><span class="o">.</span><span class="na">BORDER_THIN</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">style</span><span class="o">.</span><span class="na">setTopBorderColor</span><span class="o">(</span><span class="n">IndexedColors</span><span class="o">.</span><span class="na">BLACK</span><span class="o">.</span><span class="na">getIndex</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">style</span><span class="o">.</span><span class="na">setBorderBottom</span><span class="o">(</span><span class="n">CellStyle</span><span class="o">.</span><span class="na">BORDER_THIN</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">style</span><span class="o">.</span><span class="na">setBottomBorderColor</span><span class="o">(</span><span class="n">IndexedColors</span><span class="o">.</span><span class="na">BLACK</span><span class="o">.</span><span class="na">getIndex</span><span class="o">());</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<h2>页面调用  </h2>
+
+<p>在相应页面的toolbar里添加导出按钮，调用js function，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">exportData</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'><span class="c1">//       默认导出</span>
+</span><span class='line'><span class="c1">//       jsUtil.doDefaultExport(&#39;&lt;%=request.getContextPath()%&gt;/core/operlog/export&#39;, datagrid);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//       支持查询条件的导出</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">inputs</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#searchForm input&quot;</span><span class="p">).</span><span class="nx">clone</span><span class="p">();</span>
+</span><span class='line'>  <span class="nx">jsUtil</span><span class="p">.</span><span class="nx">doExport</span><span class="p">(</span><span class="s1">&#39;&lt;%=request.getContextPath()%&gt;/core/operlog/export&#39;</span><span class="p">,</span> <span class="nx">datagrid</span><span class="p">,</span> <span class="nx">inputs</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>jsUtil里的js逻辑：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * 提交导出form</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nx">jsUtil</span><span class="p">.</span><span class="nx">submitExportForm</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">form</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">form</span><span class="p">.</span><span class="nx">submit</span><span class="p">();</span>
+</span><span class='line'>  <span class="nx">form</span><span class="p">.</span><span class="nx">remove</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * 导出方法，input为其他查询条件</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nx">jsUtil</span><span class="p">.</span><span class="nx">doExport</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">dg</span><span class="p">,</span> <span class="nx">inputs</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">messager</span><span class="p">.</span><span class="nx">defaults</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">ok</span><span class="o">:</span><span class="s2">&quot;当前页数据&quot;</span><span class="p">,</span> <span class="nx">cancel</span><span class="o">:</span><span class="s2">&quot;所有页数据&quot;</span> <span class="p">};</span>
+</span><span class='line'>  <span class="c1">//导出当前页的数据?导出符合条件的所有数据?</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">messager</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s1">&#39;导出&#39;</span><span class="p">,</span> <span class="s1">&#39;选择导出查询结果里的：&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">isCurrent</span><span class="p">){</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">form</span> <span class="o">=</span> <span class="nx">jsUtil</span><span class="p">.</span><span class="nx">getDefaultExportForm</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">dg</span><span class="p">,</span> <span class="nx">isCurrent</span><span class="p">);</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">inputs</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="c1">// 其他查询条件</span>
+</span><span class='line'>          <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">inputs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>              <span class="nx">form</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">inputs</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>      <span class="nx">jsUtil</span><span class="p">.</span><span class="nx">submitExportForm</span><span class="p">(</span><span class="nx">form</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">messager</span><span class="p">.</span><span class="nx">defaults</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">ok</span><span class="o">:</span><span class="s2">&quot;确定&quot;</span><span class="p">,</span> <span class="nx">cancel</span><span class="o">:</span><span class="s2">&quot;取消&quot;</span> <span class="p">};</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * 导出方法，无其他附加条件，按后台逻辑导出数据</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nx">jsUtil</span><span class="p">.</span><span class="nx">doDefaultExport</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">dg</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>   <span class="kd">var</span> <span class="nx">form</span> <span class="o">=</span> <span class="nx">jsUtil</span><span class="p">.</span><span class="nx">getDefaultExportForm</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">dg</span><span class="p">);</span>
+</span><span class='line'>   <span class="nx">jsUtil</span><span class="p">.</span><span class="nx">submitExportForm</span><span class="p">(</span><span class="nx">form</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * 构造导出form，默认提交分页信息，列表字段和字段显示名信息</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nx">jsUtil</span><span class="p">.</span><span class="nx">getDefaultExportForm</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">dg</span><span class="p">,</span> <span class="nx">isCurrent</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">form</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;&lt;form&gt;&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">form</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;style&#39;</span><span class="p">,</span> <span class="s1">&#39;display:none&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">form</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">form</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;method&#39;</span><span class="p">,</span> <span class="s1">&#39;post&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">form</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;action&#39;</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">form</span><span class="p">);</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">defaultInputs</span> <span class="o">=</span> <span class="nx">jsUtil</span><span class="p">.</span><span class="nx">getDefaultInputs</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">dg</span><span class="p">,</span> <span class="nx">isCurrent</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">defaultInputs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">form</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">defaultInputs</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">form</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * 导出form的默认提交参数，包括分页信息，列表字段和字段显示名信息</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nx">jsUtil</span><span class="p">.</span><span class="nx">getDefaultInputs</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">dg</span><span class="p">,</span> <span class="nx">isCurrent</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">inputs</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">page</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;hidden&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">page</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;page&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">rows</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">rows</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;hidden&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">rows</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;rows&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="c1">//导出当前页的数据?导出符合条件的所有数据?</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">isCurrent</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">page</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="nx">dg</span><span class="p">.</span><span class="nx">datagrid</span><span class="p">(</span><span class="s1">&#39;options&#39;</span><span class="p">).</span><span class="nx">pageNumber</span><span class="p">);</span>
+</span><span class='line'>      <span class="nx">rows</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="nx">dg</span><span class="p">.</span><span class="nx">datagrid</span><span class="p">(</span><span class="s2">&quot;options&quot;</span><span class="p">).</span><span class="nx">pageSize</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">page</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>      <span class="nx">rows</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="mi">2147483647</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">sort</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">sort</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;hidden&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">sort</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;sort&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">sort</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="nx">dg</span><span class="p">.</span><span class="nx">datagrid</span><span class="p">(</span><span class="s1">&#39;options&#39;</span><span class="p">).</span><span class="nx">sortName</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">order</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">order</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;hidden&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">order</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;order&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">order</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="nx">dg</span><span class="p">.</span><span class="nx">datagrid</span><span class="p">(</span><span class="s1">&#39;options&#39;</span><span class="p">).</span><span class="nx">sortOrder</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">fields</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">fields</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;hidden&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">fields</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">fields</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="nx">jsUtil</span><span class="p">.</span><span class="nx">getFields</span><span class="p">(</span><span class="nx">dg</span><span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">titles</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">titles</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;hidden&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">titles</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;titles&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">titles</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="nx">jsUtil</span><span class="p">.</span><span class="nx">getTitles</span><span class="p">(</span><span class="nx">dg</span><span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">inputs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">page</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">inputs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">rows</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">inputs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">sort</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">inputs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">order</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">inputs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">fields</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">inputs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">titles</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">inputs</span><span class="p">;</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * 导出form的列表字段</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nx">jsUtil</span><span class="p">.</span><span class="nx">getFields</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">dg</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">columns</span> <span class="o">=</span> <span class="nx">dg</span><span class="p">.</span><span class="nx">datagrid</span><span class="p">(</span><span class="s2">&quot;options&quot;</span><span class="p">).</span><span class="nx">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">json</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">columns</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">columns</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="kd">var</span> <span class="nx">field</span> <span class="o">=</span> <span class="nx">columns</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">field</span><span class="p">;</span>
+</span><span class='line'>          <span class="kd">var</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">columns</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span><span class="p">;</span>
+</span><span class='line'>          <span class="kd">var</span> <span class="nx">hidden</span> <span class="o">=</span> <span class="nx">columns</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">hidden</span><span class="p">;</span>
+</span><span class='line'>          <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">hidden</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>              <span class="nx">json</span> <span class="o">+=</span> <span class="nx">field</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">json</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">json</span> <span class="o">=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">json</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">json</span><span class="p">;</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * 导出form的列表字段显示名称</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nx">jsUtil</span><span class="p">.</span><span class="nx">getTitles</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">dg</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">columns</span> <span class="o">=</span> <span class="nx">dg</span><span class="p">.</span><span class="nx">datagrid</span><span class="p">(</span><span class="s2">&quot;options&quot;</span><span class="p">).</span><span class="nx">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">json</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">columns</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">columns</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="kd">var</span> <span class="nx">field</span> <span class="o">=</span> <span class="nx">columns</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">field</span><span class="p">;</span>
+</span><span class='line'>          <span class="kd">var</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">columns</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span><span class="p">;</span>
+</span><span class='line'>          <span class="kd">var</span> <span class="nx">hidden</span> <span class="o">=</span> <span class="nx">columns</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">hidden</span><span class="p">;</span>
+</span><span class='line'>          <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">hidden</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>              <span class="nx">json</span> <span class="o">+=</span> <span class="nx">title</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">json</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">json</span> <span class="o">=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">json</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">json</span><span class="p">;</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p class='post-footer'>
+            原文地址：
+            <a href='http://wangchaoqun.com/blog/2013/01/excel-dao-chu-gong-ju-lei.html/'>http://wangchaoqun.com/blog/2013/01/excel-dao-chu-gong-ju-lei.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.com'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.com'>http://wangchaoqun.com</a>
+            </p>
+
+</div>
+
+
+  <footer style="height:200px">
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">wang chaoqun</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-01T16:32:42+08:00" pubdate data-updated="true">2013年01月01日</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/tech/'>tech</a>, <a class='category' href='/blog/categories/dai-ma/'>代码</a>
+  
+</span>
+
+
+      
+<DIV style="font-size:12px;BORDER-BOTTOM: #bbbbbb 1px solid; BORDER-LEFT: #bbbbbb 1px solid; BACKGROUND: #f6f6f6; HEIGHT: 120px; BORDER-TOP: #bbbbbb 1px solid; BORDER-RIGHT: #bbbbbb 1px solid" class="myright"> 
+<DIV style="MARGIN-TOP: 9px; FLOAT: left; MARGIN-LEFT: 8px; MARGIN-RIGHT: 10px"> 
+<!--<IMG title="colalife" src="/images/myicon.jpg" width="80px" height="90px" style="border: #fff 0em solid;">-->
+<IMG title="colalife" src="http://bcs.duapp.com/colalife2000/myicon.jpg" width="80px" height="90px" style="border: #fff 0em solid;">
+</DIV> 
+<DIV style="LINE-HEIGHT: 200%; MARGIN-TOP: 10px; COLOR: #000000"> 
+作者： <A href="http://wangchaoqun.com/">王超群</A><BR> 
+出处： <A href="http://wangchaoqun.com/">http://wangchaoqun.com/</A> 
+<BR>本文基于<a target="_blank" title="Creative Commons Attribution 2.5 China Mainland License" href="http://creativecommons.org/licenses/by/2.5/cn/"> 
+署名 2.5 中国大陆</a>许可协议发布，欢迎转载，演绎或用于商业目的，但是必须保留本文的署名 
+<a href="http://wangchaoqun.com/">王超群</a>（包含链接）</DIV></DIV> 
+
+
+    </p>
+
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai.html/" title="Previous Post: htmlparser和httpclient解析页面并下载">&laquo; htmlparser和httpclient解析页面并下载</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/01/an-zhuang-git-create-octopress-blog.html/" title="Next Post: 安装git, 建立Octopress博客">安装git, 建立Octopress博客 &raquo;</a>
+      
+    </p>
+    
+      <!-- <div class="sharing">
+  
+  
+  
+</div>
+ -->
+<!-- baidu share Button BEGIN
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_t163" data-cmd="t163" title="分享到网易微博"></a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_hi" data-cmd="hi" title="分享到百度空间"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];</script>
+baidu share Button END -->
+
+    
+  </footer>
+</article>
+<!-- duoshuo -->
+<section id=”comment”>
+<!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"colalife"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = 'http://static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	|| document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!-- Duoshuo Comment END -->
+
+</section>
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>关于我</h1>
+<p>
+一个[程序猿，攻城狮]，这么有福气<br><br>
+纸上得来终觉浅，绝知此事要躬行<br><br>
+成长，需要积累； 记录，在此博客<br><br>
+<a href='http://me.alipay.com/colalife'><img src='https://img.alipay.com/sys/personalprod/style/mc/btn-index.png'/></a>
+</p>
+</section>
+<section>  
+  <h1>标签</h1>  
+  <ul class="tag-cloud">  
+    <a style="padding: 3px;font-size: 100%" href="/tags/books/">books</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/browser/">browser</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/cygwin/">cygwin</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/excel/">excel</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/git/">git</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/github/">github</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/hibernate/">hibernate</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/htmlparser/">htmlparser</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/httpclient/">httpclient</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/java/">java</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/jsoup/">jsoup</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/jvm/">jvm</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/linux/">linux</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/mongodb/">mongodb</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/octopress/">octopress</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/poi/">poi</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/ruby/">ruby</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/sessionfactory/">sessionfactory</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/spring-test/">spring-test</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/svn/">svn</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/tomcat/">tomcat</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/wine/">wine</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/shu-ju-ku/">数据库</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/shi-jian-guan-li/">时间管理</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/zui-hou-qi-xian/">最后期限</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/suan-fa/">算法</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/guan-li-gong-zuo/">管理工作</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/she-ji-mo-shi/">设计模式</a>
+<a style="padding: 3px;font-size: 210%" href="/tags/sui-bi/">随笔</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/xiang-mu-guan-li/">项目管理</a>
+
+  </ul>  
+</section>
+<section>
+  <h1>最新文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu.html/">[转]Code Kata：编码套路</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/">MongoDB replSet集群和shard分片</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/">Mongodb, Mysql导出备份至ftp</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua.html/">[转]Tomcat 生产服务器性能优化</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu.html/">Cygwin & Wine & Ruby 记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/an-zhuang-git-create-octopress-blog.html/">安装git, 建立Octopress博客</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/excel-dao-chu-gong-ju-lei.html/">Excel导出工具类</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai.html/">Htmlparser和httpclient解析页面并下载</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/zhuan-shen-ru-li-jie-liu-lan-qi-jian-rong-xing-mo-shi.html/">[转]深入理解浏览器兼容性模式</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei.html/">测试Hibernate动态添加实体类</a>
+      </li>
+    
+  </ul>
+</section>
+<section> 
+  <h1>文章分类</h1> 
+  <ul id="categories"> 
+    <li class='category'><a href='/blog/categories/ftp/'>ftp (1)</a></li>
+<li class='category'><a href='/blog/categories/hibernate/'>hibernate (1)</a></li>
+<li class='category'><a href='/blog/categories/java/'>java (6)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (2)</a></li>
+<li class='category'><a href='/blog/categories/mongodb/'>mongodb (2)</a></li>
+<li class='category'><a href='/blog/categories/mysql/'>mysql (1)</a></li>
+<li class='category'><a href='/blog/categories/tech/'>tech (15)</a></li>
+<li class='category'><a href='/blog/categories/tomcat/'>tomcat (1)</a></li>
+<li class='category'><a href='/blog/categories/web/'>web (2)</a></li>
+<li class='category'><a href='/blog/categories/dai-ma/'>代码 (3)</a></li>
+<li class='category'><a href='/blog/categories/qi-ta/'>其他 (1)</a></li>
+<li class='category'><a href='/blog/categories/sheng-huo/'>生活 (7)</a></li>
+<li class='category'><a href='/blog/categories/suan-fa/'>算法 (1)</a></li>
+<li class='category'><a href='/blog/categories/zhi-ye/'>职业 (2)</a></li>
+<li class='category'><a href='/blog/categories/she-ji-mo-shi/'>设计模式 (1)</a></li>
+<li class='category'><a href='/blog/categories/du-shu/'>读书 (3)</a></li>
+ 
+  </ul> 
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo" style="margin-bottom: 40px;"><!-- baidu share BEGIN -->
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"6","bdPos":"left","bdTop":"110"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];</script>
+<!-- baidu share END -->
+<p>
+  Copyright &copy; 2014 - wang chaoqun -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/javascripts/libs/totop.js"></script>
+</body>
+</html>

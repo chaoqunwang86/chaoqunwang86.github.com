@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tag: 集群 | 超群的博客]]></title>
-  <link href="http://wangchaoqun.com/tags/ji-qun/atom.xml" rel="self"/>
-  <link href="http://wangchaoqun.com/"/>
-  <updated>2014-01-29T10:21:58+08:00</updated>
-  <id>http://wangchaoqun.com/</id>
+  <link href="http://colalife.com/tags/ji-qun/atom.xml" rel="self"/>
+  <link href="http://colalife.com/"/>
+  <updated>2014-02-10T11:32:32+08:00</updated>
+  <id>http://colalife.com/</id>
   <author>
     <name><![CDATA[wang chaoqun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[MongoDB replSet集群和shard分片]]></title>
-    <link href="http://wangchaoqun.com/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/"/>
+    <link href="http://colalife.com/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/"/>
     <updated>2013-11-17T16:11:35+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian</id>
+    <id>http://colalife.com/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian</id>
     <content type="html"><![CDATA[<p>mongodb的集群有两种：1.主从(master, slave)  2.副本集(Replica Set)<br/>
 区别是副本集没有固定的"主节点", 有一个活跃节点(primary)和  一个或多个备份节点(secondary), 而且可以在活跃节点有问题时自动切换（仲裁\选举方式）<br/>
 本文内容的结果是：建立2个分片，每个分片3个备份节点（端口1000x,2000x），2个选举节点（端口10000,20000），1个路由(端口7701，想选7000被占了)，3个config节点(端口660x，想选6000也被占了)，总共12个<!--more--></p>

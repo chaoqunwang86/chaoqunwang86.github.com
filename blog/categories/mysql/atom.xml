@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[文章分类：mysql | 超群的博客]]></title>
-  <link href="http://wangchaoqun.com/blog/categories/mysql/atom.xml" rel="self"/>
-  <link href="http://wangchaoqun.com/"/>
-  <updated>2014-01-29T10:21:58+08:00</updated>
-  <id>http://wangchaoqun.com/</id>
+  <link href="http://colalife.com/blog/categories/mysql/atom.xml" rel="self"/>
+  <link href="http://colalife.com/"/>
+  <updated>2014-02-10T11:32:32+08:00</updated>
+  <id>http://colalife.com/</id>
   <author>
     <name><![CDATA[wang chaoqun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mongodb, Mysql导出备份至ftp]]></title>
-    <link href="http://wangchaoqun.com/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/"/>
+    <link href="http://colalife.com/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/"/>
     <updated>2013-11-03T17:10:32+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp</id>
+    <id>http://colalife.com/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp</id>
     <content type="html"><![CDATA[<p>前提是mongodb和mysql已经安装使用，先安装vsftp，配置完成后，在编写shell脚本，使用计划任务执行<br/>
 1. 安装vsftp<br/>
 <code>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tag: github | 超群的博客]]></title>
-  <link href="http://wangchaoqun.com/tags/github/atom.xml" rel="self"/>
-  <link href="http://wangchaoqun.com/"/>
-  <updated>2014-01-29T10:21:58+08:00</updated>
-  <id>http://wangchaoqun.com/</id>
+  <link href="http://colalife.com/tags/github/atom.xml" rel="self"/>
+  <link href="http://colalife.com/"/>
+  <updated>2014-02-10T11:32:32+08:00</updated>
+  <id>http://colalife.com/</id>
   <author>
     <name><![CDATA[wang chaoqun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[安装git, 建立Octopress博客]]></title>
-    <link href="http://wangchaoqun.com/blog/2013/01/an-zhuang-git-create-octopress-blog.html/"/>
+    <link href="http://colalife.com/blog/2013/01/an-zhuang-git-create-octopress-blog.html/"/>
     <updated>2013-01-07T14:34:24+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2013/01/an-zhuang-git-create-octopress-blog</id>
+    <id>http://colalife.com/blog/2013/01/an-zhuang-git-create-octopress-blog</id>
     <content type="html"><![CDATA[<p>本文参考了若干网络日志（谢过~）, 配置个人博客后整理而成</p>
 
 <h2>安装git  </h2>
@@ -189,7 +189,7 @@ module Jekyll
     posts_in_category = context.registers[:site].categories[category].size
     category_dir = context.registers[:site].config['category_dir']
     category_url = File.join(category_dir, category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase)
-    html &lt;&lt; "&lt;li class='category'&gt;&lt;a href='http://wangchaoqun.com/#{category_url}/'&gt;#{category} (#{posts_in_category})&lt;/a&gt;&lt;/li&gt;\n"
+    html &lt;&lt; "&lt;li class='category'&gt;&lt;a href='http://colalife.com/#{category_url}/'&gt;#{category} (#{posts_in_category})&lt;/a&gt;&lt;/li&gt;\n"
   end
   html
 end
@@ -214,11 +214,12 @@ end</p>
 <li class='category'><a href='/blog/categories/linux/'>linux (2)</a></li>
 <li class='category'><a href='/blog/categories/mongodb/'>mongodb (2)</a></li>
 <li class='category'><a href='/blog/categories/mysql/'>mysql (1)</a></li>
-<li class='category'><a href='/blog/categories/tech/'>tech (15)</a></li>
+<li class='category'><a href='/blog/categories/tech/'>tech (16)</a></li>
 <li class='category'><a href='/blog/categories/tomcat/'>tomcat (1)</a></li>
 <li class='category'><a href='/blog/categories/web/'>web (2)</a></li>
 <li class='category'><a href='/blog/categories/dai-ma/'>代码 (3)</a></li>
 <li class='category'><a href='/blog/categories/qi-ta/'>其他 (1)</a></li>
+<li class='category'><a href='/blog/categories/jia-gou/'>架构 (1)</a></li>
 <li class='category'><a href='/blog/categories/sheng-huo/'>生活 (7)</a></li>
 <li class='category'><a href='/blog/categories/suan-fa/'>算法 (1)</a></li>
 <li class='category'><a href='/blog/categories/zhi-ye/'>职业 (2)</a></li>

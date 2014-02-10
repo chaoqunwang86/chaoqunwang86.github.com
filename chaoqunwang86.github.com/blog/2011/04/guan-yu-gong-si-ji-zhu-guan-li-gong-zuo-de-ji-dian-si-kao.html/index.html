@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>关于公司技术管理工作的几点思考 - 超群的博客</title>
+  <meta name="author" content="wang chaoqun">
+
+  
+  <meta name="description" content="公司 技术 管理 工作 思考 总结">
+  <meta name="keywords" content="公司 技术 管理 工作 思考 总结">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://wangchaoqun.com/blog/2011/04/guan-yu-gong-si-ji-zhu-guan-li-gong-zuo-de-ji-dian-si-kao.html/">
+  <link href="/favicon.png" rel="icon">
+  <!--<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">-->
+  <link href="http://bcs.duapp.com/colalife2000/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="超群的博客" type="application/atom+xml">
+  <!--<script src="/javascripts/modernizr-2.0.js"></script>-->
+  <script src="http://bcs.duapp.com/colalife2000/modernizr-2.0.js"></script>
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+  <!--<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>-->
+  <!--<script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.1.min.js"></script>-->
+  <script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <!--<script src="/javascripts/octopress.js" type="text/javascript"></script>-->
+  <script src="http://bcs.duapp.com/colalife2000/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+<link href="http://bcs.duapp.com/colalife2000/stylesheets/PTSans.css" rel="stylesheet" type="text/css">
+<link href="http://bcs.duapp.com/colalife2000/stylesheets/PTSerif.css" rel="stylesheet" type="text/css">
+<script language="javascript" type="text/javascript">
+$(document).ready(function(){
+	changeBg();
+	//window.setInterval("changeBg()", 30*1000);
+
+	$(document).bind('DOMNodeInserted', function(event) {
+	  addBlankTargetForLinks();
+	});
+
+/*
+	var ref=location.href;
+	var wangchaoqun_com="wangchaoqun.com";
+	var wangchaoqun_cn="wangchaoqun.cn";
+	var colalife_com="colalife.com";
+
+	if(ref.indexOf(colalife_com)!=-1){
+	  ref=ref.replace(colalife_com, wangchaoqun_com);
+	  window.location.replace(ref);
+	} else if(ref.indexOf(wangchaoqun_cn)!=-1){
+	  ref=ref.replace(wangchaoqun_cn, wangchaoqun_com);
+	  window.location.replace(ref);
+	}
+*/
+});
+function changeBg() {
+	var dir = "http://bcs.duapp.com/colalife2000/images/"
+	var bg = "url("+dir+"v"+Math.floor(Math.random()*5+1)+".jpg)";
+	$("#myheader").css({"background-image":bg});
+}
+function addBlankTargetForLinks () {
+  $('a[href^="http"]').each(function(){
+      $(this).attr('target', '_blank');
+  });
+}
+</script>
+
+  
+
+</head>
+
+<body   >
+  <header id="myheader" role="banner" style="height:92px;"><hgroup style="height:100px" onmouseover="this.style.cursor='pointer'" onclick="document.location='/';"></hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:wangchaoqun.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation" style="font-weight: bold;">
+  <li><a href="/">首页</a></li> 
+  <li><a href="/blog/archives">文章列表</a></li> 
+  <li><a href="/blog/categories/tech/">技术</a></li>
+  <li><a href="/blog/categories/du-shu/">读书</a></li> 
+  <li><a href="/blog/categories/zhi-ye/">职业</a></li>
+  <li><a href="/blog/categories/sheng-huo/">生活</a></li>
+  <li><a href="/blog/categories/qi-ta/">其他</a></li>
+  <li><a href="/tags/">标签云</a></li>
+  <li><a href="/comments/">留言板</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">关于公司技术管理工作的几点思考</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-14T15:06:42+08:00" pubdate data-updated="true">2011年04月14日</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>一. 关于文档规范</p>
+
+<p>文档规范化正在形成的过程中，具体标准根据项目大小、要求、进度等不同而不同。开发人员写文档的能力向来是个短板，多看多借鉴国标、成熟的开发过程以及其他公司的文档，明白知道各文档所应涵盖的内容，学会并提高文档书写水平，是文档规范化的前提。在此基础之上，再召开会议讨论制定文档规范化模板，制定公司特色的文档体系才是可行的。<!--more--></p>
+
+<p>二.    关于需求理解、分析设计</p>
+
+<p>一般来讲，前期与客户沟通的不充分，调研工作不充分而产生需求理解上的偏差（如果排除人员能力水平、方法上的问题的话）是导致接下来分析设计以及开发工作偏差和反复修改的重要原因，并且有损开发人员的工作热情。因此，我提议重视和做好调研和需求分析工作，并在项目开始阶段召开几次分析会议，项目组成员充分讨论，每次会议都要评分，以使项目组员对项目需求和设计的理解程度达到进行开发的要求。</p>
+
+<p>三.    关于项目产出物的管理</p>
+
+<p>如各类文档、各类资料、可复用模块、产品化软件，需要制定出制度和管理流程，以达到规范化管理。涉及到具体的要求和流程，需要先制定出思路和计划，讨论研究。</p>
+
+<p>四.    关于产品化开发和模块复用封装</p>
+
+<p>就现在来看，公司已经积累了若干项目，其中的功能有可以剥离出来封装服用的，同时这项工作也有难度，它很大程度上需要大家有扎实的开发基础，良好的代码编写习惯，要写出逻辑清晰、方便调用的代码来。我的看法是简单的功能可以封装的先完成，以供日常使用；同时讨论、借鉴、探求产品化思路，制定实施规划。</p>
+
+<p>五.    关于项目管理</p>
+
+<p>项目开发过程中经常会出现各种问题，比如在团队建设、人员管理、与客户沟通以及编码开发、测试等各方面，人与人相处，尤其工作当中，难免出现误会争吵，实属正常，对事不对人就好。我所观察，项目开发中最大的矛盾可能是工作量大、时间紧张与开发人员能力、效率不高之间的矛盾了；我们需要可能是较长一段时间继续在项目开发中锻炼和成长；我所担心，无论是技术总监、项目经理、组长还是开发人员，会慢慢成为项目组乃至公司的短板，还是要关注自己，提高自己的能力。</p>
+
+<p>六.    关于技术水平提高</p>
+
+<p>如果最终的需求、产品、网站、系统以及客户给钱都是落在代码上，我们就无法忽略代码的重要性；因为大家每天大部分的时间都在敲代码，如果你珍惜你的时间而不是浪费，你也会去想到底如何才能写出整洁规范的代码，也无法忽略编码水平提高的需要；如果你要修改别人的代码，看到的却像是一地鸡毛，无从下手，影响心情，那你应该想一想你自己的代码是否在别人看也是这样；如何去从源头控制bug数量，提高代码的正确性、健壮性等等，关于代码的很多都是值得我们关注的。我认为代码审查机制是需要的，从规范性着手，从每周或每天的code review开始，改善我们的代码。另外一方面就是购置学习书籍，可以由全体员工积极推荐书目，大家投票决定是否购置，而且不限于技术方面。</p>
+
+<p>七.    关于框架开发</p>
+
+<p>我所计划框架的演进是有一个路线图的，从ibatis+struts，到ssh，到现在ss，以及ssh2或sh等等。实际上，如果项目经理或技术经理一直停留在一个框架上或是从外派公司拿的，只因为他很熟悉，那么势必造成组员技术水平的停滞不前甚至下降。虽然我一直维护框架文档并不时的更新，框架源码去年时候就发布出来，但是很多人没有认真看，遇到问题仍然不知怎样解决。培训时候就学习ssh，现在的开发框架也是ssh，大部分的功能都一样，不客气地讲，不会用的原因就是struts，spring，hibernate基础不牢固。待这几个项目做完，各人对框架应该是很上手加熟悉了，下一步的计划就是在重新开发自己的框架，类似开源项目，每个人都可以开发修改、维护这个框架，当然，前提是代码水平和编码习惯要改善。</p>
+
+<p>另：关于员工职业规划</p>
+
+<p>新员工培训中有职业素养，而对于工作一年和两年以上的员工，职场相关的交流和学习就比较少，如果能让大家成长成一个职业化、专业化、高效能的职业人士会在很大程度上促进公司的发展。</p>
+
+<p>以上七个方面依然是我接下来工作的主要内容，需要按部就班推进执行。</p>
+
+<p>审查年初的工作计划，存在规划粗略、执行的资源如工作时间、人力资源等不足的问题，其中应在接下来的年度继续规划和执行的工作如：<br/>
+1、规范开发流程，这在项目管理体系中属于组织过程资产，是一个长期积累，不断发展的过程。<br/>
+2、组织技术培训，是因为公司高度重视对人的培养，并为公司发展战略服务，通过帮助员工提升工作绩效和个人能力，推动员工与公司的共同成长。员工不仅可以选择技术、设计、产品、市场等专业技能发展通道，也可以有项目管理的发展通道。这项工作的开展需要管理层的支持。<br/>
+3、产品研发的工作无论从技术上还是管理上都不同于普通项目，这方面我们的知识和经验不足，需要一个规划、学习、摸索实践以及积累的过程。</p>
+
+<p>关于项目管理，之前项目管理工作中，如果有项目管理知识体系这些理论作为指导，去开展项目工作，问题会少很多，项目工作的效率和效果也会好很多。现在公司项目管理可改进的方面我认为：<br/>
+1、客户相关的，涉及到项目范围、变更、沟通等，有效的管理客户是一个值得努力的方向；<br/>
+2、人力资源相关，如团队建设和管理等，提高团队绩效、个人能力等方面是我们工作中需要关注和努力的。<br/>
+3、成本和质量相关，需要我们在项目开发工作中重视项目工作的成本和项目完成的质量。</p>
+
+<p>新的一年里，公司面临新的机遇和新的挑战，亟需深耕行业，形成自己的业务体系和战略布局，中级管理层人员更要提高业务和管理能力，为公司发展做出贡献。</p>
+
+<p class='post-footer'>
+            原文地址：
+            <a href='http://wangchaoqun.com/blog/2011/04/guan-yu-gong-si-ji-zhu-guan-li-gong-zuo-de-ji-dian-si-kao.html/'>http://wangchaoqun.com/blog/2011/04/guan-yu-gong-si-ji-zhu-guan-li-gong-zuo-de-ji-dian-si-kao.html/</a><br/>
+            &nbsp;written by &nbsp;<a href='http://wangchaoqun.com'>wang chaoqun</a>
+            &nbsp;posted at &nbsp;<a href='http://wangchaoqun.com'>http://wangchaoqun.com</a>
+            </p>
+
+</div>
+
+
+  <footer style="height:200px">
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">wang chaoqun</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-14T15:06:42+08:00" pubdate data-updated="true">2011年04月14日</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/zhi-ye/'>职业</a>
+  
+</span>
+
+
+      
+<DIV style="font-size:12px;BORDER-BOTTOM: #bbbbbb 1px solid; BORDER-LEFT: #bbbbbb 1px solid; BACKGROUND: #f6f6f6; HEIGHT: 120px; BORDER-TOP: #bbbbbb 1px solid; BORDER-RIGHT: #bbbbbb 1px solid" class="myright"> 
+<DIV style="MARGIN-TOP: 9px; FLOAT: left; MARGIN-LEFT: 8px; MARGIN-RIGHT: 10px"> 
+<!--<IMG title="colalife" src="/images/myicon.jpg" width="80px" height="90px" style="border: #fff 0em solid;">-->
+<IMG title="colalife" src="http://bcs.duapp.com/colalife2000/myicon.jpg" width="80px" height="90px" style="border: #fff 0em solid;">
+</DIV> 
+<DIV style="LINE-HEIGHT: 200%; MARGIN-TOP: 10px; COLOR: #000000"> 
+作者： <A href="http://wangchaoqun.com/">王超群</A><BR> 
+出处： <A href="http://wangchaoqun.com/">http://wangchaoqun.com/</A> 
+<BR>本文基于<a target="_blank" title="Creative Commons Attribution 2.5 China Mainland License" href="http://creativecommons.org/licenses/by/2.5/cn/"> 
+署名 2.5 中国大陆</a>许可协议发布，欢迎转载，演绎或用于商业目的，但是必须保留本文的署名 
+<a href="http://wangchaoqun.com/">王超群</a>（包含链接）</DIV></DIV> 
+
+
+    </p>
+
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/08/jiu-zhong-pai-xu-suan-fa-de-javashi-xian.html/" title="Previous Post: 9种排序算法的java实现">&laquo; 9种排序算法的java实现</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei.html/" title="Next Post: 测试Hibernate动态添加实体类">测试Hibernate动态添加实体类 &raquo;</a>
+      
+    </p>
+    
+      <!-- <div class="sharing">
+  
+  
+  
+</div>
+ -->
+<!-- baidu share Button BEGIN
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_t163" data-cmd="t163" title="分享到网易微博"></a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_hi" data-cmd="hi" title="分享到百度空间"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];</script>
+baidu share Button END -->
+
+    
+  </footer>
+</article>
+<!-- duoshuo -->
+<section id=”comment”>
+<!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"colalife"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = 'http://static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	|| document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!-- Duoshuo Comment END -->
+
+</section>
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>关于我</h1>
+<p>
+一个[程序猿，攻城狮]，这么有福气<br><br>
+纸上得来终觉浅，绝知此事要躬行<br><br>
+成长，需要积累； 记录，在此博客<br><br>
+<a href='http://me.alipay.com/colalife'><img src='https://img.alipay.com/sys/personalprod/style/mc/btn-index.png'/></a>
+</p>
+</section>
+<section>  
+  <h1>标签</h1>  
+  <ul class="tag-cloud">  
+    <a style="padding: 3px;font-size: 100%" href="/tags/books/">books</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/browser/">browser</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/cygwin/">cygwin</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/excel/">excel</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/git/">git</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/github/">github</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/hibernate/">hibernate</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/htmlparser/">htmlparser</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/httpclient/">httpclient</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/java/">java</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/jsoup/">jsoup</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/jvm/">jvm</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/linux/">linux</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/mongodb/">mongodb</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/octopress/">octopress</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/poi/">poi</a>
+<a style="padding: 3px;font-size: 139%" href="/tags/ruby/">ruby</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/sessionfactory/">sessionfactory</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/spring-test/">spring-test</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/svn/">svn</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/tomcat/">tomcat</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/wine/">wine</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/shu-ju-ku/">数据库</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/shi-jian-guan-li/">时间管理</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/zui-hou-qi-xian/">最后期限</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/suan-fa/">算法</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/guan-li-gong-zuo/">管理工作</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/she-ji-mo-shi/">设计模式</a>
+<a style="padding: 3px;font-size: 210%" href="/tags/sui-bi/">随笔</a>
+<a style="padding: 3px;font-size: 100%" href="/tags/xiang-mu-guan-li/">项目管理</a>
+
+  </ul>  
+</section>
+<section>
+  <h1>最新文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/zhuan-code-kata-bian-ma-tao-lu.html/">[转]Code Kata：编码套路</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/mongodb-replsetji-qun-he-shardfen-pian.html/">MongoDB replSet集群和shard分片</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/mongodb-he-mysql-dao-chu-bei-fen-bing-shang-chuan-zhi-ftp.html/">Mongodb, Mysql导出备份至ftp</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/zhuan-tomcat-sheng-chan-fu-wu-qi-xing-neng-you-hua.html/">[转]Tomcat 生产服务器性能优化</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/cygwin-and-wine-and-ruby-ji-lu.html/">Cygwin & Wine & Ruby 记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/an-zhuang-git-create-octopress-blog.html/">安装git, 建立Octopress博客</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/excel-dao-chu-gong-ju-lei.html/">Excel导出工具类</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/htmlparserhe-httpclientjie-xi-ye-mian-bing-xia-zai.html/">Htmlparser和httpclient解析页面并下载</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/zhuan-shen-ru-li-jie-liu-lan-qi-jian-rong-xing-mo-shi.html/">[转]深入理解浏览器兼容性模式</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/ce-shi-hibernatedong-tai-tian-jia-wei-pei-zhi-de-shi-ti-lei.html/">测试Hibernate动态添加实体类</a>
+      </li>
+    
+  </ul>
+</section>
+<section> 
+  <h1>文章分类</h1> 
+  <ul id="categories"> 
+    <li class='category'><a href='/blog/categories/ftp/'>ftp (1)</a></li>
+<li class='category'><a href='/blog/categories/hibernate/'>hibernate (1)</a></li>
+<li class='category'><a href='/blog/categories/java/'>java (6)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (2)</a></li>
+<li class='category'><a href='/blog/categories/mongodb/'>mongodb (2)</a></li>
+<li class='category'><a href='/blog/categories/mysql/'>mysql (1)</a></li>
+<li class='category'><a href='/blog/categories/tech/'>tech (15)</a></li>
+<li class='category'><a href='/blog/categories/tomcat/'>tomcat (1)</a></li>
+<li class='category'><a href='/blog/categories/web/'>web (2)</a></li>
+<li class='category'><a href='/blog/categories/dai-ma/'>代码 (3)</a></li>
+<li class='category'><a href='/blog/categories/qi-ta/'>其他 (1)</a></li>
+<li class='category'><a href='/blog/categories/sheng-huo/'>生活 (7)</a></li>
+<li class='category'><a href='/blog/categories/suan-fa/'>算法 (1)</a></li>
+<li class='category'><a href='/blog/categories/zhi-ye/'>职业 (2)</a></li>
+<li class='category'><a href='/blog/categories/she-ji-mo-shi/'>设计模式 (1)</a></li>
+<li class='category'><a href='/blog/categories/du-shu/'>读书 (3)</a></li>
+ 
+  </ul> 
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo" style="margin-bottom: 40px;"><!-- baidu share BEGIN -->
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"6","bdPos":"left","bdTop":"110"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];</script>
+<!-- baidu share END -->
+<p>
+  Copyright &copy; 2014 - wang chaoqun -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/javascripts/libs/totop.js"></script>
+</body>
+</html>

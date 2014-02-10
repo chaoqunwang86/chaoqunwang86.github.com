@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[文章分类：设计模式 | 超群的博客]]></title>
-  <link href="http://wangchaoqun.com/blog/categories/she-ji-mo-shi/atom.xml" rel="self"/>
-  <link href="http://wangchaoqun.com/"/>
-  <updated>2014-01-29T10:21:58+08:00</updated>
-  <id>http://wangchaoqun.com/</id>
+  <link href="http://colalife.com/blog/categories/she-ji-mo-shi/atom.xml" rel="self"/>
+  <link href="http://colalife.com/"/>
+  <updated>2014-02-10T11:32:32+08:00</updated>
+  <id>http://colalife.com/</id>
   <author>
     <name><![CDATA[wang chaoqun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[[转]软件设计的七大原则]]></title>
-    <link href="http://wangchaoqun.com/blog/2008/04/zhuan-ruan-jian-she-ji-de-qi-da-yuan-ze.html/"/>
+    <link href="http://colalife.com/blog/2008/04/zhuan-ruan-jian-she-ji-de-qi-da-yuan-ze.html/"/>
     <updated>2008-04-30T11:18:52+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2008/04/zhuan-ruan-jian-she-ji-de-qi-da-yuan-ze</id>
+    <id>http://colalife.com/blog/2008/04/zhuan-ruan-jian-she-ji-de-qi-da-yuan-ze</id>
     <content type="html"><![CDATA[<p>设计模式遵循的一般原则：
 <a href="http://www.cnblogs.com/areliang/archive/2006/03/07/345111.html" target="_blank">来自On the way</a></p>
 

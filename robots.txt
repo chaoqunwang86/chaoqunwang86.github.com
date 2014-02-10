@@ -1,3 +1,3 @@
 User-agent: *
-Allow: /wangchaoqun.cn/*
-Sitemap: http://wangchaoqun.com/sitemap.xml 
+Allow: /colalife.com/*
+Sitemap: http://colalife.com/sitemap.xml 

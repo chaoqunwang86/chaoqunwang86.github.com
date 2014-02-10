@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tag: 面试题 | 超群的博客]]></title>
-  <link href="http://wangchaoqun.com/tags/mian-shi-ti/atom.xml" rel="self"/>
-  <link href="http://wangchaoqun.com/"/>
-  <updated>2014-01-29T10:21:58+08:00</updated>
-  <id>http://wangchaoqun.com/</id>
+  <link href="http://colalife.com/tags/mian-shi-ti/atom.xml" rel="self"/>
+  <link href="http://colalife.com/"/>
+  <updated>2014-02-10T11:32:32+08:00</updated>
+  <id>http://colalife.com/</id>
   <author>
     <name><![CDATA[wang chaoqun]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[[转]有挑战性的JAVA程序员面试32问]]></title>
-    <link href="http://wangchaoqun.com/blog/2008/03/zhuan-cheng-xu-ren-sheng-you-tiao-zhan-xing-de-javacheng-xu-yuan-mian-shi-32wen.html/"/>
+    <link href="http://colalife.com/blog/2008/03/zhuan-cheng-xu-ren-sheng-you-tiao-zhan-xing-de-javacheng-xu-yuan-mian-shi-32wen.html/"/>
     <updated>2008-03-03T10:01:02+08:00</updated>
-    <id>http://wangchaoqun.com/blog/2008/03/zhuan-cheng-xu-ren-sheng-you-tiao-zhan-xing-de-javacheng-xu-yuan-mian-shi-32wen</id>
+    <id>http://colalife.com/blog/2008/03/zhuan-cheng-xu-ren-sheng-you-tiao-zhan-xing-de-javacheng-xu-yuan-mian-shi-32wen</id>
     <content type="html"><![CDATA[<p><a href="http://tech.ccidnet.com/art/3539/20080228/1374267_1.html" target="_blank">来自赛迪网</a><br/>
    第一，谈谈final， finally， finalize的区别。</p>
 
